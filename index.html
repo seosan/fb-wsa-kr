@@ -56,29 +56,36 @@
 						}  );
 
   				}  );
+
+				function testAPI() {
+   					console.log('Welcome!  Fetching your information.... ');
+    				FB.api('/me', function(response) {
+      					console.log('Good to see you, ' + response.name + '.');
+      					$(#userirm).html('Hello World, '+response.name);
+   					});
+   					FB.api('/me/feed', {limit:500}, function(response) {
+
+   						console.log(response);
+
+   						for(var i=0, j=response.data.length; i<j; i++) {
+   							var info = response.data[i];
+   							if (info.message) {
+   								$(#usergul).append('<br>'+info.message);
+   							}
+   						}
+
+   					});
+ 				}
+
+
+
+
+
 			});
 			
 			// Here we run a very simple test of the Graph API after login is successful. 
   			// This testAPI() function is only called in those cases. 
-  			function testAPI() {
-   				console.log('Welcome!  Fetching your information.... ');
-    			FB.api('/me', function(response) {
-      				console.log('Good to see you, ' + response.name + '.');
-      				$(#userirm).html('Hello World, '+response.name);
-   				});
-   				FB.api('/me/feed', {limit:500}, function(response) {
-
-   					console.log(response);
-
-   					for(var i=0, j=response.data.length; i<j; i++) {
-   						var info = response.data[i];
-   						if (info.message) {
-   							$(#usergul).append('<br>'+info.message);
-   						}
-   					}
-
-   				} );
- 			 }
+  			
 			</script>
 		<fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
 	</body>
