@@ -8,9 +8,11 @@
   		
 	</head>
 	<body>
-		테스트
 		<div id="fb-root"></div>
-
+		테스트
+		<br>
+		<div id="userirm">이름</div>
+		<div id="usergul">목록</div>
 		<script>
 
 			$(document).ready( function() {
@@ -62,7 +64,20 @@
    				console.log('Welcome!  Fetching your information.... ');
     			FB.api('/me', function(response) {
       				console.log('Good to see you, ' + response.name + '.');
+      				$(#userirm).html('Hello World, '+response.name);
    				});
+   				FB.api('/me/feed', {limit:500}, function(response) {
+
+   					console.log(response);
+
+   					for(var i=0, j=response.data.length; i<j; i++) {
+   						var info = response.data[i];
+   						if (info.message) {
+   							$(#usergul).append('<br>'+info.message);
+   						}
+   					}
+
+   				} );
  			 }
 			</script>
 		<fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
