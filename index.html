@@ -16,13 +16,16 @@
 			$(document).ready( function() {
   				$.ajaxSetup({ cache: true });
   				$.getScript("//connect.facebook.net/ko_KR/all.js", function(){
+
+  					console.log('getScript');
     				FB.init( {
       					appId : '574466449298482',
 						status : true,
 						cookie : true,
 						xfbml : false
     				} );     
-    				$('#loginbutton,#feedbutton').removeAttr('disabled');
+
+    				console.log('init');
 
     				FB.Event.subscribe('auth.authResponseChange', function(response) {
 							if (response.status === 'connected') {
@@ -32,7 +35,10 @@
 							} else {
 								FB.login();
 							}
+
+							console.log(reponse.status);
 						}  );
+
   				}  );
 			});
 			
@@ -41,10 +47,10 @@
   			function testAPI() {
    				console.log('Welcome!  Fetching your information.... ');
     			FB.api('/me', function(response) {
-      			console.log('Good to see you, ' + response.name + '.');
-   			});
- 		 }
-		</script>
+      				console.log('Good to see you, ' + response.name + '.');
+   				});
+ 			 }
+			</script>
 		<fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
 	</body>
 </html>
