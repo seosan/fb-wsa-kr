@@ -23,7 +23,6 @@
 						xfbml : false
     				} );     
     				$('#loginbutton,#feedbutton').removeAttr('disabled');
-    				FB.getLoginStatus(updateStatusCallback);
 
     				FB.Event.subscribe('auth.authResponseChange', function(response) {
 							if (response.status === 'connected') {
@@ -37,10 +36,6 @@
   				}  );
 			});
 			
-
-			
-
-
 			// Here we run a very simple test of the Graph API after login is successful. 
   			// This testAPI() function is only called in those cases. 
   			function testAPI() {
