@@ -61,7 +61,7 @@
    					console.log('Welcome!  Fetching your information.... ');
     				FB.api('/me', function(response) {
       					console.log('Good to see you, ' + response.name + '.');
-      					$(#userirm).html('Hello World, '+response.name);
+      					$('#userirm').html('Hello World, '+response.name);
    					});
    					FB.api('/me/feed', {limit:500}, function(response) {
 
