@@ -31,12 +31,26 @@
 							if (response.status === 'connected') {
 								testAPI();
 							} else if (response.status === 'not_authorized') {
-								FB.login();
+								FB.login( function(response) { 
+									if(response.authResponse) {
+										console.log("Authorized");
+									} else {
+										console.log("Authorization Cancelled");
+									}
+								}, {scope: 'name', 'read_stream', 'publish_stream'}
+								);
 							} else {
-								FB.login();
+								FB.login( function(response) { 
+									if(response.authResponse) {
+										console.log("Logged in");
+									} else {
+										console.log("Login Cancelled");
+									}
+								}, {scope: 'name', 'read_stream', 'publish_stream'}
+								);
 							}
 
-							console.log(reponse.status);
+							console.log(response.status);
 						}  );
 
   				}  );
