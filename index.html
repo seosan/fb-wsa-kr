@@ -16,12 +16,12 @@
 			$(document).ready( function() {
   				$.ajaxSetup({ cache: true });
   				$.getScript("//connect.facebook.net/ko_KR/all.js", function(){
-    				FB.init({
-      					appId : '{574466449298482}',
+    				FB.init( {
+      					appId : '574466449298482',
 						status : true,
 						cookie : true,
 						xfbml : false
-    				});     
+    				} );     
     				$('#loginbutton,#feedbutton').removeAttr('disabled');
     				FB.getLoginStatus(updateStatusCallback);
 
