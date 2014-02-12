@@ -22,6 +22,7 @@
 			</div>
 			<br>
 			<div id='button'><a>시작하기</a></div>
+			<div id='abox'></div>
 
 		</div>
 		<div id='like'><div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="400px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div></div>
@@ -92,12 +93,13 @@
 	    				console.log('페이스북 웹앱 인증 완료');
 
 	    				FB.getLoginStatus( function(response) {
-	    						$('#userirm').html(response.name+'님').addClass('bb');
+	    						
 								if (response.status === 'connected') {
 									usrInfo();
 									console.log('페이스북 담벼락 불러오기 시작...');
 									readStream();
-									$('#button').animate({opacity:0.3, width:120, height:0, margin:0}, 1000, linear).children('a').css('display', 'none');
+									$('#button').animate({opacity:0.3, width:120, height:0, margin:0}, 1000, 'linear').children('a').css('display', 'none');
+									$('#userirm').html(response.name+'님').addClass('bb');
 								} else if (response.status === 'not_authorized') {
 									FB.login( function(response) { 
 										if(response.authResponse) {
@@ -105,7 +107,8 @@
 											usrInfo();
 											console.log('페이스북 담벼락 불러오기 시작...');
 											readStream();
-											$('#button').animate( {opacity:0.3, width:120, height:0, margin:0}, 1000, linear).children('a').css('display', 'none');
+											$('#button').animate( {opacity:0.3, width:120, height:0, margin:0}, 1000, 'linear').children('a').css('display', 'none');
+											$('#userirm').html(response.name+'님').addClass('bb');
 										} else {
 											console.log("Authorization Cancelled");
 										}
@@ -166,9 +169,19 @@
 						socket.on('choanal', function (value) {
 							cho = value.anal;
 							console.log(cho);
-	   					});
+							updateabox(cho);
 
+	   					});
 					} // readStream
+					function updateabox(cho) {
+						$('#abox').html('');
+						for(index in cho) {
+							if(cho[index]>0)
+								$('#abox').append(	chodb[index]+' : '+cho[index]+"회<br>"	);
+						}
+					}
+
+
 				} // start
 
 			}); // document ready

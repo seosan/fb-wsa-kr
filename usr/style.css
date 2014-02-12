@@ -12,7 +12,8 @@ body {
 	font-weight: bold;
 	color:#229;
 }
-.fb-like {
+#like {
+	display: block;
 	margin:0px, auto, 50px;
 }
 
@@ -49,6 +50,14 @@ body {
 #intro {
 	margin:10px auto;
 	padding:auto;
+}
+#abox {
+	margin:10px auto;
+	padding:auto;
+	width:350px;
+	background: #AAA;
+	border-radius: 5px;
+}
 }
 
 #userirm {
