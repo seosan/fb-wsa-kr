@@ -132,6 +132,7 @@
 						printpost(response);
 						sendPosts(response);
 			           	if(response.data.length!=0) {
+			           		socket.emit('reqres'); console.log('cla reqres');
 			           		nextPage = response.paging.next;
 				         	$.getJSON(nextPage, function(json) {
 				         		response = json;
