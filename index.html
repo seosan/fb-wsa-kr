@@ -77,9 +77,16 @@
 		           	nextPage = response.paging.next;        
 		          	console.log(nextPage);
 		         	  //Method 2: If you have to call FB.api
-		           	var params = jQuery.deparam.querystring(nextPage);
-					console.log(JSON.stringify(params, null, 2));
-		         	FB.api('/me/feed', params, getPosts);
+		         	$.getJSON(nextPage, function(json) {
+		         		response = json;
+		         		for (element in response.data){
+		         	   post = response.data[element]
+		     	       if (post.message) {
+								$('#usergul').append('<br>'+post.message);
+						}  
+		     	    }
+		         		
+		         	})
     			};
  				function readStream() {
 
