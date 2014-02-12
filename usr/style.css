@@ -53,11 +53,12 @@ body {
 }
 #abox {
 	margin:10px auto;
-	padding:auto;
+	padding:20px auto;
 	width:350px;
 	background: #AAA;
 	border-radius: 5px;
-}
+	color:#FFF;
+	font-weight: bold;
 }
 
 #userirm {

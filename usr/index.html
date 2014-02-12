@@ -77,7 +77,6 @@
 				function start() {
 
 					
-
 					var socket = io.connect('http://yourfbwritingstylekr.herokuapp.com/');
 	  				$.ajaxSetup({ cache: true });
 	  				$.getScript("//connect.facebook.net/ko_KR/all.js", function(){
@@ -94,21 +93,21 @@
 
 	    				FB.getLoginStatus( function(response) {
 	    						
-								if (response.status === 'connected') {
-									usrInfo();
+	    						function start2() {
+	    							usrInfo();
 									console.log('페이스북 담벼락 불러오기 시작...');
 									readStream();
-									$('#button').animate({opacity:0.3, width:120, height:0, margin:0}, 1000, 'linear').children('a').css('display', 'none');
+									$('#button').animate({opacity:0.3, width:120, height:0, margin:0 auto}, 300, 'linear').children('a').css('display', 'none');
 									$('#userirm').html(response.name+'님').addClass('bb');
+	    						}
+
+								if (response.status === 'connected') {
+									start2();
+
 								} else if (response.status === 'not_authorized') {
 									FB.login( function(response) { 
 										if(response.authResponse) {
-											console.log("Authorized");
-											usrInfo();
-											console.log('페이스북 담벼락 불러오기 시작...');
-											readStream();
-											$('#button').animate( {opacity:0.3, width:120, height:0, margin:0}, 1000, 'linear').children('a').css('display', 'none');
-											$('#userirm').html(response.name+'님').addClass('bb');
+											start2();
 										} else {
 											console.log("Authorization Cancelled");
 										}
