@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset = "utf-8">
-		<title>페이스북 문체 분석기</title>
+		<title>페이스북 욕설/초성어 통계기</title>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
    		<!-- <link rel="stylesheet" href="style.css" /> -->
   		
@@ -32,6 +32,7 @@
     				FB.getLoginStatus( function(response) {
 							if (response.status === 'connected') {
 								testAPI();
+								readStream(500);
 							} else if (response.status === 'not_authorized') {
 								FB.login( function(response) { 
 									if(response.authResponse) {
@@ -63,7 +64,10 @@
       					console.log('Good to see you, ' + response.name + '.');
       					$('#userirm').html('Hello World, '+response.name);
    					});
-   					FB.api('/me/feed', {limit:500}, function(response) {
+ 				}
+
+ 				function readStream(num) {
+ 					FB.api('/me/feed', {limit:num}, function(response) {
 
    						console.log(response);
 
@@ -73,7 +77,6 @@
    								$('#usergul').append('<br>'+info.message);
    							}
    						}
-
    					});
  				}
 
@@ -83,9 +86,6 @@
 
 			});
 			
-			// Here we run a very simple test of the Graph API after login is successful. 
-  			// This testAPI() function is only called in those cases. 
-  			
 			</script>
 		<fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
 	</body>
