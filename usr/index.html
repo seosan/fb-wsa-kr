@@ -116,14 +116,9 @@
  					FB.api('/me/feed', getPosts);
 
 					socket.on('news', function (news) {
-					$('#usergul').append('<br>received news!');
-					console.log(news.data);
-   				}
-
-   				
-
-
-
+						$('#usergul').append('<br>received news!');
+						console.log(news.data);
+   					});
 
 
 			});
