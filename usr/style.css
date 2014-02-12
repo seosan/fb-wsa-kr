@@ -1,6 +1,8 @@
 body {
 	background-color: #EEE;
 	font-family: '나눔고딕', '돋움';
+	margin:0px auto;
+	text-align: center;
 }
 
 #fb-root {
@@ -29,6 +31,7 @@ body {
 	font-size:25px;
 	background-color: #449;
 	font-weight:bold;
+	border-bottom: 1px solid #227;
 }
 
 #bar a {
@@ -39,7 +42,7 @@ body {
 }
 
 #content {
-	margin:200px auto;
+	margin:200px auto 50px;
 	padding:20px 10px;
 	width:360px;
 	display: block;
@@ -61,6 +64,7 @@ body {
 	border-radius: 5px;
 	color:#FFF;
 	font-weight: bold;
+	transition:all 0.2s ease 0s;
 }
 
 #userirm {
@@ -86,7 +90,7 @@ body {
 #button :hover{
 	background-color: #117;
 	border-radius: 5px;
-	transition:all 0.1s linear 0s;
+	transition:all 0.1s ease 0s;
 }
 #button :active{
 	background-color: #444;
