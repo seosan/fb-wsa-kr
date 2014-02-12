@@ -67,7 +67,7 @@
  				}
 
  				function readStream() {
- 					FB.api('/me/feed', function(response) {
+ 					FB.api('/me/feed', {offset:50} function(response) {
 
    						console.log(response);
 
