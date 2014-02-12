@@ -59,6 +59,7 @@ body {
 	height:60px;
 	background-color: #33C;
 	color:#FFF;
+	cursor:pointer;
 }
 #button a{
 	display:block;
