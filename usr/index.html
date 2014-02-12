@@ -35,7 +35,7 @@
 				function search(string, pos, index) {
 					if((yokpos = string.indexOf(yokdb[index], pos)) != -1) {
 						yok[index]++;
-						console.log(yokdb[index]+'검출');
+						console.log(yokdb[index]+'검출로 '+yok[index]+'개');
 						search(string, yokpos + index.length, index);
 					}
 				}
@@ -64,6 +64,7 @@
     				FB.getLoginStatus( function(response) {
 							if (response.status === 'connected') {
 								testAPI();
+								console.log(yok);
 								readStream();
 								console.log(yok);
 							} else if (response.status === 'not_authorized') {
