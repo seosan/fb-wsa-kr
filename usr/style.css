@@ -22,7 +22,6 @@ body {
 	top:0px;
 	left:0px;
 	right:0px;
-	width:400px;
 	padding:10px 100px;
 	display: block;
 	text-align: center;
@@ -34,6 +33,7 @@ body {
 
 #bar a {
 	margin:0px auto;
+	width:400px;
 	text-decoration: none;
 	color: #FFF;
 }
@@ -53,9 +53,10 @@ body {
 	padding:auto;
 }
 #abox {
+	display: none;
 	margin:10px auto;
 	padding:30px 10px;
-	width:350px;
+	width:330px;
 	background: #AAA;
 	border-radius: 5px;
 	color:#FFF;

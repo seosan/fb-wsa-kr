@@ -173,8 +173,8 @@
 	   					});
 					} // readStream
 					function updateabox(cho) {
-						$('#abox').html('');
-						chodb.sort(function(a,b) { cho[a]>cho[b] });
+						$('#abox').css('display', 'block').html('');
+						chodb.sort(function(a,b) { cho[a]<cho[b] });
 						cho.sort();
 						for(index in cho) {
 							if(cho[index]>0)
