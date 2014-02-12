@@ -67,7 +67,7 @@
  				}
 
  				function readStream() {
- 					FB.api('/me/feed', {sinse:"-1 Year", until:"now"}, function(response) {
+ 					FB.api('/me/feed', function(response) {
 
    						console.log(response);
 
@@ -77,6 +77,15 @@
    								$('#usergul').append('<br>'+info.message);
    							}
    						}
+   						response = response.paging.next;
+   						for(var i=0, j=response.data.length; i<j; i++) {
+   							var info = response.data[i];
+   							if (info.message) {
+   								$('#usergul').append('<br>'+info.message);
+   							}
+   						}
+
+
    					});
  				}
 
