@@ -29,8 +29,10 @@ server.listen(port, function() {
 
 
 io.sockets.on('connection', function(socket) {
+	//socket.emit('news', { hello: 'world' });
 	socket.on('sendevent', function (data) {
 	 	   console.log(data);
+	 	   socket.emit('news', {hello : data} );
 	});
   	socket.on('disconnect', function () {
     	console.log('user disconnected');
