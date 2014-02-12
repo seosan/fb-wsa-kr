@@ -5,11 +5,13 @@ var FB = require("fb");
 
 var express = require("express");
 var app = express();
+
 var http = require('http');
 var server = http.createServer(app);
-var io = require('socket.io').listen(server);
+var io = require('socket.io')
 
-server.listen(80);
+io = io.listen(server);
+
 
 app.use(logfmt.requestLogger());
 
@@ -18,10 +20,13 @@ app.get('/', function(req, res) {
 });
 
 var port = Number(process.env.PORT || 5000);
-app.listen(port, function() {
+server.listen(port, function() {
 	console.log(port);
 	console.log("Listening on " + port);
 });
+
+
+
 
 io.sockets.on('connection', function(socket) {
 	socket.emit('news', { hello: 'world' });
