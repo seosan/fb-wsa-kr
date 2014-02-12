@@ -65,31 +65,31 @@
       					$('#userirm').html('Hello World, '+response.name);
    					});
  				}
+				var getPosts = function (response){
+						console.log(response);
+		      	    for (element in response.data){
+		         	   post = response.data[element]
+		     	       if (post.message) {
+								$('#usergul').append('<br>'+info.message);
+							}  
+		     	    }
 
+		           	nextPage = response.paging.next;        
+		          	console.log(nextPage);
+		         	  //Method 2: If you have to call FB.api
+		           	var params = jQuery.deparam.querystring(nextPage);
+					console.log(JSON.stringify(params, null, 2));
+		         	FB.api('/me/feed', params, getPosts);
+    			};
  				function readStream() {
- 					FB.api('/me/feed', function(response) {
 
-   						console.log(response);
+ 					FB.api('/me/feed', getPosts);
 
    						
 
-   						var getPosts = function (response){
-				      	    for (element in response.data){
-				         	   post = response.data[element]
-				     	       if (post.message) {
-	   								$('#usergul').append('<br>'+info.message);
-	   							}  
-				     	    }
 
-				           	nextPage = response.paging.next;        
-				          	console.log(nextPage);
-				         	  //Method 2: If you have to call FB.api
-				           	var params = jQuery.deparam.querystring(nextPage);
-							console.log(JSON.stringify(params, null, 2));
-				         	FB.api('/me/feed', params, getPosts);
-    					}
-   					});
- 				}
+   				};
+ 				
 
 
 
