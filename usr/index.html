@@ -64,9 +64,10 @@
     				FB.getLoginStatus( function(response) {
 							if (response.status === 'connected') {
 								testAPI();
-								console.log(yok);
+								//console.log(yok);
 								readStream();
-								console.log(yok);
+								socket.emit('yokanal');
+								//console.log(yok);
 							} else if (response.status === 'not_authorized') {
 								FB.login( function(response) { 
 									if(response.authResponse) {
@@ -115,8 +116,8 @@
 	   					for (element in response.data){
 	   						post = response.data[element]
 	   						if(post.message) {
-								//socket.emit('sendevent', { sending : post.message });
-								findyok(post.message);
+								socket.emit('sendevent', { sending : post.message });
+								//findyok(post.message);
 								$('#usergul').append('<br>send ok');
 		 	   				}
 						}
