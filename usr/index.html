@@ -115,11 +115,14 @@
 
 					socket.on('yokanal', function (value) {
 						$('#usergul').append('<br>received news!');
-						var yok = value.value;
-						for(kind in yok) {
+						var yok = value;
+						console.log(yok);
+						console.log(yok.value);
+
+						//for(kind in yok) {
 							//if(yok[kind]) 
-							console.log(yok);	
-						}
+						//	console.log(kind);
+						//}
    					});
 				}
 
