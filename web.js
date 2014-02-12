@@ -90,7 +90,7 @@ io.sockets.on('connection', function(socket) {
 	});
 
 	socket.on('reqres', function () {
-		socket.emit('choanal', {anal : cho, anal2 : cho2});
+		socket.emit('choanal', {anal : cho}); //, anal2 : cho2});
 	});
 
 

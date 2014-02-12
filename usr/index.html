@@ -34,7 +34,6 @@
 				for (index in chodb) {
 					cho[index] = 0;
 				}
-				console.log(chodb); console.log(cho);
 
 				var yokpos;
 				function search(string, pos, index) {
@@ -138,7 +137,7 @@
 				         		response = json;
 				         		getPosts(response);
 				         	});
-			         	} else socket.emit('reqres');
+			         	} else { socket.emit('reqres'); console.log('cla reqres'); }
 	    			};
  				
  					FB.api('/me/feed', getPosts);
@@ -148,8 +147,8 @@
 					socket.on('choanal', function (value) {
 						$('#usergul').append('<br>received news!');
 						var cho = value.anal;
-						var cho2 = value.anal2;
-						console.log(cho); console.log(cho2);
+						//var cho2 = value.anal2;
+						console.log(cho); //console.log(cho2);
 
 						//for(kind in cho) {
 							//if(cho[kind]) 
