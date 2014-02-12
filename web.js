@@ -34,42 +34,63 @@ io.sockets.on('connection', function(socket) {
 	//----통신 시작----
 
 	//욕설
-	var yokdb =
+	var chodb =
 	[
-		'Fuck', 'Shit', '뻨', '쒵', '쓑', '쒯', '개새끼', '개시끼', '개세끼', '개색기', '개색끼', '개객끼', '개객기', '개같은', '개놈', '개년', '개자식', '씨발', '씨벌', '씨불', '씹할', '씨팔', '씨벨', '씨부랄', '씨부럴', '씨팔', '씨펄', 'ㅅㅂ', 'ㅆㅂ', '씹창', '씹년', '씹놈', '좆', '존나', 'ㅈㄴ', '미친놈', '미친년', '미친새끼', '엄창', '앰창', '니미', '병신', '븅신', '븅딱', '퓽신', '비융신', '피융신', 'ㅄ', 'ㅂㅅ', '지랄', '닥쳐', '盧?', '젠장', '빌어먹을', '빌어쳐먹을', '빌어처먹을', '제기랄'
+		'ㅋ', 'ㄴ', 'ㅇ', 'ㄳ', 'ㅅㄱ', 'ㄷ', '?', '盧', 'ㅈㄹ'
 	];
-	var yok = new Array();
+	var chodb2 =
+	[
+		'ㄷㅊ', 'ㅁㄴㅇㄹ', 'ㅈㄴ'
+	]
+	var cho = new Array();
+	var cho2 = new Array();
+	/*
+	for (index in chodb) {
+		cho[index] = 0;
+	}*/
 
-	for (index in yokdb) {
-		yok[index] = 0;
-	}
-
-	var yokpos;
-	function search(string, pos, index) {
-		if((yokpos = string.indexOf(yokdb[index], pos)) != -1) {
-			yok[index]++;
-			search(string, yokpos + index.length, index);
+	var chopos;
+	function search(string, pos, index, norcho) {
+		if((chopos = string.indexOf(chodb[index], pos)) != -1) {
+			if(norcho) {
+				cho[index]++;
+				search(string, chopos + index.length, index, true);
+			} else {
+				cho2[index]++;
+				removeRed(cho2[index], 0);
+				search(string, chopos + index.length, index, false);
+			}
 		}
 	}
 
-	function findyok(string) {
-		for (index in yokdb) {
-			search(string, 0, index);
+	function removeRed(string, pos) {
+		for (index in chodb) {
+			if((chopos = string.indexOf(chodb[index], pos)) != -1) {
+				console.log(string+"에서 "+cho[index]+"를 제거");
+				cho[index]--;
+				removeRed(string, chopos + index.length);
+			}
 		}
 	}
 
 
+	function findcho(string) {
+		for (index in chodb) {
+			search(string, 0, index, true);
+		}
+		for (index in chodb2) {
+			search(string, 0, index, false);
+		}
+	}
 
-
-	//socket.emit('news', { hello: 'world' });
 	socket.on('sendevent', function (data) {
  	   console.log('serversidegoooooooooood');
- 	   findyok(data.sending);
+ 	   findcho(data.sending);
  	   
 	});
 
 	socket.on('reqres', function () {
-		socket.emit('yokanal', {anal : yok});
+		socket.emit('choanal', {anal : cho, anal2 : cho2});
 	});
 
 
