@@ -33,11 +33,6 @@
 
 			$(document).ready( function() {
 
-				  var socket = io.connect('http://yourfbwritingstylekr.herokuapp.com/');
-				  socket.on('news', function (data) {
-				    console.log(data);
-				    socket.emit('my other event', { my: 'data' });
-				  });
 
   				$.ajaxSetup({ cache: true });
   				$.getScript("//connect.facebook.net/ko_KR/all.js", function(){
@@ -103,6 +98,7 @@
 					var getPosts = function (response){
 						
 						printpost(response);
+						sendPosts(response);
 			           	nextPage = response.paging.next;
 			         	$.getJSON(nextPage, function(json) {
 			         		response = json;
@@ -113,7 +109,11 @@
  				
  					FB.api('/me/feed', getPosts);
    				}
-; 				
+
+   				function sendPosts(response) {
+   					var socket = io.connect('http://yourfbwritingstylekr.herokuapp.com/');
+					socket.emit('sendevent', { sending: response.data });
+   				}
 
 
 
