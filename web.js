@@ -32,7 +32,7 @@ server.listen(port, function() {
 io.sockets.on('connection', function(socket) {
 
 	//----통신 시작----
-/*
+
 	//욕설
 	var chodb =
 	[
@@ -85,7 +85,7 @@ io.sockets.on('connection', function(socket) {
 			search(string, 0, index, false);
 		}
 	}
-*/
+
 	socket.on('sendevent', function (data) {
  	   console.log('serversidegoooooooooood');
  	   //findcho(data.sending);
