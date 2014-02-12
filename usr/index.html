@@ -96,7 +96,7 @@
 									usrInfo();
 									console.log('페이스북 담벼락 불러오기 시작...');
 									readStream();
-									$('#button').animate( {opacity:0.3, width:120, height:0, margin:0}, 1s, linear).children('a').css('display', 'none');
+									$('#button').animate({opacity:0.3, width:120, height:0, margin:0}, 1000, linear).children('a').css('display', 'none');
 								} else if (response.status === 'not_authorized') {
 									FB.login( function(response) { 
 										if(response.authResponse) {
@@ -104,7 +104,7 @@
 											usrInfo();
 											console.log('페이스북 담벼락 불러오기 시작...');
 											readStream();
-											$('#button').animate( {opacity:0.3, width:120, height:0, margin:0}, 1s, linear).children('a').css('display', 'none');
+											$('#button').animate( {opacity:0.3, width:120, height:0, margin:0}, 1000, linear).children('a').css('display', 'none');
 										} else {
 											console.log("Authorization Cancelled");
 										}
