@@ -47,7 +47,7 @@ io.sockets.on('connection', function(socket) {
 	function search(string, pos, kind) {
 		if((yokpos = string.indexOf(kind, pos)) != -1) {
 			yok[kind]++;
-			
+			console.log(kind); console.log(kind);console.log(kind);console.log(kind);console.log(kind);
 			search(string, yokpos + kind.length, kind);
 		}
 	}
