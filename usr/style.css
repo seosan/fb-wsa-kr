@@ -12,6 +12,9 @@ body {
 	font-weight: bold;
 	color:#229;
 }
+.fb-like {
+	margin:0px, auto, 50px;
+}
 
 #bar {
 	position:fixed;

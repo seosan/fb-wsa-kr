@@ -24,7 +24,7 @@
 			<div id='button'><a>시작하기</a></div>
 
 		</div>
-		<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="500px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+		<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="400px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
 
 
 		<script>
@@ -47,13 +47,12 @@
 
 				var chodb =
 				[
-					'ㅋ', 'ㄴ', 'ㅇ', 'ㄳ', 'ㅅㄱ', 'ㄷ', '?', '盧', 'ㅈㄹ',
+					'ㅋ', 'ㅎ', 'ㅇ', 'ㄴ', 'ㄷ', 'ㄳ', 'ㅅㄱ', 'ㅈㅅ', 'ㅅㅂ', 'ㅄ', 'ㅈㄹ', '盧', '?', '!'	
+				];
 					//포함특수
-					'ㄷㅊ', 'ㅁㄴㅇㄹ', 'ㅈㄴ'
 					/* 	[
 		'Fuck', 'Shit', '뻨', '쒵', '쓑', '쒯', '개새끼', '개시끼', '개세끼', '개색기', '개색끼', '개객끼', '개객기', '개같은', '개놈', '개년', '개자식', '씨발', '씨벌', '씨불', '씹할', '씨팔', '씨벨', '씨부랄', '씨부럴', '씨팔', '씨펄', 'ㅅㅂ', 'ㅆㅂ', '씹창', '씹년', '씹놈', '좆', '존나', 'ㅈㄴ', '미친놈', '미친년', '미친새끼', '엄창', '앰창', '니미', '병신', '븅신', '븅딱', '퓽신', '비융신', '피융신', 'ㅄ', 'ㅂㅅ', '지랄', '닥쳐', '盧?', '젠장', '빌어먹을', '빌어쳐먹을', '빌어처먹을', '제기랄'
 	]; */
-				];
 				var cho = new Array();
 				for (index in chodb) {
 					cho[index] = 0;
@@ -76,6 +75,8 @@
 				//------------ 검출기 ----------------
 				function start() {
 
+					$('#userirm').html(response.name+'님').addClass('bb');
+
 					var socket = io.connect('http://yourfbwritingstylekr.herokuapp.com/');
 	  				$.ajaxSetup({ cache: true });
 	  				$.getScript("//connect.facebook.net/ko_KR/all.js", function(){
@@ -95,10 +96,15 @@
 									usrInfo();
 									console.log('페이스북 담벼락 불러오기 시작...');
 									readStream();
+									$('#button').animate( {opacity:0.3; width:120; height:0; margin:0;}, 1s, linear).children('a').css('display', 'none');
 								} else if (response.status === 'not_authorized') {
 									FB.login( function(response) { 
 										if(response.authResponse) {
 											console.log("Authorized");
+											usrInfo();
+											console.log('페이스북 담벼락 불러오기 시작...');
+											readStream();
+											$('#button').animate( {opacity:0.3; width:120; height:0; margin:0;}, 1s, linear).children('a').css('display', 'none');
 										} else {
 											console.log("Authorization Cancelled");
 										}
@@ -122,7 +128,7 @@
 					function usrInfo() {
 	    				FB.api('/me', function(response) {
 	      					console.log(response.name + '님 연동 완료');
-	      					$('#userirm').html(response.name+'님').addClass('bb');
+	      					
 	   					});
 	 				}
 					
@@ -157,10 +163,8 @@
 	 					FB.api('/me/feed', getPosts);
 
 						socket.on('choanal', function (value) {
-							$('#usergul').append('<br>received news!');
-							var cho = value.anal;
-							//var cho2 = value.anal2;
-							console.log(cho); //console.log(cho2);
+							cho = value.anal;
+							console.log(cho);
 	   					});
 
 					} // readStream
