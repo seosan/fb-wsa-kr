@@ -3,7 +3,7 @@ var express = require("express");
 var logfmt = require("logfmt");
 var FB = require("fb");
 var app = express();
-// var soc = require('socket.io');
+var io = require('socket.io');
 
 app.use(logfmt.requestLogger());
 
@@ -18,7 +18,7 @@ app.listen(port, function() {
 });
 
 /*
-var io = soc.listen(app);
+var io = io.listen(app);
 
 
 io.socket.on('connection', function(socket) {
