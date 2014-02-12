@@ -1,0 +1,81 @@
+body {
+	background-color: #EEE;
+	font-family: '나눔고딕', '돋움';
+}
+
+#fb-root {
+	display:none;
+}
+
+.bb {
+	display:inline;
+	font-weight: bold;
+	color:#229;
+}
+
+#bar {
+	position:fixed;
+	top:0px;
+	left:0px;
+	right:0px;
+	padding:10px 100px;
+	display: block;
+	text-align: center;
+	line-height:50px;
+	font-size:25px;
+	background-color: #449;
+	font-weight:bold;
+}
+
+#bar a {
+	margin:0px auto;
+	text-decoration: none;
+	color: #FFF;
+}
+
+#content {
+	margin:200px auto;
+	padding:20px 10px;
+	width:360px;
+	display: block;
+	text-align:center;
+	background-color: #FFF;
+	border-radius: 5px;
+}
+
+#intro {
+	margin:10px auto;
+	padding:auto;
+}
+
+#userirm {
+	display: inline;
+}
+
+#button {
+	border-radius: 5px;
+	margin:10px auto;
+	width:150px;
+	height:60px;
+	background-color: #33C;
+	color:#FFF;
+}
+#button a{
+	display:block;
+	text-decoration:none;
+	color:#FFF;
+	line-height: 60px;
+}
+
+#button :hover{
+	background-color: #117;
+	border-radius: 5px;
+	transition:all 0.1s linear 0s;
+}
+#button :active{
+	background-color: #444;
+	color:#33C;
+	border-radius: 5px;
+	font-weight: bold;
+	transition-duration:0s;
+}

@@ -6,20 +6,44 @@
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 		<script src="/socket.io/socket.io.js"></script>
 
-   		<!-- <link rel="href" stylesheet="style.css" /> -->
+   		<link rel="stylesheet" type-"text/css" href="style.css" />
   		
 	</head>
 	<body>
 		<div id="fb-root"></div>
-		테스트3
-		<br>
-		<div id="userirm">이름</div>
-		<div id="usergul">목록</div>
+		<div id="bar"><a href="#">페이스북 초성어 통계기</a></div>
+		
+		<div id = "content">
+			<div id="intro">
+				<div class='bb'>페이스북 초성어 통계기</div>는
+				<br> <div id='userirm'>당신</div>의 담벼락 글을 분석해
+				<br>초성어 및 기호 사용 통계를 내주는
+				<br>아무짝에도 쓸모 없는 서비스입니다.
+			</div>
+			<br>
+			<div id='button'><a href='/start'>시작하기</a></div>
+
+		</div>
+		<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="500px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+
+
 		<script>
-
-
-
 			$(document).ready( function() {
+
+				(function(d, s, id) {
+				  var js, fjs = d.getElementsByTagName(s)[0];
+				  if (d.getElementById(id)) return;
+				  js = d.createElement(s); js.id = id;
+				  js.src = "//connect.facebook.net/ko_KR/all.js#xfbml=1&appId=574466449298482";
+				  fjs.parentNode.insertBefore(js, fjs);
+				}(document, 'script', 'facebook-jssdk'));
+
+				$('#button').click(function() {
+
+				} );
+
+
+
 
 				var chodb =
 				[
@@ -50,115 +74,99 @@
 				}
 
 				//------------ 검출기 ----------------
+				function start() {
 
-				var socket = io.connect('http://yourfbwritingstylekr.herokuapp.com/');
-  				$.ajaxSetup({ cache: true });
-  				$.getScript("//connect.facebook.net/ko_KR/all.js", function(){
+					var socket = io.connect('http://yourfbwritingstylekr.herokuapp.com/');
+	  				$.ajaxSetup({ cache: true });
+	  				$.getScript("//connect.facebook.net/ko_KR/all.js", function(){
 
-  					console.log('getScript');
-    				FB.init( {
-      					appId : '574466449298482',
-						status : true,
-						cookie : true,
-						xfbml : false
-    				} );     
+	  					console.log('스크립트 불러오기 완료');
+	    				FB.init( {
+	      					appId : '574466449298482',
+							status : true,
+							cookie : true,
+							xfbml : false
+	    				} );     
 
-    				console.log('init');
+	    				console.log('페이스북 웹앱 인증 완료');
 
-    				FB.getLoginStatus( function(response) {
-							if (response.status === 'connected') {
-								testAPI();
-								//console.log(cho);
-								readStream();
-								//console.log(cho);
-							} else if (response.status === 'not_authorized') {
-								FB.login( function(response) { 
-									if(response.authResponse) {
-										console.log("Authorized");
-									} else {
-										console.log("Authorization Cancelled");
-									}
-								}, {scope: 'read_stream,publish_stream'}
-								);
-							} else {
-								FB.login( function(response) { 
-									if(response.authResponse) {
-										console.log("Logged in");
-									} else {
-										console.log("Login Cancelled");
-									}
-								}, {scope: 'read_stream,publish_stream'}
-								);
+	    				FB.getLoginStatus( function(response) {
+								if (response.status === 'connected') {
+									usrInfo();
+									console.log('페이스북 담벼락 불러오기 시작...');
+									readStream();
+								} else if (response.status === 'not_authorized') {
+									FB.login( function(response) { 
+										if(response.authResponse) {
+											console.log("Authorized");
+										} else {
+											console.log("Authorization Cancelled");
+										}
+									}, {scope: 'read_stream,publish_stream'}
+									);
+								} else {
+									FB.login( function(response) { 
+										if(response.authResponse) {
+											console.log("Logged in");
+										} else {
+											console.log("Login Cancelled");
+										}
+									}, {scope: 'read_stream,publish_stream'}
+									);
+								}
+								console.log("페이스북 계정 "+response.status);
+							}  );
+
+	  				}  );
+
+					function usrInfo() {
+	    				FB.api('/me', function(response) {
+	      					console.log(response.name + '님 연동 완료');
+	      					$('#userirm').html(response.name+'님').addClass('bb');
+	   					});
+	 				}
+					
+					function readStream() {
+		 				
+		 				function sendPosts(response) {
+		   					console.log(response);
+		   					for (element in response.data){
+		   						post = response.data[element]
+		   						if(post.message) {
+									socket.emit('sendevent', { sending : post.message });
+									//findyok(post.message);
+									$('#usergul').append('<br>send ok');
+			 	   				}
 							}
 
-							console.log(response.status);
-						}  );
-
-  				}  );
-
-				function testAPI() {
-   					console.log('Welcome!  Fetching your information.... ');
-    				FB.api('/me', function(response) {
-      					console.log('Good to see you, ' + response.name + '.');
-      					$('#userirm').html('Hello World, '+response.name);
-   					});
- 				}
-				
-				function readStream() {
-	 				function printpost(response) {
-	 					console.log(response);
-			      	    for (element in response.data){
-			         	   post = response.data[element]
-			     	       if (post.message) {
-								$('#usergul').append('<br>'+post.message);
-							}  
-			     	    }
-	 				}
-	 				function sendPosts(response) {
-	   					
-	   					for (element in response.data){
-	   						post = response.data[element]
-	   						if(post.message) {
-								socket.emit('sendevent', { sending : post.message });
-								//findyok(post.message);
-								$('#usergul').append('<br>send ok');
-		 	   				}
 						}
 
-					}
+	   					var getPosts = function (response){
+							
+							sendPosts(response);
+				           	if(response.data.length!=0) {
+				           		socket.emit('reqres'); console.log('cla reqres');
+				           		nextPage = response.paging.next;
+					         	$.getJSON(nextPage, function(json) {
+					         		response = json;
+					         		getPosts(response);
+					         	});
+				         	} else { socket.emit('reqres'); console.log('cla reqres'); }
+		    			};
+	 				
+	 					FB.api('/me/feed', getPosts);
 
-   					var getPosts = function (response){
-						
-						printpost(response);
-						sendPosts(response);
-			           	if(response.data.length!=0) {
-			           		socket.emit('reqres'); console.log('cla reqres');
-			           		nextPage = response.paging.next;
-				         	$.getJSON(nextPage, function(json) {
-				         		response = json;
-				         		getPosts(response);
-				         	});
-			         	} else { socket.emit('reqres'); console.log('cla reqres'); }
-	    			};
- 				
- 					FB.api('/me/feed', getPosts);
+						socket.on('choanal', function (value) {
+							$('#usergul').append('<br>received news!');
+							var cho = value.anal;
+							//var cho2 = value.anal2;
+							console.log(cho); //console.log(cho2);
+	   					});
 
+					} // readStream
+				} // start
 
-
-					socket.on('choanal', function (value) {
-						$('#usergul').append('<br>received news!');
-						var cho = value.anal;
-						//var cho2 = value.anal2;
-						console.log(cho); //console.log(cho2);
-
-						//for(kind in cho) {
-							//if(cho[kind]) 
-						//	console.log(kind);
-						//}
-   					});
-				}
-
-			});
+			}); // document ready
 			
 			</script>
 		<fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
