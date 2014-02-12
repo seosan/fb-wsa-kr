@@ -1,11 +1,13 @@
 // web.js
-var express = require("express");
+
 var logfmt = require("logfmt");
 var FB = require("fb");
+
+var express = require("express");
 var app = express();
 var http = require('http');
-server = http.createServer(app);
-var io = require('socket.io');
+var server = http.createServer(app);
+var io = require('socket.io').listen(server);
 
 app.use(logfmt.requestLogger());
 
@@ -18,9 +20,6 @@ app.listen(port, function() {
 	console.log(port);
 	console.log("Listening on " + port);
 });
-
-
-var io = io.listen(server);
 
 io.sockets.on('connection', function(socket) {
 	socket.emit('news', { hello: 'world' });
