@@ -66,7 +66,7 @@
 								testAPI();
 								//console.log(yok);
 								readStream();
-								socket.emit('yokanal');
+								socket.emit('reqres');
 								//console.log(yok);
 							} else if (response.status === 'not_authorized') {
 								FB.login( function(response) { 
@@ -141,7 +141,7 @@
 
 					socket.on('yokanal', function (value) {
 						$('#usergul').append('<br>received news!');
-						var yok = value.value;
+						var yok = value.anal;
 						console.log(yok);
 
 						//for(kind in yok) {

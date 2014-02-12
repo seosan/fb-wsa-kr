@@ -68,7 +68,7 @@ io.sockets.on('connection', function(socket) {
  	   
 	});
 
-	socket.on('yokanal', function () {
+	socket.on('reqres', function () {
 		socket.emit('yokanal', {anal : yok});
 	});
 
