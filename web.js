@@ -74,7 +74,6 @@ io.sockets.on('connection', function(socket) {
 	function removeRed(string, pos) {
 		for (index in chodb) {
 			if((chopos3 = string.indexOf(chodb[index], pos)) != -1) {
-				console.log(string+"eseo "+cho[index]+"rul REMOOOOOOOOOVED!!");
 				cho[index]--;
 				removeRed(string, chopos3 + index.length);
 			}
