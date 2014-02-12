@@ -42,7 +42,7 @@ body {
 }
 
 #content {
-	margin:200px auto 50px;
+	margin:150px auto 100px;
 	padding:20px 10px;
 	width:360px;
 	display: block;
@@ -52,7 +52,7 @@ body {
 }
 
 #intro {
-	margin:10px auto;
+	margin:40px auto;
 	padding:auto;
 }
 #abox {
@@ -73,7 +73,7 @@ body {
 
 #button {
 	border-radius: 5px;
-	margin:10px auto 50px;
+	margin:10px auto 40px;
 	width:150px;
 	height:60px;
 	background-color: #33C;
