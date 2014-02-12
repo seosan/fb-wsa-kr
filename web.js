@@ -3,6 +3,8 @@ var express = require("express");
 var logfmt = require("logfmt");
 var FB = require("fb");
 var app = express();
+var http = require('http');
+server = http.createServer(app);
 var io = require('socket.io');
 
 app.use(logfmt.requestLogger());
@@ -18,10 +20,9 @@ app.listen(port, function() {
 });
 
 
-var io = io.listen(app);
+var io = io.listen(server);
 
-
-io.socket.on('connection', function(socket) {
+io.sockets.on('connection', function(socket) {
 	socket.emit('news', { hello: 'world' });
 	socket.on('my other event', function (data) {
 	 	   console.log(data);
