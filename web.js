@@ -53,25 +53,30 @@ io.sockets.on('connection', function(socket) {
 	}
 
 	var chopos;
-	function search(string, pos, index, norcho) {
+	var chopos2;
+	var chopos3;
+	function search1(string, pos, index) {
 		if((chopos = string.indexOf(chodb[index], pos)) != -1) {
-			if(norcho) {
-				cho[index]++;
-				search(string, chopos + index.length, index, true);
-			} else {
-				cho2[index]++;
-				removeRed(cho2[index], 0);
-				search(string, chopos + index.length, index, false);
-			}
+			cho[index]++;
+			search1(string, chopos + index.length, index, true);
+		}	
+	}
+	
+
+	function search2(string, pos, index) {
+		if((chopos2 = string.indexOf(chodb2[index], pos)) != -1) {
+			cho2[index]++;
+			removeRed(cho2[index], 0);
+			search2(string, chopos2 + index.length, index, false);
 		}
 	}
 
 	function removeRed(string, pos) {
 		for (index in chodb) {
-			if((chopos = string.indexOf(chodb[index], pos)) != -1) {
+			if((chopos3 = string.indexOf(chodb[index], pos)) != -1) {
 				console.log(string+"에서 "+cho[index]+"를 제거");
 				cho[index]--;
-				removeRed(string, chopos + index.length);
+				removeRed(string, chopos3 + index.length);
 			}
 		}
 	}
@@ -79,21 +84,20 @@ io.sockets.on('connection', function(socket) {
 
 	function findcho(string) {
 		for (index in chodb) {
-			search(string, 0, index, true);
+			search1(string, 0, index);
 		}
 		for (index in chodb2) {
-			search(string, 0, index, false);
+			search2(string, 0, index);
 		}
 	}
 
 	socket.on('sendevent', function (data) {
- 	   console.log('serversidegoooooooooood');
- 	   //findcho(data.sending);
+ 	   findcho(data.sending);
  	   
 	});
 
 	socket.on('reqres', function () {
-		socket.emit('choanal', {anal : "good"});//{anal : cho}); //, anal2 : cho2});
+		socket.emit('choanal', {anal : cho, anal2 : cho2});
 	});
 
 
