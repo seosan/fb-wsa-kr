@@ -93,12 +93,14 @@
 	   						if(post.message) {
 								socket.emit('sendevent', { sending : post.message });
 								$('#usergul').append('<br>send ok');
+								socket.on('news', function (data) {
+									$('#usergul').append('<br>receive ok');
+									console.log(data);
+		 	   					});
 							}
+
 						}
-						socket.on('news', function (data) {
-							$('#usergul').append('<br>receive ok');
-							console.log(data);
-		 	   			});
+
    					}
 
 					var getPosts = function (response){
