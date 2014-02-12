@@ -25,14 +25,24 @@ server.listen(port, function() {
 	console.log("Listening on " + port);
 });
 
+// ---------------------------------------
 
+//욕설
+var yok =
+[
+	'Fuck', 'Shit', '뻨', '쒵', '쓑', '쒯', '개새끼', '개시끼', '개세끼', '개색기', '개색끼', '개객끼', '개객기', '개같은', '개놈', '개년', '개자식', '씨발', '씨벌', '씨불', '씹할', '씨팔', '씨벨', '씨부랄', '씨부럴', '씨팔', '씨펄', 'ㅅㅂ', 'ㅆㅂ', '씹창', '씹년', '씹놈', '좆', '존나', 'ㅈㄴ', '미친놈', '미친년', '미친새끼', '엄창', '앰창', '니미', '병신', '븅신', '븅딱', '퓽신', '비융신', '피융신', 'ㅄ', 'ㅂㅅ', '지랄', '닥쳐', '盧?', '젠장', '빌어먹을', '빌어쳐먹을', '빌어처먹을', '제기랄'
+];
+
+for (kind in yok) {
+	yok[kind] = 0;
+}
 
 
 io.sockets.on('connection', function(socket) {
 	//socket.emit('news', { hello: 'world' });
 	socket.on('sendevent', function (data) {
 	 	   console.log('serversidegoooooooooood');
-	 	   socket.emit('news', {hello : data} );
+	 	   socket.emit('news', data );
 	});
   	socket.on('disconnect', function () {
     	console.log('user disconnected');
