@@ -24,7 +24,7 @@
 			<div id='button'><a>시작하기</a></div>
 
 		</div>
-		<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="400px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+		<div id='like'><div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="400px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div></div>
 
 
 		<script>
@@ -75,7 +75,7 @@
 				//------------ 검출기 ----------------
 				function start() {
 
-					$('#userirm').html(response.name+'님').addClass('bb');
+					
 
 					var socket = io.connect('http://yourfbwritingstylekr.herokuapp.com/');
 	  				$.ajaxSetup({ cache: true });
@@ -92,6 +92,7 @@
 	    				console.log('페이스북 웹앱 인증 완료');
 
 	    				FB.getLoginStatus( function(response) {
+	    						$('#userirm').html(response.name+'님').addClass('bb');
 								if (response.status === 'connected') {
 									usrInfo();
 									console.log('페이스북 담벼락 불러오기 시작...');
