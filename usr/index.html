@@ -116,7 +116,9 @@
 					socket.on('yokanal', function (value) {
 						$('#usergul').append('<br>received news!');
 						var yok = value;
-						console.log(yok);
+						for(kind in yok) {
+							if(yok[kind]>0)	console.log(kind+'를 '+yok[kind]+'번 했다');	
+						}
    					});
 				}
 

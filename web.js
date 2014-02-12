@@ -66,8 +66,6 @@ io.sockets.on('connection', function(socket) {
 	 	   console.log('serversidegoooooooooood');
 	 	   
 	 	   findyok(data.sending);
-	 	   var a = [1, 2, 3];
-	 	   socket.emit('yokanal', {value: a});
 	 	   socket.emit('yokanal', {value: yok});
 
 	});
