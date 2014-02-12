@@ -43,13 +43,14 @@ body {
 }
 
 #content {
-	margin:150px auto 100px;
+	margin:120px auto 100px;
 	padding:20px 10px;
 	width:360px;
 	display: block;
 	text-align:center;
 	background-color: #FFF;
 	border-radius: 5px;
+	line-height: 1.5;
 }
 
 #intro {
