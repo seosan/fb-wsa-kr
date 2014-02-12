@@ -36,25 +36,25 @@ io.sockets.on('connection', function(socket) {
 	//욕설
 	var chodb =
 	[
-		'ㅋ', 'ㄴ', 'ㅇ', 'ㄳ', 'ㅅㄱ', 'ㄷ', '?', '盧', 'ㅈㄹ'
+		'ㅋ', 'ㄴ', 'ㅇ', 'ㄳ', 'ㅅㄱ', 'ㄷ', '?', 'ㅎ', '盧', 'ㅈㄹ', '^^'
 	];
+	var cho = new Array();
+	/*for (index in chodb) {
+		cho[index] = 0;
+	}*/
+/*
 	var chodb2 =
 	[
 		'ㄷㅊ', 'ㅁㄴㅇㄹ', 'ㅈㄴ'
 	]
-	var cho = new Array();
 	var cho2 = new Array();
-	
-	for (index in chodb) {
-		cho[index] = 0;
-	}
 	for (index in chodb2) {
 		cho2[index] = 0;
-	}
+	} */
 
 	var chopos;
-	var chopos2;
-	var chopos3;
+	//var chopos2;
+	//var chopos3;
 	function search1(string, pos, index) {
 		if((chopos = string.indexOf(chodb[index], pos)) != -1) {
 			cho[index]++;
@@ -62,7 +62,7 @@ io.sockets.on('connection', function(socket) {
 		}	
 	}
 	
-
+/*
 	function search2(string, pos, index) {
 		if((chopos2 = string.indexOf(chodb2[index], pos)) != -1) {
 			cho2[index]++;
@@ -79,15 +79,15 @@ io.sockets.on('connection', function(socket) {
 			}
 		}
 	}
-
+*/
 
 	function findcho(string) {
 		for (index in chodb) {
 			search1(string, 0, index);
 		}
-		for (index in chodb2) {
+	/*	for (index in chodb2) {
 			search2(string, 0, index);
-		}
+		}  */
 	}
 
 	socket.on('sendevent', function (data) {
@@ -96,7 +96,7 @@ io.sockets.on('connection', function(socket) {
 	});
 
 	socket.on('reqres', function () {
-		socket.emit('choanal', {anal : cho, anal2 : cho2});
+		socket.emit('choanal', {anal : cho}); //, anal2 : cho2});
 	});
 
 
