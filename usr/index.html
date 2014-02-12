@@ -105,13 +105,11 @@
 
 								if (response.status === 'connected') {
 									start2();
-									$('#userirm').html(response.name+'님').addClass('bb');
 
 								} else if (response.status === 'not_authorized') {
 									FB.login( function(response) { 
 										if(response.authResponse) {
 											start2();
-											$('#userirm').html(response.name+'님').addClass('bb');
 										} else {
 											console.log("Authorization Cancelled");
 										}
@@ -135,7 +133,7 @@
 					function usrInfo() {
 	    				FB.api('/me', function(response) {
 	      					console.log(response.name + '님 연동 완료');
-	      					
+	      					$('#userirm').html(response.name+'님').addClass('bb');
 	   					});
 	 				}
 					
