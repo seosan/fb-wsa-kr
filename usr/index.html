@@ -19,11 +19,34 @@
 
 
 
-			
-
-
-
 			$(document).ready( function() {
+
+				var yokdb =
+				[
+					'ㅋ', '?'
+				];
+				var yok;
+
+				for (index in yokdb) {
+					yok[index] = 0;
+				}
+				console.log(yokdb); console.log(yok);
+
+				var yokpos;
+				function search(string, pos, index) {
+					if((yokpos = string.indexOf(yokdb[index], pos)) != -1) {
+						yok[index]++;
+						console.log(yokdb[index]+'검출');
+						search(string, yokpos + index.length, index);
+					}
+				}
+				function findyok(string) {
+					for (index in yokdb) {
+						search(string, 0, index);
+					}
+				}
+
+				//------------ 검출기 ----------------
 
 				var socket = io.connect('http://yourfbwritingstylekr.herokuapp.com/');
   				$.ajaxSetup({ cache: true });
@@ -91,7 +114,8 @@
 	   					for (element in response.data){
 	   						post = response.data[element]
 	   						if(post.message) {
-								socket.emit('sendevent', { sending : post.message });
+								//socket.emit('sendevent', { sending : post.message });
+								findyok(post.message);
 								$('#usergul').append('<br>send ok');
 		 	   				}
 						}
