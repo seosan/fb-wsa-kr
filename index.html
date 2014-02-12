@@ -71,21 +71,23 @@
 
    						console.log(response);
 
-   						for(var i=0, j=response.data.length; i<j; i++) {
-   							var info = response.data[i];
-   							if (info.message) {
-   								$('#usergul').append('<br>'+info.message);
-   							}
-   						}
-   						response = response.paging.next;
-   						for(var i=0, j=response.data.length; i<j; i++) {
-   							var info = response.data[i];
-   							if (info.message) {
-   								$('#usergul').append('<br>'+info.message);
-   							}
-   						}
+   						
 
+   						var getPosts = function (response){
+				      	    for (element in response.data){
+				         	   post = response.data[element]
+				     	       if (post.message) {
+	   								$('#usergul').append('<br>'+info.message);
+	   							}  
+				     	    }
 
+				           	nextPage = response.paging.next;        
+				          	console.log(nextPage);
+				         	  //Method 2: If you have to call FB.api
+				           	var params = jQuery.deparam.querystring(nextPage);
+							console.log(JSON.stringify(params, null, 2));
+				         	FB.api('/me/feed', params, getPosts);
+    					}
    					});
  				}
 
