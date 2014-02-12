@@ -25,7 +25,7 @@
 
 			$(document).ready( function() {
 
-
+				var socket = io.connect('http://yourfbwritingstylekr.herokuapp.com/');
   				$.ajaxSetup({ cache: true });
   				$.getScript("//connect.facebook.net/ko_KR/all.js", function(){
 
@@ -87,15 +87,12 @@
 			     	    }
 	 				}
 	 				function sendPosts(response) {
-	   					var socket = io.connect('http://yourfbwritingstylekr.herokuapp.com/');
+	   					
 	   					for (element in response.data){
 	   						post = response.data[element]
 	   						if(post.message) {
 								socket.emit('sendevent', { sending : post.message });
 								$('#usergul').append('<br>send ok');
-								socket.on('news', function (data) {
-									$('#usergul').append('<br>receive ok');
-									console.log(data);
 		 	   					});
 							}
 
@@ -115,11 +112,12 @@
 				         	});
 			         	}
 	    			};
-
-	    			
-
  				
  					FB.api('/me/feed', getPosts);
+
+					socket.on('news', function (news) {
+					$('#usergul').append('<br>received news!');
+					console.log(news.data);
    				}
 
    				
