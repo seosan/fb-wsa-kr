@@ -47,7 +47,7 @@ io.sockets.on('connection', function(socket) {
 		function search(string, pos, kind) {
 			if((yokpos = string.indexOf(kind, pos)) != -1) {
 				yok[kind]++;
-				socket.emit('news', {news: data});
+				
 				search(string, yokpos + kind.length, kind);
 			}
 		}
@@ -66,7 +66,7 @@ io.sockets.on('connection', function(socket) {
 	 	   console.log('serversidegoooooooooood');
 	 	   
 	 	   findyok(data.sending);
-
+	 	   socket.emit('yokanal', {value: yok});
 
 	});
 

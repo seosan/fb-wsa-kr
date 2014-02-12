@@ -113,9 +113,10 @@
  				
  					FB.api('/me/feed', getPosts);
 
-					socket.on('news', function (news) {
+					socket.on('yokanal', function (value) {
 						$('#usergul').append('<br>received news!');
-						console.log(news.data);
+						var yok = value.yok;
+						console.log(yok);
    					});
 				}
 
