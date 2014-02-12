@@ -88,12 +88,12 @@ io.sockets.on('connection', function(socket) {
 */
 	socket.on('sendevent', function (data) {
  	   console.log('serversidegoooooooooood');
- 	   findcho(data.sending);
+ 	   //findcho(data.sending);
  	   
 	});
 
 	socket.on('reqres', function () {
-		socket.emit('choanal', {anal : cho}); //, anal2 : cho2});
+		socket.emit('choanal', {anal : "good"});//{anal : cho}); //, anal2 : cho2});
 	});
 
 
