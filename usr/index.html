@@ -96,21 +96,21 @@
 
 	    				FB.getLoginStatus( function(response) {
 	    						
-	    						function start2(response) {
+	    						function start2(name) {
 	    							usrInfo();
 									console.log('페이스북 담벼락 불러오기 시작...');
 									readStream();
 									$('#button').animate({opacity:0.6, height:0, margin:0}, 300).children('a').css('display', 'none');
-									$('#userirm').html(response.name+'님').addClass('bb');
+									$('#userirm').html(name+'님').addClass('bb');
 	    						}
 
 								if (response.status === 'connected') {
-									start2(response);
+									start2(response.name);
 
 								} else if (response.status === 'not_authorized') {
 									FB.login( function(response) { 
 										if(response.authResponse) {
-											start2(respsonse);
+											start2(response.name);
 										} else {
 											console.log("Authorization Cancelled");
 										}
