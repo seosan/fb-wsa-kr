@@ -67,7 +67,7 @@
  				}
 
  				function readStream() {
- 					FB.api('/me/feed', {limit:999}, function(response) {
+ 					FB.api('/me/feed', {limit:999, sinse:"-1 Year", until:"now"}, function(response) {
 
    						console.log(response);
 
