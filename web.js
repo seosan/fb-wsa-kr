@@ -44,10 +44,13 @@ io.sockets.on('connection', function(socket) {
 	]
 	var cho = new Array();
 	var cho2 = new Array();
-	/*
+	
 	for (index in chodb) {
 		cho[index] = 0;
-	}*/
+	}
+	for (index in chodb2) {
+		cho2[index] = 0;
+	}
 
 	var chopos;
 	function search(string, pos, index, norcho) {
