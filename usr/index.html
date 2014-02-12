@@ -23,7 +23,7 @@
 
 				var yokdb =
 				[
-					'ㅋ', '?'
+					'ㅋ', '?', '젠장'
 				];
 				var yok = new Array();
 				for (index in yokdb) {
@@ -65,6 +65,7 @@
 							if (response.status === 'connected') {
 								testAPI();
 								readStream();
+								console.log(yok);
 							} else if (response.status === 'not_authorized') {
 								FB.login( function(response) { 
 									if(response.authResponse) {
