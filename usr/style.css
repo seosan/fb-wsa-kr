@@ -22,6 +22,7 @@ body {
 	top:0px;
 	left:0px;
 	right:0px;
+	width:400px;
 	padding:10px 100px;
 	display: block;
 	text-align: center;
@@ -53,7 +54,7 @@ body {
 }
 #abox {
 	margin:10px auto;
-	padding:20px auto;
+	padding:30px 10px;
 	width:350px;
 	background: #AAA;
 	border-radius: 5px;
@@ -67,7 +68,7 @@ body {
 
 #button {
 	border-radius: 5px;
-	margin:10px auto;
+	margin:10px auto 50px;
 	width:150px;
 	height:60px;
 	background-color: #33C;
