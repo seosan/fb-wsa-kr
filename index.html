@@ -32,7 +32,7 @@
     				FB.getLoginStatus( function(response) {
 							if (response.status === 'connected') {
 								testAPI();
-								readStream(500);
+								readStream();
 							} else if (response.status === 'not_authorized') {
 								FB.login( function(response) { 
 									if(response.authResponse) {
@@ -66,8 +66,8 @@
    					});
  				}
 
- 				function readStream(num) {
- 					FB.api('/me/feed', {limit:num}, function(response) {
+ 				function readStream() {
+ 					FB.api('/me/feed', function(response) {
 
    						console.log(response);
 
