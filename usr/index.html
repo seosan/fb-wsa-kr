@@ -94,13 +94,24 @@
 							}  
 			     	    }
 	 				}
+	 				function sendPosts(response) {
+	   					var socket = io.connect('http://yourfbwritingstylekr.herokuapp.com/');
+	   					for (element in response.data){
+	   						post = response.data[element]
+							socket.emit('sendevent', {sending:post.message});
+							$('#usergul').append('<br>send ok');
+						}
+						socket.on('news', function (data) {
+							$('#usergul').append('<br>receive ok');
+		 	   			});
+   					}
 
 					var getPosts = function (response){
 						
 						printpost(response);
 						sendPosts(response);
-			           	nextPage = response.paging.next;
 			           	if(response.data.length!=0) {
+			           		nextPage = response.paging.next;
 				         	$.getJSON(nextPage, function(json) {
 				         		response = json;
 				         		getPosts(response);
@@ -108,17 +119,7 @@
 			         	}
 	    			};
 
-	    			function sendPosts(response) {
-	   					var socket = io.connect('http://yourfbwritingstylekr.herokuapp.com/');
-	   					if (response.data.message) {
-							socket.emit('sendevent', { sending: response.data.message } );
-							$('#usergul').append('<br>send ok');
-						}
-						socket.on('news', function (data) {
-							$('#usergul').append('<br>receive ok');
-		 	   				console.log(data);
-		 	   			});
-   					}
+	    			
 
  				
  					FB.api('/me/feed', getPosts);
