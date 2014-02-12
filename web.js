@@ -10,15 +10,24 @@ var http = require('http');
 var server = http.createServer(app);
 var io = require('socket.io')
 
+//욕설
+	var chodb =
+	[
+		'ㅋ', 'ㄴ', 'ㅇ', 'ㄳ', 'ㅅㄱ', 'ㄷ', '?', 'ㅎ', '盧', 'ㅈㄹ', '^^'
+	];
+	var cho = new Array();
+	for (index in chodb) {
+		cho[index] = 0;
+	}
+
+
+// ---------------------------------------
+
 io = io.listen(server);
-
-
 app.use(logfmt.requestLogger());
-
 app.get('/', function(req, res) {
   res.sendfile('/usr/index.html', {root:__dirname});
 });
-
 var port = Number(process.env.PORT || 5000);
 server.listen(port, function() {
 	console.log(port);
@@ -33,15 +42,7 @@ io.sockets.on('connection', function(socket) {
 
 	//----통신 시작----
 
-	//욕설
-	var chodb =
-	[
-		'ㅋ', 'ㄴ', 'ㅇ', 'ㄳ', 'ㅅㄱ', 'ㄷ', '?', 'ㅎ', '盧', 'ㅈㄹ', '^^'
-	];
-	var cho = new Array();
-	/*for (index in chodb) {
-		cho[index] = 0;
-	}*/
+	
 /*
 	var chodb2 =
 	[
