@@ -65,36 +65,29 @@
       					$('#userirm').html('Hello World, '+response.name);
    					});
  				}
-				var getPosts = function (response){
-						console.log(response);
+
+ 				function printpost(response) {
+ 					console.log(response);
 		      	    for (element in response.data){
 		         	   post = response.data[element]
 		     	       if (post.message) {
-								$('#usergul').append('<br>'+post.message);
-							}  
-		     	    }
-
-		           	nextPage = response.paging.next;        
-		          	console.log(nextPage);
-		         	  //Method 2: If you have to call FB.api
-		         	$.getJSON(nextPage, function(json) {
-		         		response = json;
-		         		for (element in response.data){
-		         	   post = response.data[element]
-		     	       if (post.message) {
-								$('#usergul').append('<br>'+post.message);
+							$('#usergul').append('<br>'+post.message);
 						}  
 		     	    }
-		         		
-		         	})
+ 				}
+
+				var getPosts = function (response){
+					
+					printpost(response);
+		           	nextPage = response.paging.next;
+		         	$.getJSON(nextPage, function(json) {
+		         		response = json;
+		         		getPosts(response);
+		         	});
     			};
+
  				function readStream() {
-
  					FB.api('/me/feed', getPosts);
-
-   						
-
-
    				};
  				
 
