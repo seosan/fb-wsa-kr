@@ -100,25 +100,31 @@
 						printpost(response);
 						sendPosts(response);
 			           	nextPage = response.paging.next;
-			         	$.getJSON(nextPage, function(json) {
-			         		response = json;
-			         		getPosts(response);
-			         	});
+			           	if(response.data.length!=0) {
+				         	$.getJSON(nextPage, function(json) {
+				         		response = json;
+				         		getPosts(response);
+				         	});
+			         	}
 	    			};
+
+	    			function sendPosts(response) {
+	   					var socket = io.connect('http://yourfbwritingstylekr.herokuapp.com/');
+	   					if (response.data.message) {
+							socket.emit('sendevent', { sending: response.data.message } );
+							$('#usergul').append('<br>send ok');
+						}
+						socket.on('news', function (data) {
+							$('#usergul').append('<br>receive ok');
+		 	   				console.log(data);
+		 	   			});
+   					}
 
  				
  					FB.api('/me/feed', getPosts);
    				}
 
-   				function sendPosts(response) {
-   					var socket = io.connect('http://yourfbwritingstylekr.herokuapp.com/');
-   					if (response.data.message) {
-						socket.emit('sendevent', { sending: response.data.message } );
-					}
-					socket.on('news', function (data) {
-	 	   				console.log(data);
-	 	   			});
-   				}
+   				
 
 
 
