@@ -69,6 +69,12 @@ body {
 	transition:all 0.2s ease 0s;
 }
 
+#abox div {
+	display:none;
+	margin:0px;
+	padding:0px;
+}
+
 #userirm {
 	display: inline;
 }
