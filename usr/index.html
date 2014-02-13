@@ -110,7 +110,6 @@
 									readStream();
 									$('#button').slideUp(500).children('a').css('display', 'none');
 									$('#board').css('display', 'block').children().css('display', 'inline');
-									rotate();
 	    						}
 
 								if (response.status === 'connected') {
@@ -167,6 +166,7 @@
 				           		$('#since').html('<time class="timeago">-</time>').children('time').attr('datetime', response.data[length-1].created_time).timeago().animate({'backgroundColor':'#77F'}, 300).animate({'backgroundColor':'transparent'}, 400);
 				           		cnt += response.data.length;
 				           		$("#cnt").html(cnt).animate({'backgroundColor':'#77F'}, 300).animate({'backgroundColor':'transparent'}, 400);
+								rotate();
 				           		socket.emit('reqres'); console.log('cla reqres');
 				           		nextPage = response.paging.next;
 					         	$.getJSON(nextPage, function(json) {
@@ -185,13 +185,25 @@
 
 	   					});
 					} // readStream
+					var rot = 0
 					function rotate() {
 						console.log(end);
 						if (end==false) {
-							$('#state').html('글 통계 중...／').delay(500).queue( function() { $('#state').html('글 통계 중...―').delay(500).queue( function() { $('#state').html('글 통계 중...＼'); rotate(); } ); } );
-							
-						}
-						else $('#state').html('통계 완료').addClass('bb');
+							switch(rot%3) {
+								case 0 : {
+									$('#state').html('글 통계 중...／');
+									break;
+								}
+								case 1 : {
+									$('#state').html('글 통계 중...―');
+									break;
+								}
+								case 2 : {
+									$('#state').html('글 통계 중...＼');
+									break;
+								}
+							} rot++;
+						} else $('#state').html('통계 완료').addClass('bb');
 					}
 
 					function updateabox(cho) {
