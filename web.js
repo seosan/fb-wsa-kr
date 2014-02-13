@@ -60,23 +60,20 @@ ios.sockets.on('connection', function(socket) {
 		}
 	}
 	
-	function findcho(data) {
-		for(element in data) {
-			string = data[element].message;
-			for (index in chodb) {
-				search1(string, 0, index);
-			}
-			cho2.sort(function(a,b){return b-a});
-			for(index in cho2) {
-			    chodb2[index]= chodb[ cho[index] ];
-			}
-			fs.writeFile("/tmp/test", {anal:cho2, anal2:chodb2});
+	function findcho(string) {
+		for (index in chodb) {
+			search1(string, 0, index);
 		}
+		cho2.sort(function(a,b){return b-a});
+		for(index in cho2) {
+		    chodb2[index]= chodb[ cho[index] ];
+		}
+		fs.writeFile("/tmp/test", {anal:cho2, anal2:chodb2});
 		return {anal:cho2, anal2:chodb2};
 	}
 //post = response.data[element]
-	socket.on('toserver', function (data) {
- 	    socket.emit('toclient', findcho(data.sending) ); 
+	socket.on('toserver', function (string) {
+ 	    socket.emit('toclient', findcho(string) ); 
 	});
 
 		
