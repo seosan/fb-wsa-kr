@@ -49,8 +49,6 @@ ios.sockets.on('connection', function(socket) {
 	[
 		'ㅋ', 'ㅎ', 'ㅇ', 'ㄴ', 'ㄷ', 'ㄳ', 'ㅅㄱ', 'ㅈㅅ', 'ㅅㅂ', 'ㅄ', 'ㅈㄹ', '盧', '?', '!'	
 	];
-	var cho2 = cho;
-	var chodb2 = chodb;
 
 	var chopos;
 	function search1(string, pos, index) {
@@ -64,12 +62,7 @@ ios.sockets.on('connection', function(socket) {
 		for (index in chodb) {
 			search1(string, 0, index);
 		}
-		cho2.sort(function(a,b){return b-a});
-		for(index in cho2) {
-		    chodb2[index]= chodb[ cho[index] ];
-		}
-		fs.writeFile("/tmp/test", {anal:cho2, anal2:chodb2});
-		return {anal:cho2, anal2:chodb2};
+		return {anal:cho, anal2:chodb};
 	}
 //post = response.data[element]
 	socket.on('toserver', function (string) {

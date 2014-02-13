@@ -199,7 +199,14 @@
 							chodb = data.anal2;
 							console.log(cho);
 							console.log(chodb);
-							updateabox(cho);
+							var cho2 = cho;
+							var chodb2 = chodb;
+							cho2.sort(function(a,b){return b-a});
+							for(index in cho2) {
+		   						 chodb2[index]= chodb[ cho[index] ];
+		   					}
+
+							updateabox(cho2);
 	   					});
 					} // readStream
 					function share() {
@@ -232,11 +239,11 @@
 						} else $('#state').html('통계 완료').addClass('bb');
 					}
 
-					function updateabox(cho) {
+					function updateabox(cho2) {
 						$('#abox').css('display', 'block').html('').animate({'backgroundColor':'#77F'}, 300).animate({'backgroundColor':'#555'}, 300);
-						for(index in cho) {
-							if(cho[index]>0) 
-								$('#abox').append('<div>'+chodb[index]+' : '+cho[index]+"회</div>");
+						for(index in cho2) {
+							if(cho2[index]>0) 
+								$('#abox').append('<div>'+chodb2[index]+' : '+cho2[index]+"회</div>");
 						}
 						$('.ani').slideDown(500, function() { $('.ani').removeClass('ani');} );
 					}
