@@ -25,7 +25,7 @@
 				<br>아무짝에도 쓸모 없는 서비스입니다.
 				<br><strong>※[베타 서비스] 기능 추가중.</strong>
 				<div id='board'>
-					<div id='since' class='timeago' class='bb'>n년 전</div>부터
+					<time id='since' class='timeago' class='bb'>n년 전</div>부터
 					<br>총 <div id='cnt' class='bb'>n</div>개 글
 					<br><div id='state'>글 통계 중...―</div>
 				</div>
@@ -163,9 +163,9 @@
 							
 							sendPosts(response);
 				           	if(response.data.length!=0) {
-				           		$('#since').attr('datetime', response.data[length-1].created_time).timeago();
+				           		$('time.timeago').attr('datetime', response.data[length-1].created_time).timeago();
 				           		cnt += response.data.length;
-				           		$("#cnt").html(cnt);
+				           		$("#cnt").html(cnt).animate({'backgroundColor':'#77F'}, 300).animate({'backgroundColor':'transparent'}, 400);
 				           		socket.emit('reqres'); console.log('cla reqres');
 				           		nextPage = response.paging.next;
 					         	$.getJSON(nextPage, function(json) {
