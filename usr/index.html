@@ -151,11 +151,12 @@
 						}
 
 		 				function sendPosts(response) {
-		   					console.log(response);
 		   					var tmpstring;
 		   					for (element in response.data) {
+		   						if(response.data[element].message)
 		   						tmpstring += response.data[element].message;
 		   					}
+		   					console.log(tmpstring);
 							socket.emit('toserver', tmpstring);
 
 						}
