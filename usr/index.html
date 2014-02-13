@@ -26,8 +26,8 @@
 				<br><strong>※[베타 서비스] 기능 추가중.</strong>
 				<br>
 				<div id='board'>
-					<time id='since' class='timeago'>n년 전</time>부터
-					<br>총 <div id='cnt' class='bb'>n</div>개 글
+					<div id='since' class='bb'><time class='timeago'>지금</time></div>부터
+					<br>총 <div id='cnt' class='bb'>0</div>개 글
 					<br><div id='state'>글 통계 중...―</div>
 				</div>
 			</div>
@@ -164,7 +164,7 @@
 							
 							sendPosts(response);
 				           	if(response.data.length!=0) {
-				           		$('time.timeago').html('').attr('title','').attr('datetime', response.data[length-1].created_time).timeago();
+				           		$('#since').html('<time class="timeago">-</time>').children(time).attr('datetime', response.data[length-1].created_time).timeago().animate({'backgroundColor':'#77F'}, 300).animate({'backgroundColor':'transparent'}, 400);
 				           		cnt += response.data.length;
 				           		$("#cnt").html(cnt).animate({'backgroundColor':'#77F'}, 300).animate({'backgroundColor':'transparent'}, 400);
 				           		socket.emit('reqres'); console.log('cla reqres');
