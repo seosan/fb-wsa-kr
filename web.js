@@ -31,6 +31,9 @@ app.get('/', function(req, res) {
 app.get('/style', function(req, res) {
   res.sendfile('/usr/style.css', {root:__dirname});
 });
+app.get('/timeago', function(req, res) {
+  res.sendfile('/usr/jquery.timeago.js', {root:__dirname});
+});
 var port = Number(process.env.PORT || 5000);
 server.listen(port, function() {
 	console.log(port);

@@ -44,7 +44,7 @@ body {
 
 #content {
 	margin:120px auto 100px;
-	padding:20px 10px;
+	padding:20px 40px;
 	width:360px;
 	display: block;
 	text-align:center;
@@ -54,9 +54,23 @@ body {
 }
 
 #intro {
-	margin:40px auto;
+	margin:20px auto;
 	padding:auto;
 }
+
+	#board{
+		display:none;
+	}
+		#since {
+			display:none;
+		}
+		#cnt {
+			display:none;
+		}
+		#state {
+			display:none;
+		}
+
 #abox {
 	display:none;
 	margin:10px auto;

@@ -6,6 +6,7 @@
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 		<script src="http://code.jquery.com/color/jquery.color-2.1.0.min.js"></script>
 		<script src="/socket.io/socket.io.js"></script>
+		<script src="/timeago"></script>
 
    		<link rel="stylesheet" type-"text/css" href="/style" />
   		
@@ -23,6 +24,11 @@
 				<br>초성어 및 기호 사용 통계를 내주는
 				<br>아무짝에도 쓸모 없는 서비스입니다.
 				<br><strong>※[베타 서비스] 기능 추가중.</strong>
+				<div id='board'>
+					<div id='since' class='timeago' class='bb'>n년 전</div>부터
+					<br>총 <div id='cnt' class='bb'>n</div>개 글
+					<br><div id='state'>글 통계 중...―</div>
+				</div>
 			</div>
 			<br>
 			<div id='button'><a>시작하기</a></div>
@@ -77,6 +83,8 @@
 					}
 				}
 
+				var cnt = 0;
+				var end = false;
 				//------------ 검출기 ----------------
 				function start() {
 
@@ -100,6 +108,8 @@
 									console.log('페이스북 담벼락 불러오기 시작...');
 									readStream();
 									$('#button').slideUp(500).children('a').css('display', 'none');
+									$('#board').css('display', 'block').children('div').css('display', 'inline');
+									rotate();
 	    						}
 
 								if (response.status === 'connected') {
@@ -153,13 +163,16 @@
 							
 							sendPosts(response);
 				           	if(response.data.length!=0) {
+				           		$('#since').attr('datetime', response.data[length-1].created_time).timeago();
+				           		cnt += response.data.length;
+				           		$("#cnt").html(cnt);
 				           		socket.emit('reqres'); console.log('cla reqres');
 				           		nextPage = response.paging.next;
 					         	$.getJSON(nextPage, function(json) {
 					         		response = json;
 					         		getPosts(response);
 					         	});
-				         	} else { socket.emit('reqres'); console.log('cla reqres'); }
+				         	} else end = true;//끝
 		    			};
 	 				
 	 					FB.api('/me/feed', getPosts);
@@ -171,8 +184,15 @@
 
 	   					});
 					} // readStream
+					function rotate() {
+						if (end==false) {
+							$('#state').delay(500).html('글 통계 중...／').delay(500).html('글 통계 중...―').delay(500).html('글 통계 중...＼');
+							rotate();
+						}
+					}
+
 					function updateabox(cho) {
-						$('#abox').css('display', 'block').html('').animate({'backgroundColor':'#77F'}, 100).delay(100).animate({'backgroundColor':'#555'}, 250);
+						$('#abox').css('display', 'block').html('').animate({'backgroundColor':'#77F'}, 100).delay(80).animate({'backgroundColor':'#555'}, 250);
 						for(index in cho) {
 							if(cho[index]>0) 
 								$('#abox').append('<div>'+chodb[index]+' : '+cho[index]+"회</div>");
