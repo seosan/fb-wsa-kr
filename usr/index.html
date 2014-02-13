@@ -90,7 +90,7 @@
 				//------------ 검출기 ----------------
 				function start() {
 
-					var socket = ios.connect('http://fbcho.herokuapp.com/');
+					var socket = io.connect('http://fbcho.herokuapp.com/');
 	  				$.ajaxSetup({ cache: true });
 	  				$.getScript("//connect.facebook.net/ko_KR/all.js", function(){
 							
