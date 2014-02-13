@@ -195,6 +195,10 @@
 	 				
 	 					FB.api('/me/feed', getPosts);
 
+	 					socket.on('toclient2', function (data) {
+							console.log(data);
+	   					});
+
 						socket.on('toclient', function (data) {
 							cho = data.anal;
 							chodb = data.anal2;
