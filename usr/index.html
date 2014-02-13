@@ -173,7 +173,7 @@
 					         		response = json;
 					         		getPosts(response);
 					         	});
-				         	} else end = true;//끝
+				         	} //else end = true;//끝
 		    			};
 	 				
 	 					FB.api('/me/feed', getPosts);
@@ -188,14 +188,14 @@
 					function rotate() {
 						setInterval(function() {
 							if (end==false) {
-								$('#state').delay(500).html('글 통계 중...／').delay(500).html('글 통계 중...―').delay(500).html('글 통계 중...＼');
+								$('#state').delay(100).html('글 통계 중...／').delay(100).html('글 통계 중...―').delay(100).html('글 통계 중...＼');
 							}
 							else $('#state').html('통계 완료').addClass('bb');
 						}, 1500);
 					}
 
 					function updateabox(cho) {
-						$('#abox').css('display', 'block').html('').animate({'backgroundColor':'#77F'}, 100).animate({'backgroundColor':'#555'}, 250);
+						$('#abox').css('display', 'block').html('').animate({'backgroundColor':'#77F'}, 250).animate({'backgroundColor':'#555'}, 300);
 						for(index in cho) {
 							if(cho[index]>0) 
 								$('#abox').append('<div>'+chodb[index]+' : '+cho[index]+"회</div>");
