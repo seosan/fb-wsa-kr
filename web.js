@@ -59,9 +59,9 @@ ios.sockets.on('connection', function(socket) {
 	}
 
 	socket.on('toserver', function (string) {
-		for (index in chodb) {
+		/*for (index in chodb) {
 			search1(string, 0, index);
-		}
+		}*/
 	});
 
 	socket.on('to2server', function () {
