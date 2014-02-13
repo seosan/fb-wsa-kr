@@ -174,7 +174,7 @@
 						$('#abox').css('display', 'block').html('');
 						for(index in cho) {
 							if(cho[index]>0)
-								$('#abox').append('<div>'+chodb[index]+' : '+cho[index]+"회</div><br>").slideDown(500).children().not('#ani').addClass('#ani').slideDown(500);
+								$('#abox').append('<div>'+chodb[index]+' : '+cho[index]+"회</div><br>").children().not('#ani').addClass('#ani').slideDown(500);
 						}
 					}
 
