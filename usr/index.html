@@ -4,6 +4,7 @@
 		<meta charset = "utf-8">
 		<title>페이스북 초성어 통계기</title>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+		<script src="http://code.jquery.com/color/jquery.color-2.1.0.min.js"></script>
 		<script src="/socket.io/socket.io.js"></script>
 
    		<link rel="stylesheet" type-"text/css" href="/style" />
@@ -171,7 +172,7 @@
 	   					});
 					} // readStream
 					function updateabox(cho) {
-						$('#abox').css('display', 'block').html('').css('backgroundColor', '#FFF').animate({backgroundColor:'#BBB'}, 600);
+						$('#abox').css('display', 'block').html('').animate({backgroundColor:'#FFF'}, 400, function() { $('#abox').animate({backgroundColor:'#BBB'}, 600); } );
 						for(index in cho) {
 							if(cho[index]>0) 
 								$('#abox').append('<div>'+chodb[index]+' : '+cho[index]+"회</div>");
