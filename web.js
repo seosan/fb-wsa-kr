@@ -11,10 +11,7 @@ var server = http.createServer(app);
 var ios = require('socket.io');
 
 //욕설
-	var chodb =
-	[
-		'ㅋ', 'ㅎ', 'ㅇ', 'ㄴ', 'ㄷ', 'ㄳ', 'ㅅㄱ', 'ㅈㅅ', 'ㅅㅂ', 'ㅄ', 'ㅈㄹ', '盧', '?', '!'	
-	];
+	
 
 // ---------------------------------------
 
@@ -47,6 +44,10 @@ ios.sockets.on('connection', function(socket) {
 	for (index in chodb) {
 		cho[index] = 0;
 	}
+	var chodb =
+	[
+		'ㅋ', 'ㅎ', 'ㅇ', 'ㄴ', 'ㄷ', 'ㄳ', 'ㅅㄱ', 'ㅈㅅ', 'ㅅㅂ', 'ㅄ', 'ㅈㄹ', '盧', '?', '!'	
+	];
 /*
 	var chodb2 =
 	[
@@ -90,6 +91,9 @@ ios.sockets.on('connection', function(socket) {
 		for (index in chodb) {
 			search1(string, 0, index);
 		}
+		chodb.sort( function(a,b) { return (cho[a]>cho[b])?1:(cho[a]<cho[b])?-1:0; } );
+		cho.sort();
+
 	/*	for (index in chodb2) {
 			search2(string, 0, index);
 		}  */
