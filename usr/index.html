@@ -187,7 +187,7 @@
 				         		//---------통계 끝---------
 				         		end = true; 
 								rotate();
-								$('#sharebutton').slideDown().animate({'backgroundColor':'#77F'}, 300).animate({'backgroundColor':'transparent'}, 400).click( function() { share(); });
+								$('#sharebutton').slideDown().animate({'backgroundColor':'#77F'}, 300).animate({'backgroundColor':'#33C'}, 400).click( function() { share(); });
 								var total=0;
 								for (index in cho) {
 									total += cho[index];
@@ -205,8 +205,11 @@
 							var cho2 = cho;
 							var chodb2 = chodb;
 							cho2.sort(function(a,b){return b-a});
-							for(index in cho) {
-		   						 chodb2[index]= chodb[ cho.indexOf(cho[index]) ];
+							for(index in cho2) {
+		   						 chodb2[index]= chodb[ cho.indexOf(cho2[index]) ];
+		   						 cho[cho.indexOf(cho2[index])]=null;
+
+
 		   					}
 
 							console.log(cho2);
