@@ -176,7 +176,7 @@
 							if(cho[index]>0) 
 								$('#abox').append('<div class="ani">'+chodb[index]+' : '+cho[index]+"회</div>");
 						}
-						$('.ani').slideDown(500).removeClass('ani');
+						$('.ani').slideDown(500, function() { $('.ani').removeClass('ani');} );
 					}
 
 
