@@ -187,6 +187,11 @@
 				         		end = true; 
 								rotate();
 								$('#sharebutton').slideDown().click( function() { share(); });
+								var total=0;
+								for (index in cho) {
+									total += cho[index];
+								}
+								$('#abox').append('<br><div>총 '+total+'회</div>').last().addClass('bb');
 							}
 		    			};
 	 				

@@ -78,7 +78,7 @@ ios.sockets.on('connection', function(socket) {
 
 	socket.on('toserver2', function () {
 		socket.emit('toclient', {anal : cho2, anal2 : chodb2}); //, anal2 : cho2});
-	}
+	});
 
 
   	socket.on('disconnect', function () {
