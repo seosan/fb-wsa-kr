@@ -77,25 +77,20 @@
 				}
 
 				//------------ 검출기 ----------------
-				var notsetup = true;
 				function start() {
 
+					var socket = io.connect('http://yourfbwritingstylekr.herokuapp.com/');
+	  				$.ajaxSetup({ cache: true });
 	  				$.getScript("//connect.facebook.net/ko_KR/all.js", function(){
-						if (notsetup) {
-							notsetup = false;
-							var socket = io.connect('http://yourfbwritingstylekr.herokuapp.com/');
-			  				$.ajaxSetup({ cache: true });
-
-		  					console.log('스크립트 불러오기 완료');
-		    				FB.init( {
-		      					appId : '574466449298482',
-								status : true,
-								cookie : true,
-								xfbml : false
-		    				} );     
-
-		    				console.log('페이스북 웹앱 인증 완료');
-	    				}
+							
+	  					console.log('스크립트 불러오기 완료');
+	    				FB.init( {
+	      					appId : '574466449298482',
+							status : true,
+							cookie : true,
+							xfbml : false
+	    				} );     
+	    				console.log('페이스북 웹앱 인증 완료');
 
 	    				FB.getLoginStatus( function(response) {
 	    						
