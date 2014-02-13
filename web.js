@@ -41,15 +41,15 @@ ios.sockets.on('connection', function(socket) {
 
 	//----통신 시작----
 
-	var cho = new Array();
-	for (index in cho) {
-		cho[index] = 0;
-	}
+	
 	var chodb =
 	[
 		'ㅋ', 'ㅎ', 'ㅇ', 'ㄴ', 'ㄷ', 'ㄳ', 'ㅅㄱ', 'ㅈㅅ', 'ㅅㅂ', 'ㅄ', 'ㅈㄹ', '盧', '?', '!'	
 	];
-
+	var cho = new Array();
+	for (index in chodb) {
+		cho[index] = 0;
+	}
 	var chopos;
 	function search1(string, pos, index) {
 		if((chopos = string.indexOf(chodb[index], pos) ) != -1) {
@@ -57,6 +57,8 @@ ios.sockets.on('connection', function(socket) {
 			search1(string, chopos+(chodb[index].length), index);
 		}
 	}
+
+	서치 함수가 문제임..
 
 	socket.on('toserver', function (string) {
 		for (index in chodb) {
