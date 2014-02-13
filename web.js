@@ -62,11 +62,11 @@ ios.sockets.on('connection', function(socket) {
 		for (index in chodb) {
 			search1(string, 0, index);
 		}
-		return {anal:cho, anal2:chodb};
 	}
 //post = response.data[element]
 	socket.on('toserver', function (string) {
- 	    socket.emit('toclient', findcho(string) ); 
+		findcho(string);
+ 	    socket.emit('toclient', {anal:cho, anal2:chodb} ); 
 	});
 
 		
