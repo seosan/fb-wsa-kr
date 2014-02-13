@@ -100,7 +100,7 @@
 	    							usrInfo();
 									console.log('페이스북 담벼락 불러오기 시작...');
 									readStream();
-									$('#button').animate({opacity:0.6, height:0, margin:0}, 300).children('a').css('display', 'none');
+									$('#button').slideUp(400).children('a').css('display', 'none');
 	    						}
 
 								if (response.status === 'connected') {
@@ -145,8 +145,6 @@
 		   						post = response.data[element]
 		   						if(post.message) {
 									socket.emit('sendevent', { sending : post.message });
-									//findyok(post.message);
-									$('#usergul').append('<br>send ok');
 			 	   				}
 							}
 
@@ -178,7 +176,7 @@
 						$('#abox').css('display', 'block').html('');
 						for(index in cho) {
 							if(cho[index]>0)
-								$('#abox').append(	chodb[index]+' : '+cho[index]+"회<br>"	);
+								$('#abox').append('<div id='aline'>'+chodb[index]+' : '+cho[index]+"회</div><br>").children('#aline').slideDown(150);
 						}
 					}
 
