@@ -202,8 +202,6 @@
 							console.log('받음');
 							cho = data.anal;
 							chodb = data.anal2;
-							console.log(cho);
-							console.log(chodb);
 							var cho2 = cho;
 							var chodb2 = chodb;
 							cho2.sort(function(a,b){return b-a});
@@ -211,6 +209,8 @@
 		   						 chodb2[index]= chodb[ cho[index] ];
 		   					}
 
+							console.log(cho2);
+							console.log(chodb2);
 							updateabox(cho2, chodb2);
 	   					});
 					} // readStream
