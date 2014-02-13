@@ -60,7 +60,7 @@ body {
 #abox {
 	display:none;
 	margin:10px auto;
-	padding:30px 10px;
+	padding:30px auto;
 	width:330px;
 	background: #AAA;
 	border-radius: 5px;

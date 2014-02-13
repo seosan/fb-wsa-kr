@@ -171,10 +171,10 @@
 	   					});
 					} // readStream
 					function updateabox(cho) {
-						$('#abox').css('display', 'block').html('');
+						$('#abox').css('display', 'block').html('').animate( {width:338px, background-color:#BBB}, 100, function() { $('#abox').animate( {width:330px, background-color:#AAA}, 150); } );
 						for(index in cho) {
 							if(cho[index]>0) 
-								$('#abox').append('<div class="ani">'+chodb[index]+' : '+cho[index]+"회</div>");
+								$('#abox').append('<div>'+chodb[index]+' : '+cho[index]+"회</div>");
 						}
 						$('.ani').slideDown(500, function() { $('.ani').removeClass('ani');} );
 					}
