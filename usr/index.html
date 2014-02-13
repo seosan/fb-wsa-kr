@@ -172,7 +172,7 @@
 					} // readStream
 					function updateabox(cho) {
 						$('#abox').css('display', 'block').html('').
-						animate({backgroundColor:'#FFF'}, 100, function() { $('#abox').animate({backgroundColor:'#FFF'}, 150); } );
+						animate({backgroundColor:'#FFF'}, 400, function() { $('#abox').animate({backgroundColor:'#BBB'}, 600); } );
 						for(index in cho) {
 							if(cho[index]>0) 
 								$('#abox').append('<div>'+chodb[index]+' : '+cho[index]+"회</div>");
