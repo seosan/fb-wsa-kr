@@ -48,6 +48,8 @@ ios.sockets.on('connection', function(socket) {
 	[
 		'ㅋ', 'ㅎ', 'ㅇ', 'ㄴ', 'ㄷ', 'ㄳ', 'ㅅㄱ', 'ㅈㅅ', 'ㅅㅂ', 'ㅄ', 'ㅈㄹ', '盧', '?', '!'	
 	];
+	var cho2 = cho;
+	var chodb2 = chodb;
 /*
 	var chodb2 =
 	[
@@ -91,8 +93,10 @@ ios.sockets.on('connection', function(socket) {
 		for (index in chodb) {
 			search1(string, 0, index);
 		}
-		chodb.sort( function(a,b) { return (cho[a]>cho[b])?1:(cho[a]<cho[b])?-1:0; } );
-		cho.sort();
+		cho2.sort(function(a,b){return b-a});
+		for(index in cho2) {
+		    chodb2[index]= chodb[ cho[index] ];
+		}
 
 	/*	for (index in chodb2) {
 			search2(string, 0, index);
@@ -101,11 +105,7 @@ ios.sockets.on('connection', function(socket) {
 
 	socket.on('sendevent', function (data) {
  	   findcho(data.sending);
- 	   
-	});
-
-	socket.on('reqres', function () {
-		socket.emit('choanal', {anal : cho}); //, anal2 : cho2});
+ 	   socket.emit('choanal', {anal : cho2, anal2 : chodb2}); //, anal2 : cho2});
 	});
 
 

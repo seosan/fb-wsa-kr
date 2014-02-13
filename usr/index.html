@@ -169,7 +169,6 @@
 				           		cnt += response.data.length;
 				           		$("#cnt").html(cnt).animate({'backgroundColor':'#77F'}, 300).animate({'backgroundColor':'transparent'}, 400);
 								rotate();
-				           		socket.emit('reqres'); console.log('cla reqres');
 				           		nextPage = response.paging.next;
 					         	$.getJSON(nextPage, function(json) {
 					         		response = json;
@@ -187,7 +186,9 @@
 
 						socket.on('choanal', function (value) {
 							cho = value.anal;
+							chodb = value.anal;
 							console.log(cho);
+							console.log(chodb);
 							updateabox(cho);
 
 	   					});
