@@ -153,10 +153,7 @@
 		 				function sendPosts(response) {
 		   					console.log(response);
 		   					for (element in response.data){
-		   						post = response.data[element]
-		   						if(post.message) {
-									socket.emit('toserver', { sending : post.message });
-			 	   				}
+								socket.emit('toserver', { sending : response.data });
 							}
 
 						}
