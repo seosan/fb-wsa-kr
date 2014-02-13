@@ -42,7 +42,7 @@ ios.sockets.on('connection', function(socket) {
 	//----통신 시작----
 
 	var cho = new Array();
-	for (index in chodb) {
+	for (index in cho) {
 		cho[index] = 0;
 	}
 	var chodb =
@@ -57,15 +57,11 @@ ios.sockets.on('connection', function(socket) {
 			search1(string, chopos + chodb[index].length, index);
 		}
 	}
-	
-	function findcho(string) {
+
+	socket.on('toserver', function (string) {
 		for (index in chodb) {
 			search1(string, 0, index);
 		}
-	}
-//post = response.data[element]
-	socket.on('toserver', function (string) {
-		findcho(string);
 	});
 
 	socket.on('to2server', function () {
