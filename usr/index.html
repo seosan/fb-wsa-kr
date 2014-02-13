@@ -186,6 +186,7 @@
 	   					});
 					} // readStream
 					function rotate() {
+						console.log(end);
 						if (end==false) {
 							$('#state').delay(500).html('글 통계 중...／').delay(500).html('글 통계 중...―').delay(500).html('글 통계 중...＼');
 							setInterval(function(){rotate();}, 1500)
