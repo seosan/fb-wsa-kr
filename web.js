@@ -50,6 +50,7 @@ ios.sockets.on('connection', function(socket) {
 	for (index in chodb) {
 		cho[index] = 0;
 	}
+
 	var chopos;
 	function search1(string, pos, index) {
 		if((chopos = string.indexOf(chodb[index], pos) ) != -1) {
@@ -57,9 +58,6 @@ ios.sockets.on('connection', function(socket) {
 			search1(string, chopos+(chodb[index].length), index);
 		}
 	}
-
-	서치 함수가 문제임..
-
 	socket.on('toserver', function (string) {
 		for (index in chodb) {
 			search1(string, 0, index);
