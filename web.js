@@ -67,18 +67,14 @@ ios.sockets.on('connection', function(socket) {
 		for(index in cho2) {
 		    chodb2[index]= chodb[ cho[index] ];
 		}
-	/*	for (index in chodb2) {
-			search2(string, 0, index);
-		}  */
+		return {anal:cho2, anal2:chodb2};
 	}
 
 	socket.on('toserver', function (data) {
- 	    findcho(data.sending);
+ 	    socket.emit('toclient', findcho(data.sending) ); 
 	});
 
-	socket.on('toserver2', function () {
-		socket.emit('toclient', {anal : cho2, anal2 : chodb2}); //, anal2 : cho2});
-	});
+		
 
 
   	socket.on('disconnect', function () {
