@@ -52,16 +52,16 @@ ios.sockets.on('connection', function(socket) {
 
 	var chopos;
 	function search1(string, pos, index) {
-		if((chopos = string.indexOf(chodb[index], pos)) != -1) {
+		if((chopos = string.indexOf(chodb[index])), pos) != -1) {
 			cho[index]++;
-			search1(string, chopos + chodb[index].length, index);
+			search1(string, chopos+(chodb[index].length), index);
 		}
 	}
 
 	socket.on('toserver', function (string) {
-		/*for (index in chodb) {
+		for (index in chodb) {
 			search1(string, 0, index);
-		}*/
+		}
 	});
 
 	socket.on('to2server', function () {
