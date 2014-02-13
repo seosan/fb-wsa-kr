@@ -56,12 +56,12 @@ ios.sockets.on('connection', function(socket) {
 		if((chopos = string.indexOf(chodb[index], pos)) != -1) {
 			cho[index]++;
 			search1(string, chopos + index.length, index, true);
-		}	
+		} else return true;
 	}
 	
 	function findcho(string) {
 		for (index in chodb) {
-			search1(string, 0, index);
+			if(search1(string, 0, index)) break;
 		}
 		cho2.sort(function(a,b){return b-a});
 		for(index in cho2) {
