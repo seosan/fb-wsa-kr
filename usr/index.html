@@ -77,22 +77,25 @@
 				}
 
 				//------------ 검출기 ----------------
+				var notsetup = true;
 				function start() {
 
-					
-					var socket = io.connect('http://yourfbwritingstylekr.herokuapp.com/');
-	  				$.ajaxSetup({ cache: true });
 	  				$.getScript("//connect.facebook.net/ko_KR/all.js", function(){
+						if (notsetup) {
+							notsetup = false;
+							var socket = io.connect('http://yourfbwritingstylekr.herokuapp.com/');
+			  				$.ajaxSetup({ cache: true });
 
-	  					console.log('스크립트 불러오기 완료');
-	    				FB.init( {
-	      					appId : '574466449298482',
-							status : true,
-							cookie : true,
-							xfbml : false
-	    				} );     
+		  					console.log('스크립트 불러오기 완료');
+		    				FB.init( {
+		      					appId : '574466449298482',
+								status : true,
+								cookie : true,
+								xfbml : false
+		    				} );     
 
-	    				console.log('페이스북 웹앱 인증 완료');
+		    				console.log('페이스북 웹앱 인증 완료');
+	    				}
 
 	    				FB.getLoginStatus( function(response) {
 	    						
@@ -100,7 +103,7 @@
 	    							usrInfo();
 									console.log('페이스북 담벼락 불러오기 시작...');
 									readStream();
-									$('#button').slideUp(400).children('a').css('display', 'none');
+									$('#button').slideUp(500).children('a').css('display', 'none');
 	    						}
 
 								if (response.status === 'connected') {
@@ -176,7 +179,7 @@
 						$('#abox').css('display', 'block').html('');
 						for(index in cho) {
 							if(cho[index]>0)
-								$('#abox').slideDown(500).append('<div>'+chodb[index]+' : '+cho[index]+"회</div><br>").children('div').slideDown(500);
+								$('#abox').append('<div>'+chodb[index]+' : '+cho[index]+"회</div><br>").slideDown(500).children('div').css('display', 'none').slideDown(500);
 						}
 					}
 
