@@ -202,17 +202,17 @@
 							console.log('받음');
 							cho = data.anal;
 							chodb = data.anal2;
-							var cho2 = cho;
-							var chodb2 = chodb;
+							var cho2 = cho.slice(0);
+							var chodb2 = chodb.slice(0);
 
-							console.log("1"+cho);
+							console.log("1 -"+cho);
 							cho2.sort(function(a,b){return b-a});
 
-							console.log("2"+cho);
+							console.log("2 -"+cho);
 							for(index in cho2) {
 		   						 chodb2[index]= chodb[ cho.indexOf(cho2[index]) ];
 		   						 cho[ cho.indexOf(cho2[index]) ]=null;
-								 console.log("3"+cho);
+								 console.log("3 -"+cho);
 		   					}
 
 							console.log(chodb2);
