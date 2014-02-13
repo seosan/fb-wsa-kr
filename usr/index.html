@@ -28,11 +28,12 @@
 				<div id='board'>
 					<div id='since' class='bb'><time class='timeago'>지금</time></div>부터
 					<br>총 <div id='cnt' class='bb'>0</div>개 글
-					<br><div id='state'>글 통계 중...―</div>
+					<br><div id='state'>통계 중...―</div>
 				</div>
 			</div>
 			<br>
-			<div id='button'><a>시작하기</a></div>
+			<div class='button' id='startbutton'><a>시작하기</a></div>
+			<div class='button' id='sharebutton'><a>공유하기</a></div>
 			<div id='abox'></div>
 
 		</div>
@@ -50,7 +51,7 @@
 				  fjs.parentNode.insertBefore(js, fjs);
 				}(document, 'script', 'facebook-jssdk'));
 
-				$('#button').click(function() {
+				$('#startbutton').click(function() {
 					start();
 				} );
 
@@ -108,7 +109,7 @@
 	    							usrInfo();
 									console.log('페이스북 담벼락 불러오기 시작...');
 									readStream();
-									$('#button').slideUp(500).children('a').css('display', 'none');
+									$('#startbutton').slideUp(500).children('a').css('display', 'none');
 									$('#board').css('display', 'block').children().css('display', 'inline');
 	    						}
 
@@ -173,7 +174,12 @@
 					         		response = json;
 					         		getPosts(response);
 					         	});
-				         	} //else end = true;//끝
+				         	} else { 
+				         		//---------통계 끝---------
+				         		end = true; 
+								rotate();
+								$('sharebutton').slideDown().click( function() { share(); });
+							}
 		    			};
 	 				
 	 					FB.api('/me/feed', getPosts);
@@ -185,21 +191,29 @@
 
 	   					});
 					} // readStream
+					function share() {
+						FB.ui( {
+						  method: 'feed',
+						  link: 'http://yourfbwritingstylekr.herokuapp.com/',
+						  caption: 'An example caption',
+						}, function(response){} );
+					}
+
 					var rot = 0
 					function rotate() {
 						console.log(end);
 						if (end==false) {
 							switch(rot%3) {
 								case 0 : {
-									$('#state').html('글 통계 중...／');
+									$('#state').html('통계 중...／');
 									break;
 								}
 								case 1 : {
-									$('#state').html('글 통계 중...―');
+									$('#state').html('통계 중...―');
 									break;
 								}
 								case 2 : {
-									$('#state').html('글 통계 중...＼');
+									$('#state').html('통계 중...＼');
 									break;
 								}
 							} rot++;

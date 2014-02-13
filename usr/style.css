@@ -92,7 +92,7 @@ body {
 	display: inline;
 }
 
-#button {
+.button {
 	border-radius: 5px;
 	margin:10px auto 40px;
 	width:150px;
@@ -101,7 +101,11 @@ body {
 	color:#FFF;
 	cursor:pointer;
 }
-#button a{
+#sharebutton {
+	display:none;
+}
+
+.button a{
 	display:block;
 	text-decoration:none;
 	color:#FFF;
