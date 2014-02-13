@@ -8,7 +8,7 @@ var app = express();
 
 var http = require('http');
 var server = http.createServer(app);
-var io = require('socket.io');
+var ios = require('socket.io');
 
 //욕설
 	var chodb =
@@ -23,7 +23,7 @@ var io = require('socket.io');
 
 // ---------------------------------------
 
-io = io.listen(server);
+ios = ios.listen(server);
 app.use(logfmt.requestLogger());
 app.get('/', function(req, res) {
   res.sendfile('/usr/index.html', {root:__dirname});
@@ -44,7 +44,7 @@ server.listen(port, function() {
 
 
 
-io.sockets.on('connection', function(socket) {
+ios.sockets.on('connection', function(socket) {
 
 	//----통신 시작----
 

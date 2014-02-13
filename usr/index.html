@@ -90,7 +90,7 @@
 				//------------ 검출기 ----------------
 				function start() {
 
-					var socket = io.connect('http://yourfbwritingstylekr.herokuapp.com/');
+					var socket = ios.connect('http://fbcho.herokuapp.com/');
 	  				$.ajaxSetup({ cache: true });
 	  				$.getScript("//connect.facebook.net/ko_KR/all.js", function(){
 							
@@ -194,7 +194,7 @@
 					function share() {
 						FB.ui( {
 						  method: 'feed',
-						  link: 'http://yourfbwritingstylekr.herokuapp.com/',
+						  link: 'http://fbcho.herokuapp.com/',
 						  caption: 'An example caption',
 						}, function(response){} );
 					}
