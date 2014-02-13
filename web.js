@@ -9,6 +9,10 @@ var app = express();
 var http = require('http');
 var server = http.createServer(app);
 var io = require('socket.io')
+io.configure(function () { 
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10); 
+});
 
 //욕설
 	var chodb =
