@@ -172,7 +172,7 @@
 	   					});
 					} // readStream
 					function updateabox(cho) {
-						$('#abox').css('display', 'block').html('').css('backgroundColor', '#CC5').animate({backgroundColor:'#555'}, 50);
+						$('#abox').css('display', 'block').html('').stop().css('backgroundColor', '#55C').animate({backgroundColor:'#555'}, 50);
 						for(index in cho) {
 							if(cho[index]>0) 
 								$('#abox').append('<div>'+chodb[index]+' : '+cho[index]+"회</div>");
