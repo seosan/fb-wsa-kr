@@ -1,6 +1,7 @@
 // web.js
 
 var logfmt = require("logfmt");
+var fs = require('fs');
 var FB = require("fb");
 
 var express = require("express");
@@ -56,17 +57,18 @@ ios.sockets.on('connection', function(socket) {
 		if((chopos = string.indexOf(chodb[index], pos)) != -1) {
 			cho[index]++;
 			search1(string, chopos + index.length, index, true);
-		} else return true;
+		}
 	}
 	
 	function findcho(string) {
 		for (index in chodb) {
-			if(search1(string, 0, index)) break;
+			search1(string, 0, index);
 		}
 		cho2.sort(function(a,b){return b-a});
 		for(index in cho2) {
 		    chodb2[index]= chodb[ cho[index] ];
 		}
+		fs.writeFile("/tmp/test", {anal:cho2, anal2:chodb2});
 		return {anal:cho2, anal2:chodb2};
 	}
 
