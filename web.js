@@ -52,7 +52,7 @@ ios.sockets.on('connection', function(socket) {
 
 	var chopos;
 	function search1(string, pos, index) {
-		if((chopos = string.indexOf(chodb[index])), pos) != -1) {
+		if((chopos = string.indexOf(chodb[index], pos) ) != -1) {
 			cho[index]++;
 			search1(string, chopos+(chodb[index].length), index);
 		}
