@@ -97,7 +97,7 @@ ios.sockets.on('connection', function(socket) {
 		for(index in cho2) {
 		    chodb2[index]= chodb[ cho[index] ];
 		}
-
+		turn();
 	/*	for (index in chodb2) {
 			search2(string, 0, index);
 		}  */
@@ -105,7 +105,13 @@ ios.sockets.on('connection', function(socket) {
 
 	socket.on('sendevent', function (data) {
  	   findcho(data.sending);
- 	   socket.emit('choanal', {anal : cho2, anal2 : chodb2}); //, anal2 : cho2});
+ 	   function turn() {
+		socket.emit('choanal', {anal : cho2, anal2 : chodb2}); //, anal2 : cho2});
+ 	   }
+	});
+
+	socket.on('reqres', function () {
+		
 	});
 
 
