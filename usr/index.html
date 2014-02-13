@@ -163,17 +163,9 @@
 
 	   					var getPosts = function (response){
 							
-							sendPosts(response);
+							
 				           	if(response.data.length!=0) {
-				           		$('#since').html('<time class="timeago">-</time>').children('time').attr('datetime', response.data[length-1].created_time).timeago().animate({'backgroundColor':'#77F'}, 300).animate({'backgroundColor':'transparent'}, 400);
-				           		cnt += response.data.length;
-				           		$("#cnt").html(cnt).animate({'backgroundColor':'#77F'}, 300).animate({'backgroundColor':'transparent'}, 400);
-								rotate();
-				           		nextPage = response.paging.next;
-					         	$.getJSON(nextPage, function(json) {
-					         		response = json;
-					         		getPosts(response);
-					         	});
+				           		sendPosts(response);
 				         	} else { 
 				         		//---------통계 끝---------
 				         		end = true; 
@@ -190,6 +182,20 @@
 							console.log(cho);
 							console.log(chodb);
 							updateabox(cho);
+							
+							$('#since').html('<time class="timeago">-</time>').children('time').attr('datetime', response.data[length-1].created_time).timeago().animate({'backgroundColor':'#77F'}, 300).animate({'backgroundColor':'transparent'}, 400);
+							//시간처리
+			           		cnt += response.data.length;
+			           		$("#cnt").html(cnt).animate({'backgroundColor':'#77F'}, 300).animate({'backgroundColor':'transparent'}, 400);
+			           		//카운트처리
+							rotate();
+							//통계중..
+
+			           		nextPage = response.paging.next;
+				         	$.getJSON(nextPage, function(json) {
+				         		response = json;
+				         		getPosts(response);
+				         	});
 
 	   					});
 					} // readStream
