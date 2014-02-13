@@ -50,19 +50,8 @@ ios.sockets.on('connection', function(socket) {
 	];
 	var cho2 = cho;
 	var chodb2 = chodb;
-/*
-	var chodb2 =
-	[
-		'ㄷㅊ', 'ㅁㄴㅇㄹ', 'ㅈㄴ'
-	]
-	var cho2 = new Array();
-	for (index in chodb2) {
-		cho2[index] = 0;
-	} */
 
 	var chopos;
-	//var chopos2;
-	//var chopos3;
 	function search1(string, pos, index) {
 		if((chopos = string.indexOf(chodb[index], pos)) != -1) {
 			cho[index]++;
@@ -70,25 +59,6 @@ ios.sockets.on('connection', function(socket) {
 		}	
 	}
 	
-/*
-	function search2(string, pos, index) {
-		if((chopos2 = string.indexOf(chodb2[index], pos)) != -1) {
-			cho2[index]++;
-			removeRed(cho2[index], 0);
-			search2(string, chopos2 + index.length, index, false);
-		}
-	}
-
-	function removeRed(string, pos) {
-		for (index in chodb) {
-			if((chopos3 = string.indexOf(chodb[index], pos)) != -1) {
-				cho[index]--;
-				removeRed(string, chopos3 + index.length);
-			}
-		}
-	}
-*/
-
 	function findcho(string) {
 		for (index in chodb) {
 			search1(string, 0, index);
@@ -109,6 +79,8 @@ ios.sockets.on('connection', function(socket) {
 
 	function turn() {
 		socket.emit('toclient', {anal : cho2, anal2 : chodb2}); //, anal2 : cho2});
+		console(cho2);
+		console(chodb2);
 	}
 
 
