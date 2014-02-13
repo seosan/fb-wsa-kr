@@ -156,7 +156,7 @@
 		   						if(response.data[element].message)
 		   						tmpstring += response.data[element].message;
 		   					}
-		   					console.log(tmpstring);
+		   					console.log('보냄');
 							socket.emit('toserver', tmpstring);
 
 						}
@@ -180,6 +180,9 @@
 					         		getPosts(response);
 			         			});
 
+			         			socket.emit('to2server');
+			         			console.log('리턴요청');
+
 				         	} else { 
 				         		//---------통계 끝---------
 				         		end = true; 
@@ -195,11 +198,8 @@
 	 				
 	 					FB.api('/me/feed', getPosts);
 
-	 					socket.on('cc', function (data) {
-							console.log(data);
-	   					});
-
 						socket.on('toclient', function (data) {
+							console.log('받음');
 							cho = data.anal;
 							chodb = data.anal2;
 							console.log(cho);
