@@ -164,7 +164,11 @@
 					           		//카운트처리
 									rotate();
 									//통계중..
-
+									nextPage = response.paging.next;
+						         	$.getJSON(nextPage, function(json) {
+						         		response = json;
+						         		getPosts(response);
+				         			});
 			 	   				}
 							}
 
@@ -191,15 +195,6 @@
 							console.log(cho);
 							console.log(chodb);
 							updateabox(cho);
-							
-							
-
-			           		nextPage = response.paging.next;
-				         	$.getJSON(nextPage, function(json) {
-				         		response = json;
-				         		getPosts(response);
-				         	});
-
 	   					});
 					} // readStream
 					function share() {
