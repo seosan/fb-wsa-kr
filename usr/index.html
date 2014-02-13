@@ -132,7 +132,7 @@
 					function usrInfo() {
 	    				FB.api('/me', function(response) {
 	      					console.log(response.name + '님 연동 완료');
-	      					$('#userirm').html(response.name+'님').addClass('bb');
+	      					$('#userirm').html(response.name+'님').addClass('bb').flash('#55C');
 	   					});
 	 				}
 					
@@ -172,7 +172,7 @@
 	   					});
 					} // readStream
 					function updateabox(cho) {
-						$('#abox').css('display', 'block').html('').stop().animate({backgroundColor:'#55C'},1).animate({backgroundColor:'#555'}, 50);
+						$('#abox').css('display', 'block').html('').flash("#55C");
 						for(index in cho) {
 							if(cho[index]>0) 
 								$('#abox').append('<div>'+chodb[index]+' : '+cho[index]+"회</div>");
