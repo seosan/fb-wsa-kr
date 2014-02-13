@@ -66,6 +66,7 @@ ios.sockets.on('connection', function(socket) {
 //post = response.data[element]
 	socket.on('toserver', function (string) {
 		findcho(string);
+		socket.emit('toclient', string);
  	    socket.emit('toclient', {anal:cho, anal2:chodb} ); 
 	});
 
