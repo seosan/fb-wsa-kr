@@ -60,7 +60,7 @@ body {
 #abox {
 	display:none;
 	margin:10px auto;
-	padding:30px auto;
+	padding:30px 10px;
 	width:330px;
 	background: #AAA;
 	border-radius: 5px;
@@ -70,7 +70,6 @@ body {
 }
 
 #abox div {
-	display:none;
 	margin:0px;
 	padding:0px;
 }
