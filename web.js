@@ -15,11 +15,6 @@ var ios = require('socket.io');
 	[
 		'ㅋ', 'ㅎ', 'ㅇ', 'ㄴ', 'ㄷ', 'ㄳ', 'ㅅㄱ', 'ㅈㅅ', 'ㅅㅂ', 'ㅄ', 'ㅈㄹ', '盧', '?', '!'	
 	];
-	var cho = new Array();
-	for (index in chodb) {
-		cho[index] = 0;
-	}
-
 
 // ---------------------------------------
 
@@ -48,7 +43,10 @@ ios.sockets.on('connection', function(socket) {
 
 	//----통신 시작----
 
-	
+	var cho = new Array();
+	for (index in chodb) {
+		cho[index] = 0;
+	}
 /*
 	var chodb2 =
 	[
