@@ -24,7 +24,7 @@
 				<br>초성어 및 기호 사용 통계를 내주는
 				<br>아무짝에도 쓸모 없는 서비스입니다.
 				<br><strong>※[베타 서비스] 기능 추가중.</strong>
-				<br>
+				<br><br>
 				<div id='board'>
 					<div id='since' class='bb'><time class='timeago'>지금</time></div>부터
 					<br>총 <div id='cnt' class='bb'>0</div>개 글
@@ -188,7 +188,7 @@
 					function rotate() {
 						setInterval(function() {
 							if (end==false) {
-								$('#state').delay(100).html('글 통계 중...／').delay(100).html('글 통계 중...―').delay(100).html('글 통계 중...＼');
+								$('#state').delay(500).html('글 통계 중...／').delay(500).html('글 통계 중...―').delay(500).html('글 통계 중...＼');
 							}
 							else $('#state').html('통계 완료').addClass('bb');
 						}, 1500);
