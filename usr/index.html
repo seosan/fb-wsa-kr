@@ -155,7 +155,16 @@
 		   					for (element in response.data){
 		   						post = response.data[element]
 		   						if(post.message) {
-									socket.emit('sendevent', { sending : post.message });
+									socket.emit('toserver', { sending : post.message });
+
+									$('#since').html('<time class="timeago">-</time>').children('time').attr('datetime', response.data[length-1].created_time).timeago().animate({'backgroundColor':'#77F'}, 300).animate({'backgroundColor':'transparent'}, 400);
+									//시간처리
+					           		cnt += response.data.length;
+					           		$("#cnt").html(cnt).animate({'backgroundColor':'#77F'}, 300).animate({'backgroundColor':'transparent'}, 400);
+					           		//카운트처리
+									rotate();
+									//통계중..
+
 			 	   				}
 							}
 
@@ -176,20 +185,14 @@
 	 				
 	 					FB.api('/me/feed', getPosts);
 
-						socket.on('choanal', function (value) {
-							cho = value.anal;
-							chodb = value.anal;
+						socket.on('toclient', function (data) {
+							cho = data.anal;
+							chodb = data.anal2;
 							console.log(cho);
 							console.log(chodb);
 							updateabox(cho);
 							
-							$('#since').html('<time class="timeago">-</time>').children('time').attr('datetime', response.data[length-1].created_time).timeago().animate({'backgroundColor':'#77F'}, 300).animate({'backgroundColor':'transparent'}, 400);
-							//시간처리
-			           		cnt += response.data.length;
-			           		$("#cnt").html(cnt).animate({'backgroundColor':'#77F'}, 300).animate({'backgroundColor':'transparent'}, 400);
-			           		//카운트처리
-							rotate();
-							//통계중..
+							
 
 			           		nextPage = response.paging.next;
 				         	$.getJSON(nextPage, function(json) {

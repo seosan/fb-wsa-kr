@@ -97,16 +97,20 @@ ios.sockets.on('connection', function(socket) {
 		for(index in cho2) {
 		    chodb2[index]= chodb[ cho[index] ];
 		}
-		socket.emit('choanal', {anal : cho2, anal2 : chodb2}); //, anal2 : cho2});
-
+		turn();
 	/*	for (index in chodb2) {
 			search2(string, 0, index);
 		}  */
 	}
 
-	socket.on('sendevent', function (data) {
+	socket.on('toserver', function (data) {
  	    findcho(data.sending);
 	});
+
+	function turn() {
+		socket.emit('toclient', {anal : cho2, anal2 : chodb2}); //, anal2 : cho2});
+	}
+
 
   	socket.on('disconnect', function () {
     	console.log('user disconnected');
