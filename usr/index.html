@@ -127,7 +127,7 @@
 									$('#atext').html('담벼락 불러오는 중').slideDown();
 									$('#abox').slideDown();
 									readStream();
-									$('#startbutton').slideUp(500).children('a').css('display', 'none');
+									$('#startbutton').slideUp(500);
 									$('#board').css('display', 'block').children().css('display', 'inline');
 	    						}
 
@@ -242,19 +242,21 @@
 					function share() {
 						console.log('공유하기!');
 
-						var posting = usrname+'님의 담벼락 통계<br>';
+						var posting = usrname+'님의 담벼락 통계\n';
 						for(index in cho2) {
 							if(cho2[index]>0) 
-								posting+='<br>'+chodb2[index]+' : '+cho2[index]+"번 사용";
+								posting+='\n'+chodb2[index]+' : '+cho2[index]+"번 사용";
 						}
-						posting+="<br><br>총 "+total+"번 사용";
+						posting+="\n\n총 "+total+"번 사용";
 
 						FB.api('/me/feed', 'post', { message: posting, link:"https://fbcho.herokuapp.com" }, function(response) {
 
 							if (!response || response.error) {
 								$('#atext').html('에러 발생!!! 이유는 저도 몰라요!').slideDown();
 							} else {
+								$('#state').html('공유 완료');
 								$('#atext').html('공유 성공!').slideDown();
+								$('#sharebutton').slideUp(500);
 							}
 						});
 
