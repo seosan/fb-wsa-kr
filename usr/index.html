@@ -17,7 +17,7 @@
 		
 		<div id = "content">
 			<div id="intro">
-				<div style='font-style:italic; font-size:20px' class='bb'>어서오세요</div>
+				<div style='font-style:italic; font-size:20px;' class='bb'>어서오세요</div>
 				<br>
 				<div class='bb'>페이스북 초성어 통계기</div>는
 				<br> <div id='userirm'>당신</div>의 담벼락 글을 분석해
@@ -105,7 +105,10 @@
 	    						
 	    						function logMeIn()
 								{
-								  window.location.replace('https://graph.facebook.com/oauth/authorize?client_id=574466449298482&scope=publish_stream&redirect_uri=https://fbcho.herokuapp.com&scope=read_stream,publish_stream');
+									$('#intro').html('<div style="font:bold 1.2em;" class="bb">누구시죠?</div>');
+									setTimeout( function() {  
+										window.location.replace('https://graph.facebook.com/oauth/authorize?client_id=574466449298482&scope=publish_stream&redirect_uri=https://fbcho.herokuapp.com&scope=read_stream,publish_stream');
+									}, 500);
 								}
 
 	    						function start2() {
@@ -208,7 +211,7 @@
 								for (index in cho2) {
 									total += cho2[index];
 								}
-								$('#abox').append('<br><div>총 '+total+'회</div>').children().last().addClass('total');
+								$('#abox').append('<br><div>총 '+total+'회</div>').children().last().addClass('total').slideDown();
 							}
 		    			};
 	 				
