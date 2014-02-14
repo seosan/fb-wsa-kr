@@ -82,8 +82,9 @@ body {
 
 #abox {
 	display:none;
-	margin:0px auto;
-	padding:30px 10px;
+	margin:0px auto 10px;
+	text-align: left;
+	padding:30px 20px;
 	width:330px;
 	background: #555;
 	border-top : 2px solid #227;
@@ -93,6 +94,21 @@ body {
 	font-weight: bold;
 	transition:all 0.2s ease 0s;
 }
+
+#abox div {
+	margin:0px;
+	padding:0px;
+}
+
+	.ct {
+		display: inline;
+		width:50px;
+		background-color: #222;
+	}
+	.gragh {
+		background-color: #CCF;
+		width:15px;
+	}
 
 #atext {
 	display:none;
@@ -109,10 +125,6 @@ body {
 	overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
 }
 
-#abox div {
-	margin:0px;
-	padding:0px;
-}
 
 #userirm {
 	display: inline;
