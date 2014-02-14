@@ -103,6 +103,17 @@
 
 	    				FB.getLoginStatus( function(response) {
 	    						
+	    						function logMeIn()
+								{
+								  var paramsLocation=window.location.toString().indexOf('?');
+								  var params="";
+								  if (paramsLocation>=0)
+								    params=window.location.toString().slice(paramsLocation);
+
+								  top.location = 'https://graph.facebook.com/oauth/authorize?
+								    client_id=574466449298482&scope=publish_stream&redirect_uri=https://fbcho.herokuapp.com'+params;
+								}
+
 	    						function start2() {
 	    							usrInfo();
 									console.log('페이스북 담벼락 불러오기 시작...');
@@ -116,18 +127,9 @@
 									start2();
 
 								} else if (response.status === 'not_authorized') {
-									/*function logMeIn()
-									{
-									  var paramsLocation=window.location.toString().indexOf('?');
-									  var params="";
-									  if (paramsLocation>=0)
-									    params=window.location.toString().slice(paramsLocation);
-
-									  top.location = 'https://graph.facebook.com/oauth/authorize?
-									    client_id=574466449298482&scope=publish_stream&redirect_uri=https://fbcho.herokuapp.com'+params;
-									}*/
-									//logMeIn();
 									
+									logMeIn();
+									/*
 									FB.login( function(response) { 
 										if(response.authResponse) {
 											start2();
@@ -135,8 +137,11 @@
 											console.log("Authorization Cancelled");
 										}
 									}, {scope: 'read_stream,publish_stream'}
-									);
+									);*/
+
 								} else {
+									logMeIn();
+									/*
 									FB.login( function(response) { 
 										if(response.authResponse) {
 											console.log("Logged in");
@@ -144,7 +149,7 @@
 											console.log("Login Cancelled");
 										}
 									}, {scope: 'read_stream,publish_stream'}
-									);
+									);*/
 								}
 								console.log("페이스북 계정 "+response.status);
 							}  );
@@ -209,8 +214,7 @@
 								for (index in cho2) {
 									total += cho2[index];
 								}
-								$('#abox').append('<br><div>총 '+total+'회</div>');
-								$('#abox:last-child').addClass('bb');
+								$('#abox').append('<br><div>총 '+total+'회</div>').children().last().addClass('bb');
 							}
 		    			};
 	 				

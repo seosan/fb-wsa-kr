@@ -33,6 +33,7 @@ body {
 	background-color: #449;
 	font-weight:bold;
 	border-bottom: 1px solid #227;
+	overflow:hidden;
 }
 
 #bar a {
@@ -44,7 +45,7 @@ body {
 
 #content {
 	margin:120px auto 100px;
-	padding:20px 40px;
+	padding:40px 40px;
 	width:360px;
 	display: block;
 	text-align:center;
@@ -54,7 +55,7 @@ body {
 }
 
 #intro {
-	margin:20px auto;
+	margin:0px auto;
 	padding:auto;
 }
 
@@ -73,11 +74,12 @@ body {
 
 #abox {
 	display:none;
-	margin:10px auto;
+	margin:0px auto;
 	padding:30px 10px;
 	width:330px;
 	background: #555;
-	border-radius: 5px;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
 	color:#FFF;
 	font-weight: bold;
 	transition:all 0.2s ease 0s;
@@ -88,6 +90,9 @@ body {
 	background-color: #449;
 	color:#FFF;
 	height:20px;
+	width:330px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
 	line-height: 20px;
 	font-size:10pt;
 	margin:0px;
