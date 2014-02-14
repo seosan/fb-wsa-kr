@@ -42,7 +42,7 @@ body {
 	background-color: #449;
 	font-weight:bold;
 	border-bottom: 2px solid #227;
-	overflow:hidden;
+	overflow:hidden;text-overflow:ellipsis;
 }
 
 #bar a {
