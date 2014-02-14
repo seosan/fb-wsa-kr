@@ -272,7 +272,7 @@
 						$('#abox').css('display', 'block').html('').animate({'backgroundColor':'#669'}, 100).animate({'backgroundColor':'#555'}, 100);
 						for(index in cho2) {
 							if(cho2[index]>0) 
-								$('#abox').append('<div><div class="ct">'+chodb2[index]+'</div><div style="width:'+cho2[index]*15+'px" class="graph">'+cho2[index]+"</div></div>");
+								$('#abox').append('<div><div class="ct">'+chodb2[index]+'</div><div class="graph">'+cho2[index]+"</div></div>").children().last().children().last().css('width', cho2[index]*15);
 						}
 						$('.ani').slideDown(500, function() { $('.ani').removeClass('ani');} );
 					}
