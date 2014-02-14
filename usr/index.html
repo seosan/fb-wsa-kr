@@ -34,8 +34,8 @@
 			<br>
 			<div class='button' id='startbutton'><a>시작하기</a></div>
 			<div class='button' id='sharebutton'><a>공유하기</a></div>
-			<div id='atext'></div>
-			<div id='abox'></div>
+			
+			<div id='abox'><div id='atext'></div></div>
 
 		</div>
 		<div id='like'><div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="400px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div></div>
@@ -167,8 +167,8 @@
 		 				function sendPosts(response) {
 		   					var tmpstring='';
 		   					for (element in response.data) {
-		   						$('#atext').html(response.data[0].message);
 		   						if(response.data[element].message) {
+		   							$('#atext').html(response.data[element].message);
 			   						tmpstring += response.data[element].message;
 			   					}
 		   					}
