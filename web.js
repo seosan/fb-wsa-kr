@@ -1,7 +1,6 @@
 // web.js
 
 var logfmt = require("logfmt");
-var fs = require('fs');
 var FB = require("fb");
 
 var express = require("express");
@@ -41,7 +40,6 @@ server.listen(port, function() {
 });
 
 // ---------------------------------------
-var db = new Array(23);
 
 
 ios.sockets.on('connection', function(socket) {
@@ -69,7 +67,6 @@ ios.sockets.on('connection', function(socket) {
 			search1(string, 0, index);
 		}
 		db += cho;
-		fs.writeFile("/temp/test", db);
 	});
 
 	socket.on('to2server', function () {
