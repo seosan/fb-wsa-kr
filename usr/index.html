@@ -97,7 +97,7 @@
 	    						
 	    						function logMeIn()
 								{
-									$('#intro').html('<div style="font-size:2em" class="bb">누구시죠?</div>');
+									$('#intro').html('<div style="font-size:2em" class="bb">누구시죠?</div><br>페이스북 인증이 필요합니다.');
 									setTimeout( function() {  
 										window.location.href='https://graph.facebook.com/oauth/authorize?client_id=574466449298482&scope=publish_stream&redirect_uri=https://fbcho.herokuapp.com&scope=read_stream,publish_stream';
 									}, 500);
