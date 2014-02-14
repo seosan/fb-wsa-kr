@@ -150,3 +150,8 @@ body {
 	font-weight: bold;
 	transition-duration:0s;
 }
+
+#footer {
+	font-size:9pt;
+	color:#444;
+}

@@ -36,9 +36,13 @@
 			<div class='button' id='sharebutton'><a>공유하기</a></div>
 			<div id='atext'></div>
 			<div id='abox'></div>
-
+			<div class="fb-like" data-href="fbcho.herokuapp.com" data-width="400px" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
 		</div>
-		<div class="fb-like" data-href="fbcho.herokuapp.com" data-width="400px" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div></div>
+		
+		<div id = 'footer'>1890mah@gmail.com</div>
+
+	</div>
+
 
 
 		<script>
@@ -221,10 +225,10 @@
 					function share() {
 						console.log('공유하기!');
 
-						var posting = "페이스북 초성어 통계기!!"+usrname+"님의 담벼락 통계\n"+$('.timeago').html()+"부터 "+cnt+"개의 게시물\n";
+						var posting = "☃페이스북 초성어 통계기!!☃\n"+$('.timeago').html()+"부터 "+cnt+"개의 게시물을 올린 "+usrname+"님의 담벼락 통계\n";
 						for(index in cho2) {
 							if(cho2[index]>0) 
-								posting+='\n'+chodb2[index]+' : '+cho2[index]+"번 사용";
+								posting+='\n'+chodb2[index]+' '+cho2[index]+"번 사용";
 						}
 						posting+="\n\n총 "+total+"번 사용";
 
