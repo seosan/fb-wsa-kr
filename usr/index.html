@@ -84,6 +84,7 @@
 				}
 
 				var cnt = 0;
+				var usrname;
 				var end = false;
 				//------------ 검출기 ----------------
 				function start() {
@@ -105,7 +106,7 @@
 	    						
 	    						function logMeIn()
 								{
-									$('#intro').html('<div style="font:bold 1.2em;" class="bb">누구시죠?</div>');
+									$('#intro').html('<div style="font:bold 2em;" class="bb">누구시죠?</div>');
 									setTimeout( function() {  
 										window.location.replace('https://graph.facebook.com/oauth/authorize?client_id=574466449298482&scope=publish_stream&redirect_uri=https://fbcho.herokuapp.com&scope=read_stream,publish_stream');
 									}, 500);
@@ -156,7 +157,8 @@
 					function usrInfo() {
 	    				FB.api('/me', function(response) {
 	      					console.log(response.name + '님 연동 완료');
-	      					$('#userirm').html(response.name+'님').addClass('bb').animate({'backgroundColor':'#77F'}, 500).animate({'backgroundColor':'transparent'}, 600);
+	      					usrname=response.name;
+	      					$('#userirm').html(usrname+'님').addClass('bb').animate({'backgroundColor':'#77F'}, 500).animate({'backgroundColor':'transparent'}, 600);
 	   					});
 	 				}
 					
@@ -211,7 +213,7 @@
 								for (index in cho2) {
 									total += cho2[index];
 								}
-								$('#abox').append('<br><div>총 '+total+'회</div>').children().last().addClass('total').slideDown();
+								$('#abox').append('<br><div class="total">총 '+total+'회</div>').children().last().slideDown();
 							}
 		    			};
 	 				
@@ -233,11 +235,24 @@
 					} // readStream
 					function share() {
 						console.log('공유하기!');
-						FB.ui( {
-						  method: 'feed',
-						  link: 'http://fbcho.herokuapp.com/',
-						  caption: 'An example caption',
-						}, function(response){} );
+
+						var posting = usrname+'님의 담벼락 통계<br>';
+						for(index in cho2) {
+							if(cho2[index]>0) 
+								posting+='<br>'+chodb2[index]+' : '+cho2[index]+"번 사용";
+						}
+
+						FB.api('/me/feed', 'post', { message: posting, link:"https://fbcho.herokuapp.com" }, function(response) {
+
+							if (!response || response.error) {
+								$('#atext').html('에러 발생!!! 이유는 저도 몰라요!').slideDown();
+							} else {
+								$('#atext').html('공유 성공!').slideDown();
+							}
+						});
+
+
+
 					}
 
 					var rot = 0
