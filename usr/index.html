@@ -114,8 +114,17 @@
 									start2();
 
 								} else if (response.status === 'not_authorized') {
-									var uri = 'https://apps.facebook.com/fb-choseong';
-									window.location = encodeURI("https://www.facebook.com/dialog/oauth?client_id='574466449298482'&redirect_uri="+uri+"&response_type=token");
+									function logMeIn()
+									{
+									  var paramsLocation=window.location.toString().indexOf('?');
+									  var params="";
+									  if (paramsLocation>=0)
+									    params=window.location.toString().slice(paramsLocation);
+
+									  top.location = 'https://graph.facebook.com/oauth/authorize?
+									    client_id=574466449298482&scope=publish_stream&redirect_uri=https://fbcho.herokuapp.com'+params;
+									}
+									logMeIn();
 									/*
 									FB.login( function(response) { 
 										if(response.authResponse) {
