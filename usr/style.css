@@ -95,6 +95,7 @@ body {
 }
 
 #abox div {
+	background: #AAA;
 	margin:0px;
 	padding:0px;
 }
