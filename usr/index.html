@@ -179,6 +179,7 @@
 
 	   					var getPosts = function (response){
 							
+				           	$('#atext').html('담벼락 불러오는 중').slideDown();
 							
 				           	if(response.data.length!=0) {
 				           		sendPosts(response);
@@ -187,7 +188,6 @@
 								//시간처리
 				           		cnt += response.data.length;
 				           		$("#cnt").html(cnt).animate({'backgroundColor':'#77F'}, 300).animate({'backgroundColor':'transparent'}, 400);
-				           		$('#atext').html('담벼락 불러오는 중').slideDown();
 				           		//카운트처리
 								rotate();
 								//통계중..
