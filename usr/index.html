@@ -82,7 +82,7 @@
 
 				var cnt = 0;
 				var usrname;
-				var total=0;
+				var total;
 				var cho = new Array();
 				for (index in chodb) {
 					cho[index] = 0;
@@ -214,11 +214,13 @@
 				         		end = true; 
 								rotate();
 								$('#sharebutton').slideDown().animate({'backgroundColor':'#77F'}, 500).animate({'backgroundColor':'#449'}, 500).click( function() { share(); });
-								$('#atext').html('담벼락 불러오기 끝!').delay(800).slideUp();
+								$('#atext').html('담벼락 불러오기 끝!').delay(1500).slideUp();
 								
+								total=0;
 								for (index in cho2) {
 									total += cho2[index];
 								}
+
 								$('#abox').append('<br><div class="total">총 '+total+'회</div>').children().last().slideDown();
 							}
 		    			};
