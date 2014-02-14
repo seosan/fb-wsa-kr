@@ -139,7 +139,7 @@ body {
 }
 
 .button :hover{
-	background-color: #33A;
+	background-color: #77C;
 	border-radius: 5px;
 	transition:all 0.2s ease 0s;
 }

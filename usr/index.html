@@ -21,7 +21,7 @@
 				<br>
 				<div class='bb'>페이스북 초성어 통계기</div>는
 				<br> <div id='userirm'>당신</div>의 담벼락 글을 분석해
-				<br>초성어 및 기호 사용 통계를 내주는
+				<br>초성어 뿐만 아니라 잡다한 사용 통계를 내주는
 				<br>아무짝에도 쓸모 없는 서비스입니다.
 				<br><strong>※[베타 서비스] 기능 추가중.</strong>
 				<br><br>
@@ -38,7 +38,7 @@
 			<div id='abox'></div>
 
 		</div>
-		<div id='like'><div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="400px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div></div>
+		<div class="fb-like" data-href="fbcho.herokuapp.com" data-width="350px" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div></div>
 
 
 		<script>
@@ -57,29 +57,6 @@
 				} );
 
 
-
-
-				
-					//포함특수
-					/* 	[
-		'Fuck', 'Shit', '뻨', '쒵', '쓑', '쒯', '개새끼', '개시끼', '개세끼', '개색기', '개색끼', '개객끼', '개객기', '개같은', '개놈', '개년', '개자식', '씨발', '씨벌', '씨불', '씹할', '씨팔', '씨벨', '씨부랄', '씨부럴', '씨팔', '씨펄', 'ㅅㅂ', 'ㅆㅂ', '씹창', '씹년', '씹놈', '좆', '존나', 'ㅈㄴ', '미친놈', '미친년', '미친새끼', '엄창', '앰창', '니미', '병신', '븅신', '븅딱', '퓽신', '비융신', '피융신', 'ㅄ', 'ㅂㅅ', '지랄', '닥쳐', '盧?', '젠장', '빌어먹을', '빌어쳐먹을', '빌어처먹을', '제기랄'
-	]; */
-				
-
-				var yokpos;
-				function search(string, pos, index) {
-					if((yokpos = string.indexOf(chodb[index], pos)) != -1) {
-						cho[index]++;
-						console.log(chodb[index]+'검출로 '+cho[index]+'개');
-						search(string, yokpos + index.length, index);
-					}
-				}
-				function findyok(string) {
-					for (index in chodb) {
-						search(string, 0, index);
-					}
-				}
-
 				var cnt = 0;
 				var usrname;
 				var total;
@@ -90,7 +67,7 @@
 				var cho2;
 				var chodb =
 				[
-					'ㅋ', 'ㅎ', 'ㅇ', 'ㄴ', 'ㄷ', 'ㄳ', 'ㅅㄱ', 'ㅈㅅ', 'ㅅㅂ', 'ㅄ', 'ㅈㄹ', '盧', '?', '!'	
+					'ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㅂ', 'ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅎ', 'ㄳ', 'ㅄ', 'ㅗ', 'ㅠ', '盧', '?', '!', ';', 'ㅡㅡ', '^^', '^~^', '^0^'
 				];
 				var chodb2;
 
@@ -244,7 +221,7 @@
 					function share() {
 						console.log('공유하기!');
 
-						var posting = usrname+"님의 담벼락 통계\n"+$('.timeago').html()+"부터 "+cnt+"개의 게시물";
+						var posting = "페이스북 초성어 통계기!!"+usrname+"님의 담벼락 통계\n"+$('.timeago').html()+"부터 "+cnt+"개의 게시물\n";
 						for(index in cho2) {
 							if(cho2[index]>0) 
 								posting+='\n'+chodb2[index]+' : '+cho2[index]+"번 사용";
