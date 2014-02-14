@@ -111,11 +111,9 @@ body {
 	}
 	.total {
 		text-align: center;
-		width:200px;
 		border: 0px;
 		color:#33A;
-		background-color: #FFF;
-		font-size: 1em;
+		font-size: 1.5em;
 		display: none;
 	}
 
