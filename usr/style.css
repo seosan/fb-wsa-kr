@@ -16,11 +16,6 @@ body {
 	color:#229;
 }
 
-#like {
-	display: block;
-	margin:0px, auto, 50px;
-}
-
 #bar {
 	position:fixed;
 	top:0px;
@@ -56,7 +51,7 @@ body {
 }
 
 #intro {
-	margin:0px auto;
+	margin: 0px;
 	padding:auto;
 }
 
@@ -72,6 +67,7 @@ body {
 		#state {
 			display:none;
 		}
+
 
 #abox {
 	display:none;
