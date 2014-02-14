@@ -87,12 +87,11 @@ body {
 	display:none;
 	background-color: #449;
 	color:#FFF;
-	width:350px;
-	height:25px;
-	line-height: 25px;
-	font-size:12pt;
+	height:30px;
+	line-height: 15px;
+	font-size:9pt;
 	margin:0px;
-	padding:0px;
+	padding:0px 10px;
 	overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
 }
 
