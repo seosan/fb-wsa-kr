@@ -110,9 +110,8 @@ body {
 		border-bottom:1px solid #FFF;
 	}
 	.total {
-		text-align: center;
 		border: 0px;
-		color:#33A;
+		color:#FFF;
 		font-size: 1.5em;
 		display: none;
 	}
