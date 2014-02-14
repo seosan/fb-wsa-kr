@@ -169,7 +169,7 @@
 		   					for (element in response.data) {
 		   						if(response.data[element].message) {
 			   						tmpstring += response.data[element].message;
-			   						$('#atext').delay(element*100).html(response.data[element].message);
+			   						setTimeout( function() { $('#atext').html(response.data[element].message); }, element*20);
 			   					}
 		   					}
 		   					
