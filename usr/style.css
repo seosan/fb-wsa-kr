@@ -84,7 +84,7 @@ body {
 	display:none;
 	margin:0px auto 10px;
 	text-align: left;
-	padding:30px 20px;
+	padding:30px 10px;
 	width:330px;
 	background: #555;
 	border-top : 2px solid #227;
@@ -95,7 +95,9 @@ body {
 }
 
 #abox div {
-	background: #AAA;
+	background-color: #AAA;
+	border-top:1px solid #FFF;
+	border-bottom:1px solid #FFF;
 	margin:0px;
 	padding:0px;
 }
@@ -112,7 +114,7 @@ body {
 		color:#222;
 		display: inline-block;
 		background-color: #CCF;
-		width:15px;
+		width:10px;
 	}
 
 #atext {
