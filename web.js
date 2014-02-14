@@ -1,6 +1,7 @@
 // web.js
 
 var logfmt = require("logfmt");
+var fs = require('fs');
 var FB = require("fb");
 
 var express = require("express");
@@ -24,9 +25,6 @@ app.get('/', function(req, res) {
 app.get('/favicon', function(req, res) {
   res.sendfile('/usr/favicon.ico', {root:__dirname});
 });
-app.get('/temp/test', function(req, res) {
-  res.sendfile('/temp/test.txt', {root:__dirname});
-});
 app.get('/style', function(req, res) {
   res.sendfile('/usr/style.css', {root:__dirname});
 });
@@ -40,6 +38,7 @@ server.listen(port, function() {
 });
 
 // ---------------------------------------
+
 
 
 ios.sockets.on('connection', function(socket) {
@@ -66,7 +65,6 @@ ios.sockets.on('connection', function(socket) {
 		for (index in chodb) {
 			search1(string, 0, index);
 		}
-		db += cho;
 	});
 
 	socket.on('to2server', function () {
