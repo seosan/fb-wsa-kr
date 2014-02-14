@@ -101,12 +101,12 @@ body {
 }
 
 	.ct {
-		display: inline;
+		display: inline-block;
 		width:50px;
 		background-color: #222;
 	}
 	.graph {
-		display: inline;
+		display: inline-block;
 		background-color: #CCF;
 		width:15px;
 	}
