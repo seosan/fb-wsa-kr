@@ -270,7 +270,7 @@
 					}
 
 					function updateabox(cho2, chodb2) {
-						$('#abox').css('display', 'block').html('').animate({'backgroundColor':'#669'}, 100).animate({'backgroundColor':'#555'}, 100);
+						$('#abox').css('display', 'block').html('')
 						for(index in cho2) {
 							if(cho2[index]>0) 
 								$('#abox').append('<div><span class="ct">'+chodb2[index]+'</span><span class="graph">'+cho2[index]+"</span></div>").children().last().children().last().css('width', cho2[index]*((cho2[0]<27)?10:(260/cho2[0])) );
