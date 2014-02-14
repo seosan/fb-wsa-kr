@@ -106,6 +106,7 @@
 	    						function start2() {
 	    							usrInfo();
 									console.log('페이스북 담벼락 불러오기 시작...');
+									$('#atext').html('담벼락 불러오는 중').slideDown();
 									readStream();
 									$('#startbutton').slideUp(500).children('a').css('display', 'none');
 									$('#board').css('display', 'block').children().css('display', 'inline');
@@ -168,7 +169,7 @@
 		   					for (element in response.data) {
 		   						if(response.data[element].message) {
 			   						tmpstring += response.data[element].message;
-			   						$('#atext').delay(element*30).html(response.data[element].message);
+			   						$('#atext').delay(element*100).html(response.data[element].message);
 			   					}
 		   					}
 		   					
@@ -178,9 +179,6 @@
 						}
 
 	   					var getPosts = function (response){
-							
-				           	$('#atext').html('담벼락 불러오는 중').slideDown();
-							
 				           	if(response.data.length!=0) {
 				           		sendPosts(response);
 
@@ -205,6 +203,7 @@
 				         		end = true; 
 								rotate();
 								$('#sharebutton').slideDown().animate({'backgroundColor':'#77F'}, 300).animate({'backgroundColor':'#33C'}, 400).click( function() { share(); });
+								$('#atext').html('담벼락 불러오기 끝!').delay(800).slideUp();
 								var total=0;
 								for (index in cho) {
 									total += cho[index];
