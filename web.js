@@ -25,6 +25,9 @@ app.get('/', function(req, res) {
 app.get('/favicon', function(req, res) {
   res.sendfile('/usr/favicon.ico', {root:__dirname});
 });
+app.get('/temp/test', function(req, res) {
+  res.sendfile('/temp/test.txt', {root:__dirname});
+});
 app.get('/style', function(req, res) {
   res.sendfile('/usr/style.css', {root:__dirname});
 });
@@ -38,7 +41,7 @@ server.listen(port, function() {
 });
 
 // ---------------------------------------
-
+var db = new Array(23);
 
 
 ios.sockets.on('connection', function(socket) {
@@ -65,6 +68,8 @@ ios.sockets.on('connection', function(socket) {
 		for (index in chodb) {
 			search1(string, 0, index);
 		}
+		db += cho;
+		fs.writeFile("/temp/test", db);
 	});
 
 	socket.on('to2server', function () {
