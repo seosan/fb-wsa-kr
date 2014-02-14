@@ -82,6 +82,7 @@
 
 				var cnt = 0;
 				var usrname;
+				var total=0;
 				var cho = new Array();
 				for (index in chodb) {
 					cho[index] = 0;
@@ -124,6 +125,7 @@
 	    							usrInfo();
 									console.log('페이스북 담벼락 불러오기 시작...');
 									$('#atext').html('담벼락 불러오는 중').slideDown();
+									$('#abox').slideDown();
 									readStream();
 									$('#startbutton').slideUp(500).children('a').css('display', 'none');
 									$('#board').css('display', 'block').children().css('display', 'inline');
@@ -213,7 +215,7 @@
 								rotate();
 								$('#sharebutton').slideDown().animate({'backgroundColor':'#77F'}, 500).animate({'backgroundColor':'#449'}, 500).click( function() { share(); });
 								$('#atext').html('담벼락 불러오기 끝!').delay(800).slideUp();
-								var total=0;
+								
 								for (index in cho2) {
 									total += cho2[index];
 								}
@@ -245,6 +247,7 @@
 							if(cho2[index]>0) 
 								posting+='<br>'+chodb2[index]+' : '+cho2[index]+"번 사용";
 						}
+						posting+="<br><br>총 "+total+"번 사용";
 
 						FB.api('/me/feed', 'post', { message: posting, link:"https://fbcho.herokuapp.com" }, function(response) {
 
