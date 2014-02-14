@@ -209,7 +209,8 @@
 								for (index in cho2) {
 									total += cho2[index];
 								}
-								$('#abox').append('<br><div class="bb">총 '+total+'회</div>');
+								$('#abox').append('<br><div>총 '+total+'회</div>');
+								$('#abox:last-child').addClass('bb');
 							}
 		    			};
 	 				
@@ -260,7 +261,7 @@
 					}
 
 					function updateabox(cho2, chodb2) {
-						$('#abox').css('display', 'block').html('').animate({'backgroundColor':'#55F'}, 100).animate({'backgroundColor':'#555'}, 100);
+						$('#abox').css('display', 'block').html('').animate({'backgroundColor':'#669'}, 100).animate({'backgroundColor':'#555'}, 100);
 						for(index in cho2) {
 							if(cho2[index]>0) 
 								$('#abox').append('<div>'+chodb2[index]+' : '+cho2[index]+"회</div>");
