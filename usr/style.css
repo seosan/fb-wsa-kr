@@ -87,7 +87,7 @@ body {
 }
 
 #abox div {
-	border-bottom:1px solid #FFF;
+	text-align: left;
 	margin:0px;
 	padding:0px;
 }
@@ -97,14 +97,17 @@ body {
 		text-align: center;
 		display: inline-block;
 		width:50px;
-		background-color: #222;
+		background-color: #449;
+		border-bottom:1px solid #FFF;
 	}
 	.graph {
 		padding: 0px 10px;
 		color:#222;
+		text-align: right;
 		display: inline-block;
 		background-color: #CCF;
 		width:10px;
+		border-bottom:1px solid #FFF;
 	}
 	.total {
 		border: 0px;
