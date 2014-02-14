@@ -163,6 +163,7 @@
 						for (index in chodb) {
 							cho[index] = 0;
 						}
+						var cho2;
 
 		 				function sendPosts(response) {
 		   					var tmpstring='';
@@ -202,13 +203,13 @@
 				         		//---------통계 끝---------
 				         		end = true; 
 								rotate();
-								$('#sharebutton').slideDown().animate({'backgroundColor':'#77F'}, 300).animate({'backgroundColor':'#33C'}, 400).click( function() { share(); });
+								$('#sharebutton').slideDown().animate({'backgroundColor':'#77F'}, 500).animate({'backgroundColor':'#449'}, 500).click( function() { share(); });
 								$('#atext').html('담벼락 불러오기 끝!').delay(800).slideUp();
 								var total=0;
 								for (index in cho2) {
 									total += cho2[index];
 								}
-								$('#abox').append('<br><div>총 '+total+'회</div>').last().addClass('bb');
+								$('#abox').append('<br><div class="bb">총 '+total+'회</div>');
 							}
 		    			};
 	 				
@@ -218,7 +219,7 @@
 							console.log('받음');
 							cho = data.anal;
 							chodb = data.anal2;
-							var cho2 = cho.slice(0);
+							cho2 = cho.slice(0);
 							var chodb2 = chodb.slice(0);
 							cho2.sort(function(a,b){return b-a});
 							for(index in cho2) {
