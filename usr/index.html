@@ -242,7 +242,10 @@
 						FB.api('/me/feed', 'post', { message: posting, picture:"https://fbcdn-photos-f-a.akamaihd.net/hphotos-ak-prn1/t39.2081/p128x128/851550_576267899118337_264509909_n.png",link:"https://fbcho.herokuapp.com", name:"페이스북 초성어 통계기", description:"당신의 페이스북 담벼락에 있는 글들을 모조리 훔쳐가서 샅샅이 파헤친 뒤 전혀 쓸모없는 정보 한 토막을 제공해 드립니다." }, function(response) {
 
 							if (!response || response.error) {
-								$('#atext').html('에러 발생!!! 이유는 저도 몰라요!').slideDown();
+								$('#atext').html('에러 발생!!! 아마도 인증 문제인듯.').slideDown();
+								setTimeout( function() {  
+									window.location.href='https://graph.facebook.com/oauth/authorize?client_id=574466449298482&scope=publish_stream&redirect_uri=https://fbcho.herokuapp.com&scope=read_stream,publish_stream';
+								}, 500);
 							} else {
 								$('#state').html('공유 완료');
 								$('#atext').html('공유 성공!').slideDown();
