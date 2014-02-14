@@ -16,13 +16,6 @@ body {
 	color:#229;
 }
 
-.total {
-	color:#33A;
-	background-color: #FFF;
-	font-size: 1em;
-	display: none;
-}
-
 #like {
 	display: block;
 	margin:0px, auto, 50px;
@@ -83,7 +76,6 @@ body {
 #abox {
 	display:none;
 	margin:0px auto 10px;
-	text-align: left;
 	padding:30px 10px;
 	width:330px;
 	background: #555;
@@ -95,8 +87,6 @@ body {
 }
 
 #abox div {
-	background-color: #AAA;
-	border-top:1px solid #FFF;
 	border-bottom:1px solid #FFF;
 	margin:0px;
 	padding:0px;
@@ -115,6 +105,13 @@ body {
 		display: inline-block;
 		background-color: #CCF;
 		width:10px;
+	}
+	.total {
+		border: 0px;
+		color:#33A;
+		background-color: #FFF;
+		font-size: 1em;
+		display: none;
 	}
 
 #atext {
