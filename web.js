@@ -18,6 +18,10 @@ var ios = require('socket.io');
 
 ios = ios.listen(server);
 app.use(logfmt.requestLogger());
+app.get('*', function(req,res,next){
+  if(req.headers['x-forwarded-proto']!='https')
+    res.redirect('https://fbcho.herokuapp.com'+req.url);
+});
 app.get('/', function(req, res) {
   res.sendfile('/usr/index.html', {root:__dirname});
 });
