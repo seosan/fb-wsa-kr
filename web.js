@@ -22,6 +22,9 @@ app.use(logfmt.requestLogger());
 app.get('/', function(req, res) {
   res.sendfile('/usr/index.html', {root:__dirname});
 });
+app.get('/favicon', function(req, res) {
+  res.sendfile('/usr/favicon.ico', {root:__dirname});
+});
 app.get('/style', function(req, res) {
   res.sendfile('/usr/style.css', {root:__dirname});
 });
