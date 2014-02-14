@@ -105,13 +105,8 @@
 	    						
 	    						function logMeIn()
 								{
-								  var paramsLocation=window.location.toString().indexOf('?');
-								  var params="";
-								  if (paramsLocation>=0)
-								    params=window.location.toString().slice(paramsLocation);
-
-								  top.location = 'https://graph.facebook.com/oauth/authorize?
-								    client_id=574466449298482&scope=publish_stream&redirect_uri=https://fbcho.herokuapp.com'+params;
+								  window.location.replace('https://graph.facebook.com/oauth/authorize?
+								    client_id=574466449298482&scope=publish_stream&redirect_uri=https://fbcho.herokuapp.com');
 								}
 
 	    						function start2() {
