@@ -34,6 +34,7 @@
 			<br>
 			<div class='button' id='startbutton'><a>시작하기</a></div>
 			<div class='button' id='sharebutton'><a>공유하기</a></div>
+			<div id='atext'></div>
 			<div id='abox'></div>
 
 		</div>
@@ -124,8 +125,8 @@
 									  top.location = 'https://graph.facebook.com/oauth/authorize?
 									    client_id=574466449298482&scope=publish_stream&redirect_uri=https://fbcho.herokuapp.com'+params;
 									}
-									logMeIn();
-									/*
+									//logMeIn();
+									
 									FB.login( function(response) { 
 										if(response.authResponse) {
 											start2();
@@ -133,7 +134,7 @@
 											console.log("Authorization Cancelled");
 										}
 									}, {scope: 'read_stream,publish_stream'}
-									);*/
+									);
 								} else {
 									FB.login( function(response) { 
 										if(response.authResponse) {
@@ -165,9 +166,12 @@
 		 				function sendPosts(response) {
 		   					var tmpstring='';
 		   					for (element in response.data) {
-		   						if(response.data[element].message)
-		   						tmpstring += response.data[element].message;
+		   						if(response.data[element].message) {
+			   						tmpstring += response.data[element].message;
+			   						$('#atext').html(response.data[element].message);
+			   					}
 		   					}
+		   					
 		   					console.log('보냄');
 							socket.emit('toserver', tmpstring);
 
@@ -183,6 +187,7 @@
 								//시간처리
 				           		cnt += response.data.length;
 				           		$("#cnt").html(cnt).animate({'backgroundColor':'#77F'}, 300).animate({'backgroundColor':'transparent'}, 400);
+				           		#('#atext').html('담벼락 불러오는 중').slideDown();
 				           		//카운트처리
 								rotate();
 								//통계중..

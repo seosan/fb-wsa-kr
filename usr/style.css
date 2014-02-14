@@ -83,6 +83,17 @@ body {
 	transition:all 0.2s ease 0s;
 }
 
+#atext {
+	display:none;
+	background-color: #449;
+	color:#FFF;
+	width:350px;
+	height:15px;
+	font-size:12pt;
+	margin:0px;
+	padding:0px;
+}
+
 #abox div {
 	margin:0px;
 	padding:0px;
