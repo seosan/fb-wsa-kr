@@ -90,7 +90,6 @@ body {
 	border-top : 2px solid #227;
 	border-bottom-left-radius: 6px;
 	border-bottom-right-radius: 6px;
-	color:#FFF;
 	font-weight: bold;
 	transition:all 0.2s ease 0s;
 }
@@ -101,11 +100,15 @@ body {
 }
 
 	.ct {
+		color:#FFF;
+		text-align: center;
 		display: inline-block;
 		width:50px;
 		background-color: #222;
 	}
 	.graph {
+		padding: 0px 10px;
+		color:#222;
 		display: inline-block;
 		background-color: #CCF;
 		width:15px;
