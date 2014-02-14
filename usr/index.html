@@ -40,13 +40,18 @@
 			<div class="fb-like" data-href="fbcho.herokuapp.com" data-width="400px" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
 		</div>
 		
-		<div id = 'footer'>건의사항<br>1890mah@gmail.com<br><br>copyright 2014 choijiwon</div>
+		<div id = 'footer'>건의사항은 1890mah@gmail.com / Copyright (c) 2014 choijiwon<br><br></div>
 
 	</div>
 
 
 
 		<script>
+			/*
+				S P A G H E T T I ! ! !
+				Y E A P ! ! ! ! ! ! ! !
+			*/
+
 			$(document).ready( function() {
 
 				(function(d, s, id) {
@@ -166,7 +171,7 @@
 			   					}
 		   					}
 		   					
-		   					console.log('보냄');
+		   					console.log('서버로 보냄');
 							socket.emit('toserver', tmpstring);
 
 						}
@@ -189,7 +194,7 @@
 			         			});
 
 			         			socket.emit('to2server');
-			         			console.log('리턴요청');
+			         			console.log('통계값 반환요청');
 
 				         	} else { 
 				         		//---------통계 끝---------
