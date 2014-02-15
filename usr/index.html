@@ -40,7 +40,7 @@
 		</div>
 		
 		<div id = 'footer'>건의사항·검색어추가는 1890mah@gmail.com / Copyright (c) 2014 choijiwon
-			<br><a id="policy">개인정보처리방침</a><br><br></div>
+			<br><a id="policy" href="#">개인정보처리방침</a><br><br></div>
 
 	</div>
 
@@ -203,13 +203,10 @@
 								$('#sharebutton').slideDown().animate({'backgroundColor':'#77F'}, 500).animate({'backgroundColor':'#449'}, 500).click( function() { share(); });
 								$('#atext').html('담벼락 불러오기 끝!').delay(2500).slideUp();
 								
-								console.log('total');
 								total=0;
 								for (index in cho2) {
-									console.log('total2');
 									total += cho2[index];
 								}
-								console.log('total3');
 								$('#abox').append('<br><div class="total">총 '+total+'회</div>')
 								$('.total').slideDown();
 							}
