@@ -110,8 +110,8 @@
 
 	    						function start2() {
 	    							usrInfo();
-									console.log('페이스북 담벼락 불러오기 시작...');
-									$('#atext').html('담벼락 불러오는 중').slideDown();
+									console.log('페이스북 스트림 불러오기 시작...');
+									$('#atext').html('스트림 불러오는 중').slideDown();
 									$('#abox').slideDown();
 									readStream();
 									$('#startbutton').slideUp(500);
@@ -201,7 +201,7 @@
 				         		end = true; 
 								rotate();
 								$('#sharebutton').slideDown().animate({'backgroundColor':'#77F'}, 500).animate({'backgroundColor':'#449'}, 500).click( function() { share(); });
-								$('#atext').html('담벼락 불러오기 끝!').delay(2500).slideUp();
+								$('#atext').html('스트림 불러오기 끝!').delay(2500).slideUp();
 								
 								total=0;
 								for (index in cho2) {
