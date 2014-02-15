@@ -17,6 +17,7 @@ body {
 }
 
 #bar {
+	z-index: 99;
 	position:fixed;
 	top:0px;
 	left:0px;
@@ -167,4 +168,17 @@ body {
 #footer {
 	font-size:9pt;
 	color:#444;
+}
+#footer a {
+	color:#444;
+	text-decoration: none;
+}
+
+#footer a:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+#footer a:active {
+	background-color: #449
 }

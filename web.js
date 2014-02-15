@@ -28,6 +28,9 @@ app.get('/favicon', function(req, res) {
 app.get('/style', function(req, res) {
   res.sendfile('/usr/style.css', {root:__dirname});
 });
+app.get('/policy', function(req, res) {
+  res.sendfile('/usr/policy.html', {root:__dirname});
+});
 app.get('/timeago', function(req, res) {
   res.sendfile('/usr/jquery.timeago.js', {root:__dirname});
 });

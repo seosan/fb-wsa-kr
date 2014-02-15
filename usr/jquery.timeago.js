@@ -47,7 +47,7 @@
         prefixFromNow: null,
         suffixAgo: "전",
         suffixFromNow: "바로 지금",
-        seconds: "수 초 전",
+        seconds: "수십 초 전",
         minute: "약 1분",
         minutes: "%d분",
         hour: "약 한 시간",
@@ -56,7 +56,7 @@
         days: "%d일",
         month: "약 한 달",
         months: "%d달",
-        year: "약 1 년",
+        year: "약 1년",
         years: "%d년",
         wordSeparator: " ",
         numbers: []

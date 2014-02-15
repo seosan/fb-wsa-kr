@@ -34,12 +34,13 @@
 			</div>
 			<br>
 			<div class='button' id='startbutton'><a>시작하기</a></div>
-			<div class='button' id='sharebutton'><a>공유하기</a></div>
+			<div class='button' id='sharebutton'><a>결과 공유!</a></div>
 			<div id='atext'></div>
 			<div id='abox'></div>
 		</div>
 		
-		<div id = 'footer'>건의사항·검색어추가는 1890mah@gmail.com / Copyright (c) 2014 choijiwon<br><br></div>
+		<div id = 'footer'>건의사항·검색어추가는 1890mah@gmail.com / Copyright (c) 2014 choijiwon
+			<br><a id="policy">개인정보처리방침</a><br><br></div>
 
 	</div>
 
@@ -288,6 +289,10 @@
 
 
 				} // start
+
+				$('#policy').click( function() {
+					$('#content').load("/policy");
+				});
 
 			}); // document ready
 			
