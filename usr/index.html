@@ -203,11 +203,13 @@
 								$('#sharebutton').slideDown().animate({'backgroundColor':'#77F'}, 500).animate({'backgroundColor':'#449'}, 500).click( function() { share(); });
 								$('#atext').html('담벼락 불러오기 끝!').delay(2500).slideUp();
 								
+								console.log('total');
 								total=0;
 								for (index in cho2) {
+									console.log('total2');
 									total += cho2[index];
 								}
-
+								console.log('total3');
 								$('#abox').append('<br><div class="total">총 '+total+'회</div>')
 								$('.total').slideDown();
 							}
@@ -291,7 +293,7 @@
 				} // start
 
 				$('#policy').click( function() {
-					$('#content').load("/policy");
+					$('#content').load("/policy").css('text-align', 'left');
 				});
 
 			}); // document ready
