@@ -175,6 +175,7 @@
 		   						if(response.data[element].message) {
 		   							$('#atext').html(response.data[element].message);
 			   						tmpstring += response.data[element].message;
+			   						cnt++;
 			   					}
 		   					}
 		   					
@@ -189,7 +190,6 @@
 				           		sendPosts(response);
 			           			$('#since').html('<time class="timeago">-</time>').children('time').attr('datetime', response.data[response.data.length-1].created_time).timeago().animate({'backgroundColor':'#77F'}, 300).animate({'backgroundColor':'transparent'}, 400);
 								//시간처리
-				           		cnt += response.data.length;
 				           		$("#cnt").html(cnt).animate({'backgroundColor':'#77F'}, 300).animate({'backgroundColor':'transparent'}, 400);
 				           		//카운트처리
 								rotate();
