@@ -76,6 +76,7 @@ body {
 		line-height: 15px;
 }
 	.dbline {
+		margin:10px auto;
 		font-family: '나눔고딕', '돋움';
 		display:block;
 		padding:0px;
