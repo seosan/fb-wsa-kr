@@ -147,8 +147,8 @@
 									$('#abox').slideDown();
 									
 									if(custum) {
-										$.merge(customdb, $(('.dbbox').value).toArray());
-										console.log($(('.dbbox').value).toArray());
+										$.merge(customdb, $('.dbbox').attr('value').toArray());
+										console.log($('.dbbox').attr('value').toArray());
 										console.log(customdb);
 										socket.emit('custom', customdb);
 									}
