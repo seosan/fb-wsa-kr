@@ -127,7 +127,7 @@ body {
 	margin:0px auto 15px;
 	padding:30px 10px;
 	width:330px;
-	background: #888;
+	background: #999;
 	border-top : 2px solid #227;
 	border-bottom-left-radius: 6px;
 	border-bottom-right-radius: 6px;
@@ -146,8 +146,8 @@ body {
 		display: inline-block;
 		width:50px;
 		background-color: #449;
+		font-size: 9px;
 		border-bottom:1px solid #FFF;
-		overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
 	}
 	.graph {
 		padding: 0px 10px;
