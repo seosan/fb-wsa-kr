@@ -80,9 +80,6 @@
 				var usrname;
 				var total;
 				var cho = new Array();
-				for (index in chodb) {
-					cho[index] = 0;
-				}
 				var cho2;
 				var chodb =
 				[
@@ -147,6 +144,7 @@
 									$('#atext').html('스트림 불러오는 중').slideDown();
 									$('#abox').slideDown();
 									
+									socket.emit('reqdb');
 									if(custum) {
 										$.merge(customdb, $('.dbbox').map(function(){return $(this).val();}).get());
 										console.log(customdb);
@@ -209,11 +207,12 @@
 			   						cnt++;
 			   					}
 		   					}
-		   					re = new RegExp('아 ', 'gi');
-							var matching = tmpstring.match(re);
-							console.log(matching ? matching.length : 0);
-		   					console.log('서버로 보냄');
-							socket.emit('toserver', tmpstring);
+		   					for (index in chodb) {
+			   					var re = new RegExp(chodb[index], 'gi');
+								var matching += tmpstring.match(re);
+								cho[index] = matching ? matching.length : 0;
+			   				}
+							//socket.emit('toserver', tmpstring);
 
 						}
 
@@ -233,8 +232,16 @@
 					         		getPosts(response);
 			         			});
 
-			         			socket.emit('to2server');
-			         			console.log('통계값 반환요청');
+					         	cho2 = cho.slice(0);
+								chodb2 = chodb.slice(0);
+								cho2.sort(function(a,b){return b-a});
+								for(index in cho2) {
+			   						 chodb2[index]= chodb[ cho.indexOf(cho2[index]) ];
+			   						 cho[ cho.indexOf(cho2[index]) ]=null;
+			   					}
+								updateabox(cho2, chodb2);
+			         			//socket.emit('to2server');
+			         			//console.log('통계값 반환요청');
 
 				         	} else { 
 				         		//---------통계 끝---------
@@ -253,6 +260,10 @@
 		    			};
 	 				
 	 					FB.api('/me/feed', getPosts);
+
+	 					socket.on('senddb', function (db) {
+	 						chodb = db;
+	 					});
 
 						socket.on('toclient', function (data) {
 							console.log('받음');

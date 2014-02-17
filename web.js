@@ -82,6 +82,9 @@ ios.sockets.on('connection', function(socket) {
 		}
 	});
 
+	socket.on('reqdb', function() {
+		socket.emit('senddb', chodb);
+	})
 	socket.on('to2server', function () {
 		socket.emit('toclient', {anal:cho, anal2:chodb} ); 
 	});
