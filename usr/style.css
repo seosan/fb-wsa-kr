@@ -145,8 +145,10 @@ body {
 		text-align: center;
 		display: inline-block;
 		width:50px;
+		height:25px;
 		background-color: #449;
-		font-size: 9px;
+		line-height: 25px;
+		font-size: 13px;
 		border-bottom:1px solid #FFF;
 	}
 	.graph {
@@ -156,6 +158,7 @@ body {
 		display: inline-block;
 		background-color: #CCF;
 		width:10px;
+		height:25px;
 		border-bottom:1px solid #FFF;
 	}
 	.total {
