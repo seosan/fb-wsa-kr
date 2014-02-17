@@ -61,6 +61,7 @@ ios.sockets.on('connection', function(socket) {
 	function search1(string, pos, index) {
 		if((chopos = string.indexOf(chodb[index], pos) ) != -1) {
 			cho[index]++;
+			string.replace(chodb[index], '');
 			search1(string, chopos+(chodb[index].length), index);
 		}
 	}
