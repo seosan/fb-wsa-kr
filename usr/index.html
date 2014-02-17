@@ -88,10 +88,12 @@
 					$('#adddb').slideDown();
 				});
 
-				$('.dbbutton').click(function() {
+				var c = function() {
 					$('.dbbutton').remove();
 					$('#adddb').append('<div class="dbline"><input type="text" class="dbbox" maxlength=16 value="검색어 추가"><div class="dbbutton"><a>＋</a></div></div>');
-				});
+					$('.dbbutton').click(c);
+				};
+				$('.dbbutton').click(c);
 
 
 				var cnt = 0;
