@@ -75,6 +75,16 @@
 
 			$(document).ready( function() {
 
+				$('input[type=text]').focus(function() {
+				      if($(this).val() == $(this).attr('defaultValue')) {
+				         $(this).val('');
+				      }
+				   })
+				   .blur(function() {
+				      if($(this).val().length == 0) {
+				         $(this).val($(this).attr('defaultValue'));
+				      }
+				   });
 				$('#startbutton').click(function() {
 					start();
 				} );
