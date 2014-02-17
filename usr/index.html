@@ -48,6 +48,11 @@
 					<br><div id='state'>통계 중...―</div></div>
 				<div class="fb-like" data-href="http://fbcho.herokuapp.com" data-width="200px" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
 			</div>
+			<div id="adddb">
+				<div class="dbline">
+					<div class="dbbox"><div><div class="dbbutton">+</div>
+				</div>
+			</div>
 			<br>
 			<div class='button' id='startbutton'><a>시작하기</a></div>
 			<div class='button' id='sharebutton'><a>결과 공유!</a></div>
@@ -73,6 +78,12 @@
 				$('#startbutton').click(function() {
 					start();
 				} );
+
+				$('.dbbutton').click(function() {
+					$('adddb').append('<div class="dbline">
+					<div class="dbbox"><div><div class="dbbutton">+</div>
+				</div>');
+				});
 
 
 				var cnt = 0;

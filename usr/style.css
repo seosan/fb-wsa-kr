@@ -69,6 +69,32 @@ body {
 			display:none;
 		}
 
+#adddb {
+		margin:10px auto;
+		width:145px;
+}
+	.dbline {
+		display:block;
+		padding:0px;
+	}
+		.dbbox {
+			display:inline;
+			background-color: #AAC;
+			border-radius: 5px;
+			height:15px;
+			width: 130px;
+			line-height: 15px;
+			font-size: 13px;
+		}
+		.dbbutton {
+			width:15px;
+			height:15px;
+			font:bold 14px;
+			display:inline;
+		}
+		
+
+
 
 #abox {
 	display:none;
