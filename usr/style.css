@@ -81,7 +81,8 @@ body {
 		.dbbox {
 			display:inline;
 			background-color: #AAC;
-			border-radius: 5px;
+			border:none;
+			border-radius: 7px;
 			height:15px;
 			width: 130px;
 			line-height: 15px;
