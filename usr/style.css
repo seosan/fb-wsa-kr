@@ -127,7 +127,7 @@ body {
 	margin:0px auto 15px;
 	padding:30px 10px;
 	width:330px;
-	background: #999;
+	background: #DDF;
 	border-top : 2px solid #227;
 	border-bottom-left-radius: 6px;
 	border-bottom-right-radius: 6px;
@@ -145,11 +145,9 @@ body {
 		text-align: center;
 		display: inline-block;
 		width:50px;
-		height:25px;
 		background-color: #449;
 		line-height: 25px;
 		font-size: 13px;
-		overflow:hidden;text-overflow:clip;white-space:nowrap;
 		border-bottom:1px solid #FFF;
 	}
 	.graph {
@@ -157,7 +155,7 @@ body {
 		color:#222;
 		text-align: right;
 		display: inline-block;
-		background-color: #CCF;
+		background-color: #AAD;
 		width:10px;
 		height:25px;
 		border-bottom:1px solid #FFF;
