@@ -89,11 +89,19 @@ body {
 		line-height: 15px;
 	}
 		.dbbox {
-			display:inline;
+			color:#FFF;
+			background-color: #AAC;
+			border:none;
+			border-radius: 7px;
+			height:15px;
+			width: 160px;
+			font-size: 13px;
+			line-height: 15px;
 			padding:0px 10px;
 			
 		}
 		.dbbutton {
+			border-radius: 7px;
 			border:1px solid #CCF;
 			display:inline;
 			width:15px;
