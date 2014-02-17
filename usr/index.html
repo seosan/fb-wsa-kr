@@ -148,7 +148,6 @@
 									
 									if(custum) {
 										$.merge(customdb, $('.dbbox').map(function(){return $(this).val();}).get());
-										});
 										console.log(customdb);
 										socket.emit('custom', customdb);
 									}
