@@ -61,13 +61,16 @@ ios.sockets.on('connection', function(socket) {
 	function search1(string, pos, index) {
 		if((chopos = string.indexOf(chodb[index], pos) ) != -1) {
 			cho[index]++;
-			string.replace(chodb[index], '');
+			//string.replace(chodb[index], '');
 			search1(string, chopos+(chodb[index].length), index);
 		}
 	}
 	socket.on('custom', function (cusdb) {
 		for(var i=0; cusdb[i]; i++)
 			chodb.push(cusdb[i]);
+		for (index in chodb) {
+			cho[index] = 0;
+		}
 	});
 	socket.on('toserver', function (string) {
 		for (index in chodb) {
