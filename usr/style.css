@@ -71,28 +71,41 @@ body {
 
 #adddb {
 		margin:10px auto;
-		width:145px;
+		width:175px;
 		display:none;
+		color:#444;
 }
 	.dbline {
+		font-family: '나눔고딕', '돋움';
 		display:block;
 		padding:0px;
 	}
 		.dbbox {
 			display:inline;
+			padding:0px 10px;
 			background-color: #AAC;
 			border:none;
 			border-radius: 7px;
 			height:15px;
-			width: 130px;
+			width: 160px;
 			line-height: 15px;
 			font-size: 13px;
 		}
 		.dbbutton {
+			background-color: #338;
+			border-radius: 7px;
 			display:inline;
 			width:15px;
 			height:15px;
 			font:bold 14px;
+		}
+		.dbbutton:hover {
+			background-color: #66B;
+			transition:all 0.2s ease 0s;
+		}
+		.dbbutton:active {
+			background-color: #555;
+			color:#FFF;
 		}
 		
 
@@ -108,7 +121,6 @@ body {
 	border-bottom-left-radius: 6px;
 	border-bottom-right-radius: 6px;
 	font-weight: bold;
-	transition:all 0.2s ease 0s;
 }
 
 #abox div {
@@ -208,5 +220,5 @@ body {
 }
 
 #footer a:active {
-	background-color: #449
+	background-color: #449;
 }
