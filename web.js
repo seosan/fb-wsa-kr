@@ -50,7 +50,7 @@ ios.sockets.on('connection', function(socket) {
 	
 	var chodb =
 	[
-		'ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㅂ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅎ', 'ㄳ', 'ㅄ', 'ㅗ', 'ㅠ', '盧', '?', '!', ';', 'ㅡㅡ', '^^', '^~^', '^0^', '^오^' // 'ㅅㄱ', 'ㅈㅅ', 'ㅅㅂ', 'ㅈㄹ', 'ㅇㅅㅇ'
+		'node.js', 'e.j', 'ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㅂ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅎ', 'ㄳ', 'ㅄ', 'ㅗ', 'ㅠ', '盧', '?', '!', ';', 'ㅡㅡ', '^^', '^~^', '^0^', '^오^' // 'ㅅㄱ', 'ㅈㅅ', 'ㅅㅂ', 'ㅈㄹ', 'ㅇㅅㅇ'
 	];
 	var cho = new Array();
 	for (index in chodb) {
@@ -65,6 +65,10 @@ ios.sockets.on('connection', function(socket) {
 			search1(string, chopos+(chodb[index].length), index);
 		}
 	}
+	socket.on('custom', function (cusdb) {
+		for(var i=0; cusdb[i]; i++)
+			chodb.push(cusdb[i]);
+	});
 	socket.on('toserver', function (string) {
 		for (index in chodb) {
 			search1(string, 0, index);

@@ -51,7 +51,7 @@
 			<br>
 			<div id="adddb">
 				<div class="dbline">
-					<input type="text" class="dbbox" maxlength=16 value="검색어 추가"><div class="dbbutton" onFocus="clearText(this)"><a>＋</a></div>
+					<input type="text" class="dbbox" maxlength=16><div class="dbbutton"><a>＋</a></div>
 				</div>
 			</div>
 			<div class='button' id='startbutton'><a>시작하기</a></div>
@@ -75,38 +75,6 @@
 
 			$(document).ready( function() {
 
-				$('input[type=text]').focus(function() {
-				      if($(this).val() == $(this).attr('defaultValue')) {
-				         $(this).val('');
-				      }
-				   })
-				   .blur(function() {
-				      if($(this).val().length == 0) {
-				         $(this).val($(this).attr('defaultValue'));
-				      }
-				   });
-				$('#startbutton').click(function() {
-					start();
-				} );
-
-				$('#policy').click( function() {
-					$('#content').load("/policy").css('text-align', 'left');
-				});
-
-				$('#tt').click( function() {
-					console.log("open")
-					$('#adddb').slideDown();
-				});
-
-				var c = function() {
-					$('.dbbutton').remove();
-					$('#adddb').append('<div class="dbline"><input type="text" class="dbbox" maxlength=16 value="검색어 추가" onFocus="clearText(this)"><div class="dbbutton"><a>＋</a></div></div>')
-
-					$('.dbbutton').click(c);
-				};
-				$('.dbbutton').click(c);
-
-
 				var cnt = 0;
 				var usrname;
 				var total;
@@ -120,8 +88,32 @@
 					'node.js', 'e.j', 'ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㅂ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅎ', 'ㄳ', 'ㅄ', 'ㅗ', 'ㅠ', '盧', '?', '!', ';', 'ㅡㅡ', '^^', '^~^', '^0^', '^오^'
 				];
 				var chodb2;
+				var customdb;
+				var custum=false;
 
 				var end = false;
+
+				$('#startbutton').click(function() {
+					start();
+				} );
+
+				$('#policy').click( function() {
+					$('#content').load("/policy").css('text-align', 'left');
+				});
+
+				$('#tt').click( function() {
+					console.log("open")
+					$('#adddb').slideDown();
+					custum=true;
+				});
+
+				var c = function() {
+					$('.dbbutton').remove();
+					$('#adddb').append('<div class="dbline"><input type="text" class="dbbox" maxlength=16><div class="dbbutton"><a>＋</a></div></div>');
+					$('.dbbutton').click(c);
+				};
+				$('.dbbutton').click(c);
+
 				//------------ 검출기 ----------------
 				function start() {
 
@@ -153,6 +145,16 @@
 									console.log('페이스북 스트림 불러오기 시작...');
 									$('#atext').html('스트림 불러오는 중').slideDown();
 									$('#abox').slideDown();
+									
+									if(custum) {
+										$('.dbbox').each( function(i, obj) {
+											if(obj[i].value.length!=0) {
+												$.merge(customdb, [obj[i].value]);
+											}
+										});
+										socket.emit('custom', custumdb);
+									}
+
 									readStream();
 									$('#startbutton').slideUp(500);
 									$('#board').css('display', 'block').children().css('display', 'inline');
@@ -200,8 +202,6 @@
 	 				}
 					
 					function readStream() {
-		 				
-
 		 				function sendPosts(response) {
 		   					var tmpstring='';
 		   					for (element in response.data) {
