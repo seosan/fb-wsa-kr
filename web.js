@@ -74,11 +74,11 @@ ios.sockets.on('connection', function(socket) {
 	});
 	socket.on('toserver', function (string) {
 		for (index in chodb) {
-			//search1(string, 0, index);
-			var re = new RegExp(chodb[index], 'gi');
+			search1(string, 0, index);
+			/*var re = new RegExp(chodb[index], 'gi');
 			var matching = string.match(re);
 			cho[index]+=matching ? matching.length : 0;
-			string.replace(re, '');
+			string.replace(re, '');*/
 		}
 	});
 
