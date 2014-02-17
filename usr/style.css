@@ -149,6 +149,7 @@ body {
 		background-color: #449;
 		line-height: 25px;
 		font-size: 13px;
+		overflow:hidden;text-overflow:clip;white-space:nowrap;
 		border-bottom:1px solid #FFF;
 	}
 	.graph {
