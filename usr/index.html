@@ -85,7 +85,7 @@
 				var cho2;
 				var chodb =
 				[
-					'node.js', 'e.j', 'ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㅂ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅎ', 'ㄳ', 'ㅄ', 'ㅗ', 'ㅠ', '盧', '?', '!', ';', 'ㅡㅡ', '^^', '^~^', '^0^', '^오^'
+					/*'ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㅂ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅎ', 'ㄳ', 'ㅄ', 'ㅗ', 'ㅠ', '盧', '?', '!', ';', 'ㅡㅡ', '^^', '^~^', '^0^', '^오^' */
 				];
 				var chodb2;
 				var customdb=[];
@@ -147,11 +147,7 @@
 									$('#abox').slideDown();
 									
 									if(custum) {
-										$('.dbbox').each( function() {
-											if(this.length!=0) {
-												customdb.push(this);
-											}
-										});
+										$.merge(customdb, $('.dbbox').toArray());
 										console.log(customdb);
 										socket.emit('custom', customdb);
 									}
