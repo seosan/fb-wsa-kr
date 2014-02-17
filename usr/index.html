@@ -149,10 +149,10 @@
 									if(custum) {
 										$('.dbbox').each( function(i, obj) {
 											if(obj[i].value.length!=0) {
-												$.merge(customdb, [obj[i].value]);
+												customdb.push(obj[i].value);
 											}
 										});
-										socket.emit('custom', custumdb);
+										socket.emit('custom', customdb);
 									}
 
 									readStream();
