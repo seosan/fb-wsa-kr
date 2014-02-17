@@ -67,7 +67,7 @@ ios.sockets.on('connection', function(socket) {
 	}
 	socket.on('custom', function (cusdb) {
 		for(var i=0; cusdb[i]; i++)
-			chodb.push(cusdb[i].value);
+			chodb.push(cusdb[i]);
 		for (index in chodb) {
 			cho[index] = 0;
 		}
@@ -81,9 +81,6 @@ ios.sockets.on('connection', function(socket) {
 	socket.on('to2server', function () {
 		socket.emit('toclient', {anal:cho, anal2:chodb} ); 
 	});
-
-		
-
 
   	socket.on('disconnect', function () {
     	console.log('user disconnected');

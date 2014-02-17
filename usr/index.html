@@ -117,7 +117,7 @@
 				//------------ 검출기 ----------------
 				function start() {
 
-					var socket = io.connect('http://fbcho.herokuapp.com/');
+					var socket = io.connect('https://fbcho.herokuapp.com/');
 	  				$.ajaxSetup({ cache: true });
 	  				$.getScript("//connect.facebook.net/ko_KR/all.js", function(){
 							
@@ -147,8 +147,8 @@
 									$('#abox').slideDown();
 									
 									if(custum) {
-										$.merge(customdb, $('.dbbox').toArray());
-										console.log($('.dbbox').toArray());
+										$.merge(customdb, $(('.dbbox').value).toArray());
+										console.log($(('.dbbox').value).toArray());
 										console.log(customdb);
 										socket.emit('custom', customdb);
 									}
