@@ -57,17 +57,25 @@ ios.sockets.on('connection', function(socket) {
 		cho[index] = 0;
 	}
 
-	function search1(string, index) {
-		cho[index]=string.match(/chodb[index]/gi).length;
-		string.replace(/chodb[index]/gi, '');
+	var chopos;
+	function search1(string, pos, index) {
+		if((chopos = string.indexOf(chodb[index], pos) ) != -1) {
+			cho[index]++;
+			search1(string, chopos+(chodb[index].length), index);
+		}
+		//cho[index]=string.match(/chodb[index]/gi).length;
+		string.replace(/chodb[index]/g, '');
 	}
 	socket.on('custom', function (cusdb) {
 		for(var i=0; cusdb[i]; i++)
 			chodb.push(cusdb[i]);
+		for (index in chodb) {
+			cho[index] = 0;
+		}
 	});
 	socket.on('toserver', function (string) {
 		for (index in chodb) {
-			search1(string, index);
+			search1(string, 0, index);
 		}
 	});
 
