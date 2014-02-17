@@ -52,7 +52,7 @@
 			<div id="adddb">
 				이 기능은 현재 구현중입니다.
 				<div class="dbline">
-					<input type="text" class="dbbox" maxlength=16><div class="dbbutton"><a>＋</a></div>
+					<input type="text" class="dbbox" maxlength=12><div class="dbbutton"><a>＋</a></div>
 				</div>
 			</div>
 			<div class='button' id='startbutton'><a>시작하기</a></div>
@@ -104,7 +104,7 @@
 
 				var c = function() {
 					$('.dbbutton').remove();
-					$('#adddb').append('<div class="dbline"><input type="text" class="dbbox" maxlength=16><div class="dbbutton"><a>＋</a></div></div>');
+					$('#adddb').append('<div class="dbline"><input type="text" class="dbbox" maxlength=12><div class="dbbutton"><a>＋</a></div></div>');
 					$('.dbbutton').click(c);
 				};
 				$('.dbbutton').click(c);
