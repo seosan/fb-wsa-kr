@@ -205,7 +205,7 @@
 		   					for (element in response.data) {
 		   						if(response.data[element].message) {
 		   							re = new RegExp('node.js', 'gi');
-									var matching = string.match(re);
+									var matching = response.data[element].message.match(re);
 									console.log(matching ? matching.length : 0);
 		   							$('#atext').html(response.data[element].message);
 			   						tmpstring += response.data[element].message;
