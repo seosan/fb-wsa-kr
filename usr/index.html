@@ -144,7 +144,7 @@
 									$('#atext').html('스트림 불러오는 중').slideDown();
 									$('#abox').slideDown();
 									
-									socket.emit('reqdb');
+									//socket.emit('reqdb');
 									if(custum) {
 										$.merge(customdb, $('.dbbox').map(function(){return $(this).val();}).get());
 										console.log(customdb);
@@ -207,13 +207,7 @@
 			   						cnt++;
 			   					}
 		   					}
-		   					for (index in chodb) {
-		   						var re = new RegExp('chodb[index]', 'gi');
-								var matching = tmpstring.match(re);
-								console.log(matching);
-								cho[index] = matching ? matching.length : 0;
-			   				}
-							//socket.emit('toserver', tmpstring);
+							socket.emit('toserver', tmpstring);
 
 						}
 
@@ -233,16 +227,9 @@
 					         		getPosts(response);
 			         			});
 
-					         	cho2 = cho.slice(0);
-								chodb2 = chodb.slice(0);
-								cho2.sort(function(a,b){return b-a});
-								for(index in cho2) {
-			   						 chodb2[index]= chodb[ cho.indexOf(cho2[index]) ];
-			   						 cho[ cho.indexOf(cho2[index]) ]=null;
-			   					}
-								updateabox(cho2, chodb2);
-			         			//socket.emit('to2server');
-			         			//console.log('통계값 반환요청');
+					         	
+			         			socket.emit('to2server');
+			         			console.log('통계값 반환요청');
 
 				         	} else { 
 				         		//---------통계 끝---------
