@@ -97,9 +97,8 @@ body {
 		.dbbox {
 			display:inline;
 			color:#FFF;
-			background-color: #DDF;
 			border:none;
-			border-radius: 2px;
+			border-left: 1px solid #444;
 			height:15px;
 			width: 160px;
 			font-size: 13px;
@@ -168,7 +167,7 @@ body {
 		border-bottom:1px solid #FFF;
 	}
 	.total {
-		color:#FFF;
+		color:#449;
 		font-size: 1.5em;
 		display: none;
 	}
