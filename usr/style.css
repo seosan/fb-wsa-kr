@@ -89,6 +89,7 @@ body {
 		line-height: 15px;
 	}
 		.dbbox {
+			display:inline;
 			color:#FFF;
 			background-color: #AAC;
 			border:none;
@@ -106,7 +107,7 @@ body {
 			display:inline;
 			line-height: 13px;
 			width:15px;
-			height:13px;
+			height:1px;
 			font:bold 14px;
 		}
 		.dbbutton:hover {
