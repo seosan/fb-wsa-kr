@@ -88,10 +88,10 @@ body {
 			font-size: 13px;
 		}
 		.dbbutton {
+			display:inline;
 			width:15px;
 			height:15px;
 			font:bold 14px;
-			display:inline;
 		}
 		
 
