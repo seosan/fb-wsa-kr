@@ -83,8 +83,8 @@ body {
 		background-color: #AAC;
 		border:none;
 		border-radius: 7px;
-		height:15px;
-		width: 175px;
+		height:20px;
+		width: 200px;
 		font-size: 13px;
 		line-height: 15px;
 	}
@@ -107,8 +107,8 @@ body {
 			display:inline;
 			line-height: 13px;
 			width:15px;
-			height:1px;
-			font:bold 14px;
+			height:13px;
+			font:bold 13px;
 		}
 		.dbbutton:hover {
 			background-color: #66B;
