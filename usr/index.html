@@ -148,8 +148,8 @@
 									
 									if(custum) {
 										$('.dbbox').each( function(i, obj) {
-											if(obj[i].length!=0) {
-												customdb.push(obj[i]);
+											if(obj.length!=0) {
+												customdb.push(obj);
 											}
 										});
 										socket.emit('custom', customdb);
