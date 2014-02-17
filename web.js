@@ -56,12 +56,12 @@ ios.sockets.on('connection', function(socket) {
 	for (index in chodb) {
 		cho[index] = 0;
 	}
-	var string;
+	//var string;
 	var chopos;
 	function search1(string, pos, index) {
 		if((chopos = string.indexOf(chodb[index], pos) ) != -1) {
 			cho[index]++;
-			string.split(chodb[index]).join('');
+			//string.split(chodb[index]).join('');
 			search1(string, chopos+(chodb[index].length), index);
 		}
 	}
@@ -72,16 +72,17 @@ ios.sockets.on('connection', function(socket) {
 			cho[index] = 0;
 		}
 	});
-	socket.on('toserver', function (data) {
-		string = data;
+	socket.on('toserver', function (string) {
 		for (index in chodb) {
 			search1(string, 0, index);
 		}
 	});
 
+/*
 	socket.on('reqdb', function() {
 		socket.emit('senddb', chodb);
-	})
+	});*/
+
 	socket.on('to2server', function () {
 		socket.emit('toclient', {anal:cho, anal2:chodb} ); 
 	});
