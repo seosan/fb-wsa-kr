@@ -40,7 +40,7 @@
 				<br> <div id='userirm'>당신</div>의 스트림 포스팅을 분석해
 				<br>초성어 뿐만 아니라 잡다한 사용 통계를 내주는
 				<br>매우 유용하기 짝이 없는 서비스입니다.
-				<br><em>개수 버그 수정됨</em>
+				<br><em></em>
 				<br><br>
 				<div id='board'>
 					<div id='since' class='bb'><time class='timeago'>지금</time></div>부터
@@ -204,15 +204,14 @@
 		   					var tmpstring='';
 		   					for (element in response.data) {
 		   						if(response.data[element].message) {
-		   							re = new RegExp('node.js', 'gi');
-									var matching = response.data[element].message.match(re);
-									console.log(matching ? matching.length : 0);
 		   							$('#atext').html(response.data[element].message);
 			   						tmpstring += response.data[element].message;
 			   						cnt++;
 			   					}
 		   					}
-		   					
+		   					re = new RegExp('아 ', 'gi');
+							var matching = tmpstring.match(re);
+							console.log(matching ? matching.length : 0);
 		   					console.log('서버로 보냄');
 							socket.emit('toserver', tmpstring);
 

@@ -59,14 +59,14 @@ ios.sockets.on('connection', function(socket) {
 
 	var chopos;
 	function search1(string, pos, index) {
-		if((chopos = string.indexOf(chodb[index], pos) ) != -1) {
+		/*if((chopos = string.indexOf(chodb[index], pos) ) != -1) {
 			cho[index]++;
 			search1(string, chopos+(chodb[index].length), index);
-		}
-		/*re = new RegExp(chodb[index], 'gi');
+		}*/
+		re = new RegExp(chodb[index], 'gi');
 		var matching = string.match(re);
-		cho[index]=matching ? matching.length : 0;
-		string.replace(re, '');*/
+		cho[index]+=matching ? matching.length : 0;
+		string.replace(re, '');
 	}
 	socket.on('custom', function (cusdb) {
 		for(var i=0; cusdb[i]; i++)
