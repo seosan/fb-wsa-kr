@@ -96,8 +96,9 @@ body {
 	}
 		.dbbox {
 			display:inline;
-			color:#AAC;
+			color:#FFF;
 			border:none;
+			background-color: #AAC;
 			border-left: 1px solid #444;
 			height:15px;
 			margin:0px 4px 0px 0px;
