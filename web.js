@@ -63,8 +63,8 @@ ios.sockets.on('connection', function(socket) {
 			cho[index]++;
 			search1(string, chopos+(chodb[index].length), index);
 		}
-		re = /chodb[index]/ig;
-		cho[index]=re.exec(string).length;
+		//re = /chodb[index]/ig;
+		//cho[index]=re.exec(string).length;
 		string.replace(/chodb[index]/ig, '');
 	}
 	socket.on('custom', function (cusdb) {
