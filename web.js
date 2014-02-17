@@ -61,6 +61,7 @@ ios.sockets.on('connection', function(socket) {
 	function search1(string, pos, index) {
 		if((chopos = string.indexOf(chodb[index], pos) ) != -1) {
 			cho[index]++;
+			string.split(chodb[index]).join('');
 			search1(string, chopos+(chodb[index].length), index);
 		}
 		
@@ -75,11 +76,6 @@ ios.sockets.on('connection', function(socket) {
 	socket.on('toserver', function (string) {
 		for (index in chodb) {
 			search1(string, 0, index);
-			/*for(var i=0; cho[index]; i++) {
-				if((chopos = string.indexOf(chodb[index], pos) ) != -1) {
-					//string=string.substring(0, chopos).comcat(string.substring(chopos+chodb.length));
-				}
-			}*/
 		}
 	});
 
