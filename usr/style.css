@@ -100,7 +100,8 @@ body {
 			border:none;
 			border-left: 1px solid #444;
 			height:15px;
-			width: 160px;
+			margin:0px 4px 0px 0px;
+			width: 150px;
 			font-size: 13px;
 			line-height: 15px;
 			padding:0px 10px;
