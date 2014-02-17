@@ -210,6 +210,7 @@
 		   					for (index in chodb) {
 		   						var re = new RegExp('chodb[index]', 'gi');
 								var matching = tmpstring.match(re);
+								console.log(matching);
 								cho[index] = matching ? matching.length : 0;
 			   				}
 							//socket.emit('toserver', tmpstring);
