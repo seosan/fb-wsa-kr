@@ -147,6 +147,7 @@ body {
 		width:50px;
 		background-color: #449;
 		border-bottom:1px solid #FFF;
+		overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
 	}
 	.graph {
 		padding: 0px 10px;
