@@ -2,18 +2,18 @@
 <html>
 	<head>
 		<meta charset = "utf-8">
-		<title>페이스북 초성어 통계기 beta</title>
+		<title>페이스북 어휘 통계기 beta</title>
 		<link rel="shortcut icon" href="/favicon">
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 		<script src="https://code.jquery.com/color/jquery.color-2.1.0.min.js"></script>
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="/timeago"></script>
 
-		<meta property="og:title" content="페이스북 초성어 통계기" />
+		<meta property="og:title" content="페이스북 어휘 통계기" />
 	    <meta property="og:type" content="website" />
 	    <meta property="og:image" content="https://fbcdn-photos-f-a.akamaihd.net/hphotos-ak-prn1/t39.2081/p128x128/851550_576267899118337_264509909_n.png" />
 	    <meta property="og:url" content="http://fbcho.herokuapp.com" />
-	    <meta property="og:site_name" content="페이스북 초성어 통계기" />
+	    <meta property="og:site_name" content="페이스북 어휘 통계기" />
 	    <meta property="og:description" content="당신의 페이스북 담벼락에 있는 글들을 모조리 훔쳐가서 샅샅이 파헤친 뒤 전혀 쓸모없는 정보 한 토막을 제공해 드립니다." />
 	    <meta property="fb:app_id" content="574466449298482" />
 
@@ -30,27 +30,28 @@
 				  fjs.parentNode.insertBefore(js, fjs);
 				}(document, 'script', 'facebook-jssdk'));
 		</script>
-		<div id="bar"><a href="#"><strong>페이스북 초성어 통계기</strong></a></div>
+		<div id="bar"><a href="#"><strong>페이스북 어휘 통계기</strong></a></div>
 		
 		<div id = "content">
 			<div id="intro">
 				<div style='font-style:italic; font-size:20px;' class='bb'>어서오세요</div>
 				<br>
-				<div class='bb'>페이스북 초성어 통계기</div>는
+				<div class='bb'>페이스북 어휘 통계기</div>는
 				<br> <div id='userirm'>당신</div>의 스트림 포스팅을 분석해
-				<br>초성어 뿐만 아니라 잡다한 사용 통계를 내주는
+				<br>초성이나 기호 등 잡다한 사용 통계를 내주는
 				<br>매우 유용하기 짝이 없는 서비스입니다.
 				<br><em>공사중</em>
-				<br><br>
+				<br><div class="fb-like" data-href="http://fbcho.herokuapp.com" data-width="200px" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+				<br>현재 검색어 DB에는 초성어와 일부 한자, 기호 이모티콘 등 총 33개가 기본 등록되어 있으며 바로 아래의 텍스트 입력 폼에 사용자 지정 검색어(12자 이내)를 별도로 추가할 수 있습니다. 통계가 끝나면 결과를 담벼락에 공유할 수 있습니다.
+				<br> 
 				<div id='board'>
 					<div id='since' class='bb'><time class='timeago'>지금</time></div>부터
 					<br>총 <div id='cnt' class='bb'>0</div>개 글
-					<br><div id='state'>통계 중...―</div></div>
-				<div class="fb-like" data-href="http://fbcho.herokuapp.com" data-width="200px" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+					<br><div id='state'>통계 중...―</div>
+				</div>
 			</div>
 			<br>
 			<div id="adddb">
-				이 기능은 현재 구현중입니다.
 				<div class="dbline">
 					<input type="text" class="dbbox" maxlength=12><div class="dbbutton"><a>＋</a></div>
 				</div>
@@ -89,6 +90,7 @@
 				var end = false;
 
 				$('#startbutton').click(function() {
+					$('#adddb').slideUp();
 					start();
 				} );
 
@@ -97,7 +99,6 @@
 				});
 
 				$('#tt').click( function() {
-					console.log("open")
 					$('#adddb').slideDown();
 					custum=true;
 				});

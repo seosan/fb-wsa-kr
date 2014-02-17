@@ -114,6 +114,7 @@ body {
 		.dbbutton:hover {
 			background-color: #66B;
 			transition:all 0.2s ease 0s;
+			cursor:pointer;
 		}
 		.dbbutton:active {
 			background-color: #555;
