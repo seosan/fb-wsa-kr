@@ -56,13 +56,12 @@ ios.sockets.on('connection', function(socket) {
 	for (index in chodb) {
 		cho[index] = 0;
 	}
-	var string;
+
 	var chopos;
-	function search1(pos, index) {
+	function search1(string, pos, index) {
 		if((chopos = string.indexOf(chodb[index], pos) ) != -1) {
 			cho[index]++;
-			//string = string.substring(0, chopos).concat(string.substring(chopos));
-			search1(chopos, index);
+			search1(string, chopos+(chodb[index].length), index);
 		}
 		
 	}
@@ -73,10 +72,9 @@ ios.sockets.on('connection', function(socket) {
 			cho[index] = 0;
 		}
 	});
-	socket.on('toserver', function (data) {
-		string = data;
+	socket.on('toserver', function (string) {
 		for (index in chodb) {
-			search1(0, index);
+			search1(string, 0, index);
 			/*var re = new RegExp(chodb[index], 'gi');
 			var matching = string.match(re);
 			cho[index]+=matching ? matching.length : 0;
