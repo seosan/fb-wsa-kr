@@ -208,7 +208,7 @@
 			   					}
 		   					}
 		   					for (index in chodb) {
-		   						var re = new RegExp((chodb[index]), 'gi');
+		   						var re = new RegExp('chodb[index]', 'gi');
 								var matching = tmpstring.match(re);
 								cho[index] = matching ? matching.length : 0;
 			   				}
