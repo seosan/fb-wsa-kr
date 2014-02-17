@@ -77,7 +77,7 @@ ios.sockets.on('connection', function(socket) {
 			search1(string, 0, index);
 			for(var i=0; cho[index]; i++) {
 				if((chopos = string.indexOf(chodb[index], pos) ) != -1) {
-					string=string.substring(0, chopos).comcat(string.substring(chopos+chodb.length));
+					//string=string.substring(0, chopos).comcat(string.substring(chopos+chodb.length));
 				}
 			}
 		}
