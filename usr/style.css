@@ -104,8 +104,9 @@ body {
 			border-radius: 7px;
 			border:1px solid #CCF;
 			display:inline;
+			line-height: 13px;
 			width:15px;
-			height:15px;
+			height:13px;
 			font:bold 14px;
 		}
 		.dbbutton:hover {
