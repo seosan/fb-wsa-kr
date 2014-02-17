@@ -67,7 +67,7 @@ ios.sockets.on('connection', function(socket) {
 	}
 	socket.on('custom', function (cusdb) {
 		for(var i=0; cusdb[i]; i++)
-			chodb.push(cusdb[i]);
+			chodb.push(cusdb[i].value);
 		for (index in chodb) {
 			cho[index] = 0;
 		}
