@@ -75,10 +75,11 @@ ios.sockets.on('connection', function(socket) {
 	socket.on('toserver', function (string) {
 		for (index in chodb) {
 			search1(string, 0, index);
-			/*var re = new RegExp(chodb[index], 'gi');
-			var matching = string.match(re);
-			cho[index]+=matching ? matching.length : 0;
-			string.replace(re, '');*/
+			for(var i=0; cho[index]; i++) {
+				if((chopos = string.indexOf(chodb[index], pos) ) != -1) {
+					string=string.substring(0, chopos).comcat(string.substring(chopos+chodb.length));
+				}
+			}
 		}
 	});
 
