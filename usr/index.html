@@ -88,7 +88,7 @@
 					'node.js', 'e.j', 'ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㅂ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅎ', 'ㄳ', 'ㅄ', 'ㅗ', 'ㅠ', '盧', '?', '!', ';', 'ㅡㅡ', '^^', '^~^', '^0^', '^오^'
 				];
 				var chodb2;
-				var customdb;
+				var customdb=[];
 				var custum=false;
 
 				var end = false;
@@ -147,9 +147,9 @@
 									$('#abox').slideDown();
 									
 									if(custum) {
-										$('.dbbox').each( function(i, obj) {
-											if(obj.length!=0) {
-												customdb.push(obj);
+										$('.dbbox').each( function() {
+											if(this.length!=0) {
+												customdb.push(this);
 											}
 										});
 										socket.emit('custom', customdb);
