@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset = "utf-8">
-		<title>페이스북 초성어 통계기</title>
+		<title>페이스북 초성어 통계기 beta</title>
 		<link rel="shortcut icon" href="/favicon">
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 		<script src="https://code.jquery.com/color/jquery.color-2.1.0.min.js"></script>
@@ -50,7 +50,7 @@
 			</div>
 			<div id="adddb">
 				<div class="dbline">
-					<div class="dbbox"><div><div class="dbbutton">+</div>
+					<div class="dbbox"></div><div class="dbbutton">+</div>
 				</div>
 			</div>
 			<br>
@@ -60,7 +60,7 @@
 			<div id='abox'></div>
 		</div>
 		
-		<div id = 'footer'>건의사항·검색어추가는 1890mah@gmail.com
+		<div id = 'footer'>건의사항·<a id="tt">검색어추가</a>는 1890mah@gmail.com
 			<br><a id="policy" href="#">개인정보처리방침</a><br><br></div>
 
 	</div>
@@ -79,9 +79,17 @@
 					start();
 				} );
 
+				$('#policy').click( function() {
+					$('#content').load("/policy").css('text-align', 'left');
+				});
+
+				$('#tt').click( function() {
+					$('#adddb').slideDown();
+				});
+
 				$('.dbbutton').click(function() {
-					$('adddb').append('<div class="dbline">
-					<div class="dbbox"><div><div class="dbbutton">+</div>
+					$('#adddb').append('<div class="dbline">
+					<div class="dbbox"></div><div class="dbbutton">+</div>
 				</div>');
 				});
 
@@ -307,10 +315,6 @@
 
 
 				} // start
-
-				$('#policy').click( function() {
-					$('#content').load("/policy").css('text-align', 'left');
-				});
 
 			}); // document ready
 			
