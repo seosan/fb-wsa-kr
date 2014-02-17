@@ -210,7 +210,7 @@
 		   					for (index in chodb) {
 		   						if(new RegExp(chodb[index], 'gi'))
 			   						var re = new RegExp(chodb[index], 'gi');
-			   					else var re = new RegExp(\+chodb[index], 'gi');
+			   					else var re = new RegExp(\chodb[index], 'gi');
 								var matching = tmpstring.match(re);
 								cho[index] = matching ? matching.length : 0;
 			   				}
