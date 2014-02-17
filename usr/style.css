@@ -145,8 +145,9 @@ body {
 		text-align: center;
 		display: inline-block;
 		width:50px;
+		padding:5px 0px;
 		background-color: #449;
-		line-height: 25px;
+		line-height: 15px;
 		font-size: 13px;
 		border-bottom:1px solid #FFF;
 	}
