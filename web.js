@@ -50,7 +50,7 @@ ios.sockets.on('connection', function(socket) {
 	
 	var chodb =
 	[
-		'node.js', 'e.j', 'ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㅂ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅎ', 'ㄳ', 'ㅄ', 'ㅗ', 'ㅠ', '盧', '?', '!', ';', 'ㅡㅡ', '^^', '^~^', '^0^', '^오^' // 'ㅅㄱ', 'ㅈㅅ', 'ㅅㅂ', 'ㅈㄹ', 'ㅇㅅㅇ'
+		'ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㅂ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅎ', 'ㄳ', 'ㅄ', 'ㅗ', 'ㅠ', '盧', '?', '!', ';', 'ㅡㅡ', '^^', '^~^', '^0^', '^오^' // 'ㅅㄱ', 'ㅈㅅ', 'ㅅㅂ', 'ㅈㄹ', 'ㅇㅅㅇ'
 	];
 	var cho = new Array();
 	for (index in chodb) {
@@ -61,7 +61,7 @@ ios.sockets.on('connection', function(socket) {
 	function search1(string, pos, index) {
 		if((chopos = string.indexOf(chodb[index], pos) ) != -1) {
 			cho[index]++;
-			//string.replace(chodb[index], '');
+			string.replace(chodb[index], '');
 			search1(string, chopos+(chodb[index].length), index);
 		}
 	}
