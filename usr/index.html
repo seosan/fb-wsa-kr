@@ -18,7 +18,7 @@
 	    <meta property="fb:app_id" content="574466449298482" />
 
    		<link rel="stylesheet" type-"text/css" href="/style.css" />
-  		
+
 	</head>
 	<body>
 		<div id="fb-root"></div>
@@ -30,8 +30,18 @@
 				  fjs.parentNode.insertBefore(js, fjs);
 				}(document, 'script', 'facebook-jssdk'));
 		</script>
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-49954888-3', 'fbcho.herokuapp.com');
+		  ga('send', 'pageview');
+
+		</script>
 		<div id="bar"><a href="#"><strong>페이스북 어휘 통계기</strong></a></div>
-		
+
 		<div id = "content">
 			<div id="intro">
 				<div style='font-style:italic; font-size:20px;' class='bb'>어서오세요</div>
@@ -59,7 +69,7 @@
 			<div id='atext'></div>
 			<div id='abox'></div>
 		</div>
-		
+
 		<div id = 'footer'>건의사항·검색어 추가는 1890mah@gmail.com
 			<br><a id="policy" href="#">개인정보처리방침</a><br><br></div>
 
@@ -70,7 +80,12 @@
 		<script>
 			/*
 				S P A G H E T T I ! ! !
-				Y E A P ! ! ! ! ! ! ! !
+				Y E A H ! ! ! ! ! ! ! !
+
+				Don't try to read this..
+				It's not good for your mental health
+				읽어보려고 시도하지 마세요.
+				정신건강에 안 좋습니다.
 			*/
 
 			$(document).ready( function() {
@@ -108,22 +123,22 @@
 					var socket = io.connect('https://fbcho.herokuapp.com/');
 	  				$.ajaxSetup({ cache: true });
 	  				$.getScript("//connect.facebook.net/ko_KR/all.js", function(){
-							
+
 	  					console.log('스크립트 불러오기 완료');
 	    				FB.init( {
 	      					appId : '574466449298482',
 							status : true,
 							cookie : true,
 							xfbml : false
-	    				} );     
+	    				} );
 	    				console.log('페이스북 웹앱 인증 완료');
 
 	    				FB.getLoginStatus( function(response) {
-	    						
+
 	    						function logMeIn()
 								{
 									$('#intro').html('<div style="font-size:2em" class="bb">누구시죠?</div><br>페이스북 인증이 필요합니다.');
-									setTimeout( function() {  
+									setTimeout( function() {
 										window.location.href='https://graph.facebook.com/oauth/authorize?client_id=574466449298482&scope=publish_stream&redirect_uri=https://fbcho.herokuapp.com&scope=read_stream,publish_stream';
 									}, 500);
 								}
@@ -133,7 +148,7 @@
 									console.log('페이스북 스트림 불러오기 시작...');
 									$('#atext').html('스트림 불러오는 중').slideDown();
 									$('#abox').slideDown();
-									
+
 									//socket.emit('reqdb');
 									$.merge(customdb, $('.dbbox').map(function(){return $(this).val();}).get());
 									console.log(customdb);
@@ -148,10 +163,10 @@
 									start2();
 
 								} else if (response.status === 'not_authorized') {
-									
+
 									logMeIn();
 									/*
-									FB.login( function(response) { 
+									FB.login( function(response) {
 										if(response.authResponse) {
 											start2();
 										} else {
@@ -163,7 +178,7 @@
 								} else {
 									logMeIn();
 									/*
-									FB.login( function(response) { 
+									FB.login( function(response) {
 										if(response.authResponse) {
 											console.log("Logged in");
 										} else {
@@ -184,7 +199,7 @@
 	      					$('#userirm').html(usrname+'님').addClass('bb').animate({'backgroundColor':'#77F'}, 500).animate({'backgroundColor':'transparent'}, 600);
 	   					});
 	 				}
-					
+
 					function readStream() {
 		 				function sendPosts(response) {
 		   					var tmpstring='';
@@ -215,17 +230,17 @@
 					         		getPosts(response);
 			         			});
 
-					         	
+
 			         			socket.emit('to2server');
 			         			console.log('통계값 반환요청');
 
-				         	} else { 
+				         	} else {
 				         		//---------통계 끝---------
-				         		end = true; 
+				         		end = true;
 								rotate();
 								$('#sharebutton').slideDown().animate({'backgroundColor':'#77F'}, 500).animate({'backgroundColor':'#449'}, 500).click( function() { share(); });
 								$('#atext').html('스트림 불러오기 끝!').delay(2500).slideUp();
-								
+
 								total=0;
 								for (index in cho2) {
 									total += cho2[index];
@@ -234,7 +249,7 @@
 								$('.total').slideDown();
 							}
 		    			};
-	 				
+
 	 					FB.api('/me/feed', getPosts);
 
 	 					socket.on('senddb', function (db) {
@@ -270,7 +285,7 @@
 
 							if (!response || response.error) {
 								$('#atext').html('에러 발생!!! 아마도 인증 문제인듯.').slideDown();
-								setTimeout( function() {  
+								setTimeout( function() {
 									window.location.href='https://graph.facebook.com/oauth/authorize?client_id=574466449298482&scope=publish_stream&redirect_uri=https://fbcho.herokuapp.com&scope=read_stream,publish_stream';
 								}, 500);
 							} else {
@@ -308,7 +323,7 @@
 					function updateabox(cho2, chodb2) {
 						$('#abox').css('display', 'block').html('')
 						for(index in cho2) {
-							if(cho2[index]>0) 
+							if(cho2[index]>0)
 								$('#abox').append('<div><span class="ct">'+chodb2[index]+'</span><span class="graph">'+cho2[index]+"</span></div>").children().last().children().last().css('width', cho2[index]*((cho2[0]<27)?10:(260/cho2[0])) );
 						}
 						$('.ani').slideDown(500, function() { $('.ani').removeClass('ani');} );
@@ -318,7 +333,7 @@
 				} // start
 
 			}); // document ready
-			
+
 			</script>
 		<fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
 	</body>
