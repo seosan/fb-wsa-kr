@@ -17,7 +17,7 @@
 	    <meta property="og:description" content="당신의 페이스북 담벼락에 있는 글들을 모조리 훔쳐가서 샅샅이 파헤친 뒤 전혀 쓸모없는 정보 한 토막을 제공해 드립니다." />
 	    <meta property="fb:app_id" content="574466449298482" />
 
-   	<link rel="stylesheet" type-"text/css" href="/style" />
+   	<link rel="stylesheet" type="text/css" href="/style" />
 
 	</head>
 	<body>
@@ -50,7 +50,7 @@
 				<br> <div id='userirm'>당신</div>의 스트림 포스팅을 분석해
 				<br>초성이나 기호 등 잡다한 사용 통계를 내주는
 				<br>매우 유용하기 짝이 없는 서비스입니다.
-				<br><div id='desc'>현재 검색어 DB에는 초성어와 일부 한자, 기호 이모티콘 등 총 33개가 기본 등록되어 있으며 바로 아래의 텍스트 입력 폼에 사용자 지정 검색어(12자 이내)를 별도로 추가할 수도 있습니다. 통계가 끝나면 결과를 담벼락에 공유할 수 있습니다.</div>
+				<br><div id='desc'>현재 초성어와 일부 한자, 기호 이모티콘 등 총 33개가 기본으로 검색되며, <b>사용자 지정 검색어(20자 이내)</b>를 별도로 추가할 수도 있습니다. 통계가 끝나면 결과를 공유할 수 있습니다.</div>
 				<div id='board'>
 					<div id='since' class='bb'><time class='timeago'>지금</time></div>부터
 					<br>총 <div id='cnt' class='bb'>0</div>개 글
@@ -60,8 +60,9 @@
 			</div>
 			<br>
 			<div id="adddb">
+				<div class="bb">사용자 지정 검색어 추가▼</div>
 				<div class="dbline">
-					<input type="text" class="dbbox" maxlength=12><div class="dbbutton"><a>＋</a></div>
+					<input type="text" class="dbbox" maxlength=12><div class="dbbutton"><a>추가</a></div>
 				</div>
 			</div>
 			<div class='button' id='startbutton'><a>시작하기</a></div>
@@ -78,16 +79,6 @@
 
 
 		<script>
-			/*
-				S P A G H E T T I ! ! !
-				Y E A H ! ! ! ! ! ! ! !
-
-				Don't try to read this..
-				It's not good for your mental health
-				읽어보려고 시도하지 마세요.
-				정신건강에 안 좋습니다.
-			*/
-
 			$(document).ready( function() {
 
 				var cnt = 0;
@@ -163,33 +154,12 @@
 									start2();
 
 								} else if (response.status === 'not_authorized') {
-
 									logMeIn();
-									/*
-									FB.login( function(response) {
-										if(response.authResponse) {
-											start2();
-										} else {
-											console.log("Authorization Cancelled");
-										}
-									}, {scope: 'read_stream,publish_stream'}
-									);*/
-
 								} else {
 									logMeIn();
-									/*
-									FB.login( function(response) {
-										if(response.authResponse) {
-											console.log("Logged in");
-										} else {
-											console.log("Login Cancelled");
-										}
-									}, {scope: 'read_stream,publish_stream'}
-									);*/
 								}
 								console.log("페이스북 계정 "+response.status);
 							}  );
-
 	  				}  );
 
 					function usrInfo() {
@@ -274,7 +244,7 @@
 					function share() {
 						console.log('공유하기!');
 
-						var posting = "☃ 페이스북 어휘 통계기!! ☃\n"+$('.timeago').html()+"부터 "+cnt+"개의 게시물을 올린 "+usrname+"님의 담벼락 통계\n";
+						var posting = '<(") 페이스북 어휘 통계기!\n"+$('.timeago').html()+"부터 "+cnt+"개의 게시물을 올린 "+usrname+"님의 담벼락 통계\n';
 						for(index in cho2) {
 							if(cho2[index]>0)
 								posting+='\n　'+chodb2[index]+' ----- '+cho2[index]+"번 사용";
@@ -294,11 +264,7 @@
 								$('#sharebutton').slideUp(500);
 							}
 						});
-
-
-
 					}
-
 					var rot = 0
 					function rotate() {
 						console.log(end);
@@ -319,7 +285,6 @@
 							} rot++;
 						} else $('#state').html('통계 완료').addClass('bb');
 					}
-
 					function updateabox(cho2, chodb2) {
 						$('#abox').css('display', 'block').html('')
 						for(index in cho2) {
@@ -328,12 +293,8 @@
 						}
 						$('.ani').slideDown(500, function() { $('.ani').removeClass('ani');} );
 					}
-
-
 				} // start
-
 			}); // document ready
-
 			</script>
 		<fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
 	</body>

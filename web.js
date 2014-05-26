@@ -11,9 +11,6 @@ var http = require('http');
 var server = http.createServer(app);
 var ios = require('socket.io');
 
-//욕설
-	
-
 // ---------------------------------------
 
 ios = ios.listen(server);
@@ -47,21 +44,23 @@ server.listen(port, function() {
 ios.sockets.on('connection', function(socket) {
 
 	//----통신 시작----
-	
+
 	var chodb =
 	[
-		'ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㅂ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅎ', 'ㄳ', 'ㅄ', 'ㅗ', 'ㅠ', '盧', '?', '!', ';', 'ㅡㅡ', 'ㅇㅅㅇ', '응슷응', '0ㅅ0', '-ㅅ-', '^^', '^~^', '^0^', '^오^', '^-^', '^_^', ':)', ':-)' // 'ㅅㄱ', 'ㅈㅅ', 'ㅅㅂ', 'ㅈㄹ', 'ㅇㅅㅇ'
+		'ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㅂ', 'ㅇ', 'ㅈ', 'ㅉ',
+    'ㅊ', 'ㅋ', 'ㅌ', 'ㅎ', 'ㄳ', 'ㅄ', 'ㅗ', 'ㅠ',
+    '盧', '?', '!', ';', 'ㅡㅡ', 'ㅇㅅㅇ', '응슷응',
+    '0ㅅ0', '-ㅅ-', '^^', '^~^', '^0^', '^오^',
+    '^-^', '^_^', ':)', ':-)'
 	];
 	var cho = new Array();
 	for (index in chodb) {
 		cho[index] = 0;
 	}
-	//var string;
 	var chopos;
 	function search1(string, pos, index) {
 		if((chopos = string.indexOf(chodb[index], pos) ) != -1) {
 			cho[index]++;
-			//string.split(chodb[index]).join('');
 			search1(string, chopos+(chodb[index].length), index);
 		}
 	}
@@ -78,20 +77,11 @@ ios.sockets.on('connection', function(socket) {
 		}
 	});
 
-/*
-	socket.on('reqdb', function() {
-		socket.emit('senddb', chodb);
-	});*/
-
 	socket.on('to2server', function () {
-		socket.emit('toclient', {anal:cho, anal2:chodb} ); 
+		socket.emit('toclient', {anal:cho, anal2:chodb} );
 	});
 
   	socket.on('disconnect', function () {
     	console.log('user disconnected');
   	});
-
-
-
-
 });
